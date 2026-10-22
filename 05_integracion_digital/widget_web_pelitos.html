@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widget WhatsApp Pelitos Veterinaria</title>
+  <link rel="stylesheet" href="widget_web_pelitos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Demo Container de fondo simulando la web oficial -->
+  <div class="demo-bg">
+    <div class="demo-card">
+      <h2>Página Web Oficial — Pelitos Veterinaria</h2>
+      <p class="tagline">«Expertos en cuidar a quien más te ama» · Huánuco, Perú</p>
+      <p>Este es el componente de botón flotante multicanal para integrar en la web de Pelitos Veterinaria. Haz clic en el botón flotante verde en la esquina inferior derecha para abrir el selector de WhatsApp.</p>
+    </div>
+  </div>
+
+  <!-- WIDGET MULTICANAL PELITOS CONECTA -->
+  <div class="pelitos-wa-container" id="pelitosWaContainer">
+    <!-- Ventana del Widget -->
+    <div class="pelitos-wa-window" id="pelitosWaWindow" aria-hidden="true">
+      <div class="pelitos-wa-header">
+        <div class="pelitos-wa-avatar">🐾</div>
+        <div class="pelitos-wa-header-info">
+          <h4>Pelitos Veterinaria</h4>
+          <span class="pelitos-wa-status"><span class="dot"></span> En línea en Huánuco</span>
+        </div>
+        <button class="pelitos-wa-close" id="pelitosWaClose" title="Cerrar">&times;</button>
+      </div>
+
+      <div class="pelitos-wa-body">
+        <p class="pelitos-wa-intro">¡Hola! 🐶🐱 Elige el área con la que deseas comunicarte por WhatsApp:</p>
+
+        <!-- Canal 1: Recepción -->
+        <a href="https://wa.me/51927301122?text=%C2%A1Hola%20Pelitos%20Veterinaria%21%20%F0%9F%90%BE%20Deseo%20informaci%C3%B3n%20general%2C%20farmacia%20o%20pet%20shop." 
+           target="_blank" rel="noopener noreferrer" class="pelitos-channel-card">
+          <div class="channel-icon">🏥</div>
+          <div class="channel-info">
+            <span class="channel-name">Recepción & Farmacia / Pet Shop</span>
+            <span class="channel-desc">Consultas generales, pedidos y delivery · Diego</span>
+            <span class="channel-num">927 301 122</span>
+          </div>
+          <div class="channel-arrow">➔</div>
+        </a>
+
+        <!-- Canal 2: Consultorio Médico -->
+        <a href="https://wa.me/51939356376?text=%C2%A1Hola%20Consultorio%20Pelitos%21%20%F0%9F%A9%BA%20Deseo%20agendar%20una%20cita%20m%C3%A9dica%20veterinaria%20para%20mi%20mascota." 
+           target="_blank" rel="noopener noreferrer" class="pelitos-channel-card">
+          <div class="channel-icon">🩺</div>
+          <div class="channel-info">
+            <span class="channel-name">Consultorio Médico & Vacunas</span>
+            <span class="channel-desc">Evaluaciones, cirugías y laboratorio · Dra. Julia</span>
+            <span class="channel-num">939 356 376</span>
+          </div>
+          <div class="channel-arrow">➔</div>
+        </a>
+
+        <!-- Canal 3: Estética y Spa -->
+        <a href="https://wa.me/51948426656?text=%C2%A1Hola%20Est%C3%A9tica%20Pelitos%21%20%E2%9C%82%EF%B8%8F%F0%9F%9B%81%20Deseo%20cotizar%20y%20reservar%20una%20cita%20de%20ba%C3%B1o%20o%20spa." 
+           target="_blank" rel="noopener noreferrer" class="pelitos-channel-card">
+          <div class="channel-icon">✂️</div>
+          <div class="channel-info">
+            <span class="channel-name">Estética, Baño & Spa Pelitos</span>
+            <span class="channel-desc">Ducha Express, Spa Relajante y cortes · Antonella</span>
+            <span class="channel-num">948 426 656</span>
+          </div>
+          <div class="channel-arrow">➔</div>
+        </a>
+      </div>
+
+      <div class="pelitos-wa-footer">
+        <span>Horario: Lun - Sáb 8:30 a. m. a 7:30 p. m.</span>
+      </div>
+    </div>
+
+    <!-- Botón Lanzador Flotante -->
+    <button class="pelitos-wa-launcher" id="pelitosWaLauncher" title="Escríbenos a WhatsApp">
+      <svg class="wa-icon" viewBox="0 0 32 32" width="32" height="32" fill="#FFFFFF">
+        <path d="M16 2a13.9 13.9 0 0 0-12 21L2 30l7.3-1.9A14 14 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.2 1.2-4.3-.3-.5A11.5 11.5 0 1 1 16 27.5zm6.3-8.6c-.3-.2-2-.1-2.4-.2s-.6-.2-.8.2-1 1.2-1.2 1.4-.4.3-.7.1a9.2 9.2 0 0 1-2.7-1.7 10.2 10.2 0 0 1-1.9-2.3c-.2-.3 0-.5.1-.7s.3-.4.5-.6c.2-.2.2-.3.3-.5a.6.6 0 0 0 0-.6c-.1-.2-.8-2-1.2-2.7-.3-.7-.6-.6-.8-.6h-.7a1.4 1.4 0 0 0-1 .5 4.3 4.3 0 0 0-1.3 3.2 7.5 7.5 0 0 0 1.6 4 17.2 17.2 0 0 0 6.6 5.8c2.4 1 3.3.8 3.9.7a3.3 3.3 0 0 0 2.2-1.6 2.7 2.7 0 0 0 .2-1.6c-.2-.2-.5-.3-.9-.5z"/>
+      </svg>
+      <span class="pelitos-wa-badge">3</span>
+    </button>
+  </div>
+
+  <script src="widget_web_pelitos.js"></script>
+</body>
+</html>

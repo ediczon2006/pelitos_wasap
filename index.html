@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pelitos Veterinaria — Portal Oficial de Enlaces & Canales WhatsApp</title>
+  <!-- Favicon y Fuentes Oficiales -->
+  <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=Satoshi:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/catalogos.css">
+
+  <style>
+    /* VARIABLES ESPECÍFICAS DEL PORTAL HUB */
+    :root {
+      --hub-primary: #4A154B;
+      --hub-dark: #200524;
+      --hub-purple: #6B2D82;
+      --hub-gold: #F59E0B;
+      --hub-gold-dark: #D97706;
+      --hub-teal: #00A884;
+      --hub-wa: #25D366;
+    }
+
+    /* TOP BAR SUPERIOR */
+    .top-access-bar {
+      background: #110416;
+      color: #F8FAFC;
+      padding: 10px 20px;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .top-access-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .top-access-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-access-links a {
+      color: #E2D3E7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .top-access-links a:hover {
+      color: var(--hub-gold);
+    }
+
+    .btn-main-site {
+      background: linear-gradient(135deg, var(--hub-gold), var(--hub-gold-dark));
+      color: #1A0D2E !important;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-main-site:hover {
+      background: #FBBF24 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
+    }
+
+    /* HERO BANNER EXECUTIVE */
+    .hub-hero {
+      background: linear-gradient(135deg, var(--hub-dark) 0%, var(--hub-primary) 60%, var(--hub-purple) 100%);
+      color: #FFFFFF;
+      padding: 48px 20px 84px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-hero::after {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .badge-verified-business {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      color: #FBBF24;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: clamp(14px, 2vw, 16.5px);
+      color: #E2D3E7;
+      max-width: 740px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    /* KPI STATS BAR */
+    .hub-stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(6px);
+    }
+
+    .stat-pill strong {
+      color: var(--hub-gold);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    /* DIRECT WEBPAGE PILLS */
+    .direct-portal-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .portal-pill-btn {
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portal-pill-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-2px);
+      color: #FFFFFF;
+    }
+
+    /* ENLACES RÁPIDOS WHATSAPP (PANEL INTERACTIVO) */
+    .link-center-wrapper {
+      margin-top: -50px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .link-center-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .link-center-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 16px;
+    }
+
+    .link-center-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .link-center-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .link-box-item {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .link-box-item:hover {
+      border-color: var(--hub-purple);
+      background: #FAF5FF;
+      transform: translateY(-2px);
+    }
+
+    .link-box-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .link-box-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .link-box-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .link-box-target {
+      font-size: 12px;
+      color: #64748B;
+      font-family: monospace;
+      background: #FFFFFF;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+      word-break: break-all;
+      margin-bottom: 12px;
+    }
+
+    .btn-copy-interactive {
+      background: var(--hub-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy-interactive:hover {
+      background: var(--hub-purple);
+      transform: translateY(-1px);
+    }
+
+    .btn-copy-interactive.copied {
+      background: var(--wa-green) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* GRID DE CANALES ESPECIALIZADOS */
+    .channels-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .channels-section-desc {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 650px;
+      margin: 0 auto 36px;
+    }
+
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    .channel-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .channel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(74, 21, 75, 0.15);
+      border-color: rgba(74, 21, 75, 0.3);
+    }
+
+    .card-top-bar {
+      height: 8px;
+      width: 100%;
+    }
+
+    .bar-rec { background: linear-gradient(90deg, #3182CE, #00A884); }
+    .bar-med { background: linear-gradient(90deg, #1A365D, #319795); }
+    .bar-est { background: linear-gradient(90deg, #6B2D82, #9F7AEA); }
+
+    .channel-card-body {
+      padding: 30px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .channel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .card-header-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .icon-rec { background: #EBF8FF; color: #2B6CB0; }
+    .icon-med { background: #E6FFFA; color: #234E52; }
+    .icon-est { background: #FAF5FF; color: #6B46C1; }
+
+    .channel-items-badge {
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border-light);
+    }
+
+    .channel-role {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .channel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .channel-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--secondary-teal);
+      margin-bottom: 10px;
+    }
+
+    .channel-owner {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .channel-owner strong {
+      color: var(--text-main);
+    }
+
+    .channel-desc {
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 24px;
+      border-top: 1px dashed var(--border-light);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .features-list li {
+      font-size: 12.5px;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .features-list li i {
+      color: var(--secondary-teal);
+      font-size: 11px;
+    }
+
+    .card-actions-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-action-primary {
+      background: var(--hub-primary);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    .btn-action-primary:hover {
+      background: var(--hub-purple);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(74, 21, 75, 0.25);
+      color: #FFFFFF;
+    }
+
+    .btn-action-secondary {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border-light);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-action-secondary:hover {
+      background: #E2E8F0;
+      transform: translateY(-1px);
+    }
+
+    .btn-chat-wa {
+      background: var(--wa-green);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 11px 18px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px var(--wa-shadow);
+    }
+
+    .btn-chat-wa:hover {
+      background: var(--wa-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45);
+      color: #FFFFFF;
+    }
+
+    /* SECCIÓN DE RESPUESTAS RÁPIDAS PARA EL EQUIPO */
+    .quick-replies-section {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--border-light);
+      margin-bottom: 50px;
+    }
+
+    .quick-replies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .qr-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .qr-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qr-card-text {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      background: #FFFFFF;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      white-space: pre-line;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    .btn-copy-qr {
+      background: var(--hub-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+
+    .btn-copy-qr:hover {
+      background: var(--hub-purple);
+    }
+
+    /* FOOTER */
+    footer.hub-footer {
+      background: var(--hub-dark);
+      color: #FFFFFF;
+      padding: 40px 20px 30px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer.hub-footer p {
+      color: #D1C4D9;
+    }
+
+    .footer-site-link {
+      color: var(--hub-gold);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 7px 18px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-full);
+      transition: all 0.2s;
+    }
+
+    .footer-site-link:hover {
+      background: rgba(245, 158, 11, 0.15);
+      color: #FBBF24;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCESO DIRECTO SUPERIOR -->
+  <aside class="top-access-bar" aria-label="Acceso directo a la web principal">
+    <div class="top-access-inner">
+      <div class="top-access-links">
+        <span><i class="fa-solid fa-location-dot" style="color:var(--hub-gold);"></i> Jr. Dos de Mayo 1234, Huánuco, Perú</span>
+        <span style="opacity: 0.4;">|</span>
+        <a href="../pelitos_veterinaria/index.html"><i class="fa-solid fa-house"></i> Inicio Web</a>
+        <a href="../pelitos_veterinaria/pages/servicios.html"><i class="fa-solid fa-stethoscope"></i> Servicios</a>
+        <a href="../pelitos_veterinaria/pages/estetica.html"><i class="fa-solid fa-scissors"></i> Estética</a>
+        <a href="../pelitos_veterinaria/pages/productos.html"><i class="fa-solid fa-bag-shopping"></i> PetShop</a>
+      </div>
+      <div>
+        <a href="../pelitos_veterinaria/index.html" class="btn-main-site">
+          <i class="fa-solid fa-globe"></i> Ir a la Web Oficial de Pelitos ↗
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HERO BANNER EXECUTIVE -->
+  <header class="hub-hero">
+    <div class="container">
+      <div class="badge-verified-business">
+        <i class="fa-solid fa-shield-halved"></i> Clínica Veterinaria Autorizada &middot; Huánuco, Perú
+      </div>
+      <h1 class="brand-title">PELITOS VETERINARIA &middot; HUÁNUCO</h1>
+      <p class="brand-subtitle">«Expertos en cuidar a quien más te ama» &mdash; Centro oficial de enlace multicanal. Catálogos digitales actualizados, stock en tiempo real y atención directa por WhatsApp con cada especialista.</p>
+
+      <!-- KPI METRICS -->
+      <div class="hub-stats-bar">
+        <div class="stat-pill">
+          <i class="fa-solid fa-box-open" style="color:var(--hub-gold);"></i>
+          <span><strong>125</strong> Productos Pet Shop</span>
+        </div>
+        <div class="stat-pill">
+          <i class="fa-solid fa-stethoscope" style="color:#34D399;"></i>
+          <span><strong>14</strong> Servicios Médicos</span>
+        </div>
+        <div class="stat-pill">
+          <i class="fa-solid fa-scissors" style="color:#F472B6;"></i>
+          <span><strong>28</strong> Experiencias Spa</span>
+        </div>
+        <div class="stat-pill">
+          <i class="fa-solid fa-phone-volume" style="color:#60A5FA;"></i>
+          <span><strong>3</strong> Canales Independientes</span>
+        </div>
+      </div>
+
+      <!-- BOTONES DE ACCESO A PÁGINAS WEB HERMANAS -->
+      <div class="direct-portal-links">
+        <a href="../pelitos_veterinaria/pages/productos.html" class="portal-pill-btn">
+          <i class="fa-solid fa-store" style="color: #60A5FA;"></i> Tienda & Farmacia Web
+        </a>
+        <a href="../pelitos_veterinaria/pages/servicios.html" class="portal-pill-btn">
+          <i class="fa-solid fa-user-doctor" style="color: #34D399;"></i> Servicios Médicos Web
+        </a>
+        <a href="../pelitos_veterinaria/pages/estetica.html" class="portal-pill-btn">
+          <i class="fa-solid fa-wand-magic-sparkles" style="color: #F472B6;"></i> Pelitos Estética & Spa Web
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- CENTRO DE ENLACES OFICIALES PARA WHATSAPP (COPIADO RÁPIDO) -->
+    <section class="link-center-wrapper" aria-label="Enlaces oficiales para WhatsApp">
+      <div class="link-center-card">
+        <div class="link-center-header">
+          <div>
+            <h2 class="link-center-title">
+              <i class="fa-solid fa-link" style="color:var(--hub-primary);"></i>
+              Centro de Enlaces Oficiales para WhatsApp & Redes
+            </h2>
+            <p class="link-center-desc">Copia el enlace exacto para colocar en tu perfil de WhatsApp Business, estados, biografía de Instagram o enviar a clientes por chat.</p>
+          </div>
+          <span class="badge-counter"><i class="fa-solid fa-circle-check" style="color:var(--wa-green);"></i> Enlaces Activos & Verificados</span>
+        </div>
+
+        <div class="links-grid">
+
+          <!-- 1. ENLACE PORTAL GENERAL (HUB) -->
+          <div class="link-box-item">
+            <div>
+              <div class="link-box-top">
+                <span class="link-box-label">Bio / Perfil General</span>
+                <i class="fa-solid fa-globe" style="color:var(--hub-primary);"></i>
+              </div>
+              <h3 class="link-box-name">Portal Multicanal General</h3>
+              <div class="link-box-target" id="urlHub">index.html</div>
+            </div>
+            <button class="btn-copy-interactive" onclick="copyCustomLink('urlHub', 'Portal Multicanal')">
+              <i class="fa-solid fa-copy"></i> Copiar Enlace para Perfil
+            </button>
+          </div>
+
+          <!-- 2. ENLACE PET SHOP (DIEGO) -->
+          <div class="link-box-item">
+            <div>
+              <div class="link-box-top">
+                <span class="link-box-label">Tienda & Farmacia</span>
+                <i class="fa-solid fa-store" style="color:#2B6CB0;"></i>
+              </div>
+              <h3 class="link-box-name">Catálogo Pet Shop (125 Items)</h3>
+              <div class="link-box-target" id="urlRec">catalogo_recepcion.html</div>
+            </div>
+            <button class="btn-copy-interactive" onclick="copyCustomLink('urlRec', 'Catálogo Pet Shop')">
+              <i class="fa-solid fa-copy"></i> Copiar Enlace WhatsApp
+            </button>
+          </div>
+
+          <!-- 3. ENLACE CONSULTORIO (DRA. JULIA) -->
+          <div class="link-box-item">
+            <div>
+              <div class="link-box-top">
+                <span class="link-box-label">Medicina Veterinaria</span>
+                <i class="fa-solid fa-stethoscope" style="color:#319795;"></i>
+              </div>
+              <h3 class="link-box-name">Catálogo Médico (14 Servicios)</h3>
+              <div class="link-box-target" id="urlMed">catalogo_consultorio.html</div>
+            </div>
+            <button class="btn-copy-interactive" onclick="copyCustomLink('urlMed', 'Catálogo Médico')">
+              <i class="fa-solid fa-copy"></i> Copiar Enlace WhatsApp
+            </button>
+          </div>
+
+          <!-- 4. ENLACE ESTÉTICA (ANTONELLA) -->
+          <div class="link-box-item">
+            <div>
+              <div class="link-box-top">
+                <span class="link-box-label">Grooming & Spa</span>
+                <i class="fa-solid fa-scissors" style="color:#6B46C1;"></i>
+              </div>
+              <h3 class="link-box-name">Catálogo Spa (28 Items)</h3>
+              <div class="link-box-target" id="urlEst">catalogo_estetica.html</div>
+            </div>
+            <button class="btn-copy-interactive" onclick="copyCustomLink('urlEst', 'Catálogo Estética')">
+              <i class="fa-solid fa-copy"></i> Copiar Enlace WhatsApp
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE LOS 3 CANALES SEPARADOS -->
+    <section>
+      <h2 class="channels-section-title">Canales de Atención Especializados</h2>
+      <p class="channels-section-desc">Cada área cuenta con línea telefónica exclusiva, catálogo propio y responsable directo para garantizar cero demoras y atención personalizada.</p>
+
+      <div class="channels-grid">
+
+        <!-- CANAL 1: RECEPCIÓN / PETSHOP / FARMACIA -->
+        <article class="channel-card">
+          <div class="card-top-bar bar-rec"></div>
+          <div class="channel-card-body">
+            <div>
+              <div class="channel-header-row">
+                <div class="card-header-icon icon-rec">
+                  <i class="fa-solid fa-store"></i>
+                </div>
+                <span class="channel-items-badge"><i class="fa-solid fa-box"></i> 125 Productos</span>
+              </div>
+              <div class="channel-role">Canal Comercial & Tienda</div>
+              <h3 class="channel-title">Pet Shop & Farmacia</h3>
+              <div class="channel-phone">
+                <i class="fa-brands fa-whatsapp"></i> 927 301 122
+              </div>
+              <div class="channel-owner">
+                <i class="fa-solid fa-user-check"></i> Atiende: <strong>Diego (Counter Recepción)</strong>
+              </div>
+              <p class="channel-desc">
+                Alimentos balanceados de alta gama (Ricocan, Dog Chow, Pro Plan, SuperCat, Michicat), snacks Naturalistic, antipulgas (Bravecto, Simparica, Proteggo, Seresto), camas acolchadas y accesorios de paseo.
+              </p>
+              <ul class="features-list">
+                <li><i class="fa-solid fa-check"></i> Alimentos secos, húmedos y dietas clínicas</li>
+                <li><i class="fa-solid fa-check"></i> Snacks 100% naturales horneados y premios</li>
+                <li><i class="fa-solid fa-check"></i> Farmacia veterinaria y desparasitantes</li>
+                <li><i class="fa-solid fa-check"></i> Camas, collares, mochilas y transportadoras</li>
+              </ul>
+            </div>
+            <div class="card-actions-group">
+              <!-- VER CATÁLOGO ONLINE -->
+              <a href="catalogo_recepcion.html" class="btn-action-primary">
+                <i class="fa-solid fa-bag-shopping"></i> Ver Catálogo Completo (125 Items) ↗
+              </a>
+              <!-- LINK A LA PÁGINA WEB OFICIAL -->
+              <a href="../pelitos_veterinaria/pages/productos.html" class="btn-action-secondary">
+                <span><i class="fa-solid fa-globe" style="color: #3182CE; margin-right: 6px;"></i> Ver Tienda en la Web Oficial</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <!-- CHAT DIRECTO WHATSAPP -->
+              <a href="https://wa.me/51927301122?text=%C2%A1Hola%20Diego%20(Recepci%C3%B3n)%21%20%F0%9F%90%BE%20Deseo%20informaci%C3%B3n%20sobre%20productos%20y%20delivery." 
+                 target="_blank" class="btn-chat-wa">
+                <i class="fa-brands fa-whatsapp"></i> Chatear al 927 301 122
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CANAL 2: CONSULTORIO MÉDICO -->
+        <article class="channel-card">
+          <div class="card-top-bar bar-med"></div>
+          <div class="channel-card-body">
+            <div>
+              <div class="channel-header-row">
+                <div class="card-header-icon icon-med">
+                  <i class="fa-solid fa-stethoscope"></i>
+                </div>
+                <span class="channel-items-badge" style="color:#234E52;"><i class="fa-solid fa-kit-medical"></i> 14 Servicios</span>
+              </div>
+              <div class="channel-role">Medicina Preventiva & Cirugía</div>
+              <h3 class="channel-title">Consultorio Veterinario</h3>
+              <div class="channel-phone" style="color: #319795;">
+                <i class="fa-brands fa-whatsapp"></i> 939 356 376
+              </div>
+              <div class="channel-owner">
+                <i class="fa-solid fa-user-doctor"></i> Atiende: <strong>Dra. Julia (Médico Veterinario)</strong>
+              </div>
+              <p class="channel-desc">
+                Consulta clínica presencial, vacunación preventiva certificada, hemograma computarizado, bioquímica renal/hepática, profilaxis dental ultrasónica y atención a domicilio con Pelitos Móvil.
+              </p>
+              <ul class="features-list">
+                <li><i class="fa-solid fa-check"></i> Consulta general y control de seguimiento</li>
+                <li><i class="fa-solid fa-check"></i> Vacunas séxtuple canina y triple felina</li>
+                <li><i class="fa-solid fa-check"></i> Laboratorio clínico con resultados en el día</li>
+                <li><i class="fa-solid fa-check"></i> Profilaxis ultrasónica y cirugías menores</li>
+              </ul>
+            </div>
+            <div class="card-actions-group">
+              <!-- VER CATÁLOGO ONLINE -->
+              <a href="catalogo_consultorio.html" class="btn-action-primary" style="background: #2B6CB0;">
+                <i class="fa-solid fa-notes-medical"></i> Ver Catálogo Médico (14 Servicios) ↗
+              </a>
+              <!-- LINK A LA PÁGINA WEB OFICIAL -->
+              <a href="../pelitos_veterinaria/pages/servicios.html" class="btn-action-secondary">
+                <span><i class="fa-solid fa-globe" style="color: #2B6CB0; margin-right: 6px;"></i> Ver Servicios en la Web Oficial</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <!-- CHAT DIRECTO WHATSAPP -->
+              <a href="https://wa.me/51939356376?text=%C2%A1Hola%20Dra.%20Julia%20(Consultorio)%21%20%F0%9F%A9%BA%20Deseo%20agendar%20una%20cita%20m%C3%A9dica%20veterinaria." 
+                 target="_blank" class="btn-chat-wa">
+                <i class="fa-brands fa-whatsapp"></i> Agendar Cita al 939 356 376
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CANAL 3: ESTÉTICA CANINA Y SPA -->
+        <article class="channel-card">
+          <div class="card-top-bar bar-est"></div>
+          <div class="channel-card-body">
+            <div>
+              <div class="channel-header-row">
+                <div class="card-header-icon icon-est">
+                  <i class="fa-solid fa-scissors"></i>
+                </div>
+                <span class="channel-items-badge" style="color:#6B46C1;"><i class="fa-solid fa-wand-magic-sparkles"></i> 28 Experiencias</span>
+              </div>
+              <div class="channel-role">Grooming & Bienestar Sin Estrés</div>
+              <h3 class="channel-title">Estética Canina & Spa</h3>
+              <div class="channel-phone" style="color: #805AD5;">
+                <i class="fa-brands fa-whatsapp"></i> 948 426 656
+              </div>
+              <div class="channel-owner">
+                <i class="fa-solid fa-heart"></i> Atiende: <strong>Antonella (Estilista Canina)</strong>
+              </div>
+              <p class="channel-desc">
+                Peluquería canina y spa con agua tibia, hidromasaje relajante, deslanado profundo de submanto, cortes morfológicos de raza a tijera y atención respetuosa 100% sin sedantes.
+              </p>
+              <ul class="features-list">
+                <li><i class="fa-solid fa-check"></i> Baños con agua temperada e hidromasaje</li>
+                <li><i class="fa-solid fa-check"></i> Cortes de raza (Poodle, Schnauzer, Bichón, Shih Tzu)</li>
+                <li><i class="fa-solid fa-check"></i> Deslanado técnico para Husky, Golden y pastores</li>
+                <li><i class="fa-solid fa-check"></i> Herramientas profesionales y galería de resultados</li>
+              </ul>
+            </div>
+            <div class="card-actions-group">
+              <!-- VER CATÁLOGO ONLINE -->
+              <a href="catalogo_estetica.html" class="btn-action-primary" style="background: #6B2D82;">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Ver Catálogo Spa (28 Items) ↗
+              </a>
+              <!-- LINK A LA PÁGINA WEB OFICIAL -->
+              <a href="../pelitos_veterinaria/pages/estetica.html" class="btn-action-secondary">
+                <span><i class="fa-solid fa-globe" style="color: #6B2D82; margin-right: 6px;"></i> Ver Estética en la Web Oficial</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <!-- CHAT DIRECTO WHATSAPP -->
+              <a href="https://wa.me/51948426656?text=%C2%A1Hola%20Antonella%20(Est%C3%A9tica)%21%20%E2%9C%82%EF%B8%8F%F0%9F%9B%81%20Deseo%20cotizar%20un%20servicio%20de%20ba%C3%B1o%20o%20corte." 
+                 target="_blank" class="btn-chat-wa">
+                <i class="fa-brands fa-whatsapp"></i> Cotizar al 948 426 656
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- RESPUESTAS RÁPIDAS CORPORATIVAS PARA WHATSAPP -->
+    <section class="quick-replies-section">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h2 style="font-family:'Outfit',sans-serif; font-size: 20px; font-weight:800; color:var(--text-main);">
+            <i class="fa-solid fa-bolt" style="color:var(--hub-gold);"></i> Mensajes Rápidos Estandarizados para Clientes
+          </h2>
+          <p style="font-size: 13.5px; color:var(--text-muted); margin-top:2px;">
+            El equipo de atención puede copiar estos mensajes con un clic para responder de inmediato en WhatsApp Business.
+          </p>
+        </div>
+        <span class="badge-counter"><i class="fa-solid fa-comments"></i> 6 Respuestas Oficiales</span>
+      </div>
+
+      <div class="quick-replies-grid">
+
+        <!-- QR 1: HORARIOS -->
+        <div class="qr-card">
+          <div>
+            <div class="qr-card-title"><i class="fa-solid fa-clock" style="color:var(--hub-gold);"></i> Horarios de Atención</div>
+            <div class="qr-card-text" id="qrTextHorario">⏰ *Horarios de Atención en Pelitos Veterinaria*:
+• Lunes a Sábado: 8:30 a. m. – 7:30 p. m.
+• Domingos y Feriados: 9:00 a. m. – 2:00 p. m.
+📍 Jirón Dos de Mayo 1234, Huánuco. ¡Te esperamos! 🐾💜</div>
+          </div>
+          <button class="btn-copy-qr" onclick="copyPlainText('qrTextHorario', 'Mensaje de Horarios')">
+            <i class="fa-solid fa-copy"></i> Copiar Mensaje
+          </button>
+        </div>
+
+        <!-- QR 2: UBICACIÓN -->
+        <div class="qr-card">
+          <div>
+            <div class="qr-card-title"><i class="fa-solid fa-location-dot" style="color:#EF4444;"></i> Ubicación y Dirección</div>
+            <div class="qr-card-text" id="qrTextUbicacion">📍 *Ubicación de Pelitos Veterinaria*:
+Jirón Dos de Mayo N.° 1234, Huánuco, Perú (a media cuadra del Parque Amarilis).
+🗺️ Enlace Google Maps: https://maps.app.goo.gl/pelitosveterinaria
+🚗 Zona de desembarque rápido disponible.</div>
+          </div>
+          <button class="btn-copy-qr" onclick="copyPlainText('qrTextUbicacion', 'Mensaje de Ubicación')">
+            <i class="fa-solid fa-copy"></i> Copiar Mensaje
+          </button>
+        </div>
+
+        <!-- QR 3: CITA MÉDICA -->
+        <div class="qr-card">
+          <div>
+            <div class="qr-card-title"><i class="fa-solid fa-stethoscope" style="color:#10B981;"></i> Reserva de Cita Médica</div>
+            <div class="qr-card-text" id="qrTextCita">🩺 *Reserva de Consulta Médica Veterinaria* 🐾
+Con gusto te agendamos con la Dra. Julia. Por favor compártenos:
+1. 🐶🐱 Nombre y especie de tu mascota:
+2. ⚖️ Edad aproximada y peso:
+3. 🩺 Motivo de consulta (control, vacunas o síntoma):
+4. 📅 Día y hora preferida:</div>
+          </div>
+          <button class="btn-copy-qr" onclick="copyPlainText('qrTextCita', 'Mensaje de Cita Médica')">
+            <i class="fa-solid fa-copy"></i> Copiar Mensaje
+          </button>
+        </div>
+
+        <!-- QR 4: ESTÉTICA -->
+        <div class="qr-card">
+          <div>
+            <div class="qr-card-title"><i class="fa-solid fa-scissors" style="color:#8B5CF6;"></i> Cotización de Baño y Spa</div>
+            <div class="qr-card-text" id="qrTextSpa">✂️🛁 *Cotización de Estética y Spa Pelitos* 🐶🐱
+¡Hola! Con mucho gusto te cotizamos con Antonella. Indícanos:
+1. 🐾 Raza y tamaño:
+2. 🧶 ¿Presenta nudos o pelo largo?:
+3. ✨ Servicio deseado: Ducha Express, Clásico, Spa Relajante o Corte de Raza.</div>
+          </div>
+          <button class="btn-copy-qr" onclick="copyPlainText('qrTextSpa', 'Mensaje de Estética')">
+            <i class="fa-solid fa-copy"></i> Copiar Mensaje
+          </button>
+        </div>
+
+        <!-- QR 5: FARMACIA -->
+        <div class="qr-card">
+          <div>
+            <div class="qr-card-title"><i class="fa-solid fa-pills" style="color:#3B82F6;"></i> Consulta de Farmacia</div>
+            <div class="qr-card-text" id="qrTextFar">💊 *Farmacia Veterinaria Pelitos*
+Disponemos de antiparasitarios líderes (Bravecto, Simparica, Proteggo, Seresto), limpiadores óticos, pomadas cicatrizantes y champús medicados.
+¿Qué producto o molestia deseas consultar? 🐾</div>
+          </div>
+          <button class="btn-copy-qr" onclick="copyPlainText('qrTextFar', 'Mensaje de Farmacia')">
+            <i class="fa-solid fa-copy"></i> Copiar Mensaje
+          </button>
+        </div>
+
+        <!-- QR 6: PET SHOP -->
+        <div class="qr-card">
+          <div>
+            <div class="qr-card-title"><i class="fa-solid fa-bag-shopping" style="color:#F59E0B;"></i> Alimentos y Delivery</div>
+            <div class="qr-card-text" id="qrTextPet">🛍️ *Pet Shop Pelitos — Alimentos & Delivery*
+Disponemos de alimentos súper premium, snacks naturales Naturalistic, camas térmicas y accesorios. Realizamos envíos rápidos en Huánuco o recojo en clínica.
+¿Para qué especie y peso estás buscando alimento? 🐾</div>
+          </div>
+          <button class="btn-copy-qr" onclick="copyPlainText('qrTextPet', 'Mensaje de Pet Shop')">
+            <i class="fa-solid fa-copy"></i> Copiar Mensaje
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="hub-footer">
+    <div class="container">
+      <p><strong>Pelitos Veterinaria Huánuco</strong> &middot; Jirón Dos de Mayo N.° 1234, Huánuco, Perú</p>
+      <p style="margin-top: 6px; font-size: 12.5px;">Horario de atención general: Lunes a Sábado de 8:30 a. m. a 7:30 p. m. &middot; Domingos de 9:00 a. m. a 2:00 p. m.</p>
+      <div>
+        <a href="../pelitos_veterinaria/index.html" class="footer-site-link">
+          <i class="fa-solid fa-globe"></i> Entrar a la Página Web Oficial Completa (Pelitos Veterinaria Huánuco) ↗
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toastBox">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">¡Enlace copiado al portapapeles!</span>
+  </div>
+
+  <script>
+    function copyCustomLink(elementId, title) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      
+      // Obtener URL absoluta basada en la ubicación actual
+      const currentUrl = window.location.href;
+      const baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
+      const targetRel = el.textContent.trim();
+      const fullUrl = baseUrl + targetRel;
+
+      copyToClipboard(fullUrl, `¡Enlace de ${title} copiado! Listo para WhatsApp: ${fullUrl}`);
+    }
+
+    function copyPlainText(elementId, title) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      copyToClipboard(el.textContent.trim(), `¡${title} copiado! Pégalo directamente en WhatsApp.`);
+    }
+
+    function copyToClipboard(text, successMessage) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMessage);
+        }).catch(() => fallbackCopy(text, successMessage));
+      } else {
+        fallbackCopy(text, successMessage);
+      }
+    }
+
+    function fallbackCopy(text, successMessage) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(successMessage);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3800);
+      }
+    }
+  </script>
+</body>
+</html>

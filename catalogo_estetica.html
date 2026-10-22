@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estética Canina y Spa Pelitos | Pelitos Veterinaria (Huánuco)</title>
+  <!-- Fuentes e Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/catalogos.css">
+  <style>
+    .header-direct-btn {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #1A0D2E !important;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .header-direct-btn:hover {
+      background: #FBBF24 !important;
+      transform: translateY(-2px);
+    }
+    .cta-wa-btn {
+      background: #25D366;
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+      transition: all 0.2s;
+    }
+    .cta-wa-btn:hover {
+      background: #1eb956;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER ESPECÍFICO DEL CANAL ESTÉTICA -->
+  <header class="catalog-header" style="background: linear-gradient(135deg, #441A52, #6B2D82, #9F7AEA);">
+    <div class="container">
+      <div class="header-nav-bar">
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <a href="index.html" class="back-hub-btn">
+            <i class="fa-solid fa-arrow-left"></i> Volver al Portal General
+          </a>
+          <!-- LINK DIRECTO A LA PÁGINA WEB OFICIAL -->
+          <a href="../pelitos_veterinaria/pages/estetica.html" class="back-hub-btn header-direct-btn">
+            <i class="fa-solid fa-globe"></i> Ir a la Web Oficial de Pelitos Estética ↗
+          </a>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <button class="btn-copy-catalog-link" onclick="copyCatalogLink('Estética & Spa Canino')">
+            <i class="fa-solid fa-share-nodes"></i> Copiar Enlace para WhatsApp
+          </button>
+          <div class="channel-pill-badge" style="background: #9F7AEA;">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Estética: 948 426 656
+          </div>
+        </div>
+      </div>
+      <div class="header-main-info">
+        <h1>Catálogo de Estética, Grooming y Spa Canino</h1>
+        <p>Experiencias de bienestar, higiene y alta peluquería canina en Huánuco. Baños con agua temperada, hidromasaje relajante, deslanado técnico anti-caída, aromaterapia botánica y cortes de raza especializados 100% sin sedantes.</p>
+        <div class="responsible-box">
+          <i class="fa-solid fa-scissors"></i> Estilista Profesional Certificada: <strong>Antonella</strong> | Teléfono exclusivo: <strong>+51 948 426 656</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- TOOLBAR DE FILTROS -->
+    <div class="catalog-toolbar">
+      <div class="filter-group">
+        <button class="filter-chip active" onclick="filterItems('all', this)">Todas las Experiencias</button>
+        <button class="filter-chip" onclick="filterItems('bano', this)">Baños e Higiene</button>
+        <button class="filter-chip" onclick="filterItems('spa', this)">Spa & Bienestar</button>
+        <button class="filter-chip" onclick="filterItems('cortes', this)">Cortes de Raza</button>
+        <button class="filter-chip" onclick="filterItems('deslanado', this)">Deslanado & Submanto</button>
+        <button class="filter-chip" onclick="filterItems('instalaciones', this)">Instalaciones & Equipo</button>
+        <button class="filter-chip" onclick="filterItems('herramientas', this)">Herramientas Profesionales</button>
+        <button class="filter-chip" onclick="filterItems('galeria', this)">Galería de Resultados</button>
+      </div>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Buscar por experiencia o servicio..." onkeyup="searchGrooming()">
+      </div>
+    </div>
+
+    <!-- BARRA DE ESTADO / CONTADOR DE EXPERIENCIAS -->
+    <div class="catalog-status-bar">
+      <span id="resultsCount">Mostrando <strong>28</strong> experiencias y herramientas</span>
+      <span class="badge-counter"><i class="fa-solid fa-heart"></i> 100% Sin sedantes · Manejo respetuoso</span>
+    </div>
+
+    <!-- ESTADO VACÍO (EMPTY STATE) -->
+    <div class="empty-state-box" id="emptyState">
+      <i class="fa-solid fa-scissors"></i>
+      <h3>No se encontraron experiencias</h3>
+      <p>No hay servicios que coincidan con "<span id="emptyQuery"></span>".</p>
+      <button class="empty-state-btn" onclick="resetSearchAndFilter()">Ver todos los servicios</button>
+    </div>
+
+    <!-- AVISO DE ATENCIÓN SIN ESTRÉS -->
+    <div class="notice-box" style="background: #FAF5FF; border-left-color: #805AD5; color: #553C9A;">
+      <i class="fa-solid fa-heart fa-lg"></i>
+      <div>
+        <strong>Filosofía de Bienestar Pelitos:</strong> Cuidamos a tu consentido con paciencia y respeto. Trabajamos <strong>100% libre de sedantes o fármacos</strong>. Adaptamos el secado y cepillado al temperamento de tu mascota para una experiencia agradable y relajante.
+      </div>
+    </div>
+
+    <!-- GRID DE EXPERIENCIAS DE ESTÉTICA (16 SERVICIOS CON FOTOS 100% ÚNICAS Y DATOS COMPLETOS) -->
+    <div class="items-grid" id="groomingGrid">
+
+      <!-- 1. Servicio Clásico (Duchita + Corte Parejo) -->
+      <div class="card-item" data-category="bano" data-keywords="servicio clasico ducha bano corte maquina higiene completo">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/perrito_.jpg" alt="Servicio Clásico Duchita y Corte" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Baños e Higiene</span>
+          <span class="card-badge-code">EST-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Servicio Clásico: Duchita Tibia + Corte Completo</h3>
+            <p class="card-desc">Baño higiénico profundo con agua a temperatura controlada, champú neutralizador formulado, secado con turbina de aire tibio, corte a máquina parejo, corte de uñas, limpieza ótica y colonia.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 35.00 - S/ 55.00</span>
+              <span class="price-sub">Según peso (Toy a Grande)</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20(Est%C3%A9tica)%2C%20deseo%20cotizar%20y%20agendar%20el%20Servicio%20Cl%C3%A1sico%20(EST-001)%20para%20mi%20perrito." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-calendar-check"></i> Cotizar Servicio
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Ducha de Amor Express -->
+      <div class="card-item" data-category="bano" data-keywords="ducha express bano rapido mantenimiento economico limpio perro">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/perrito-entregado.jpg" alt="Ducha de Amor Express" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Baños e Higiene</span>
+          <span class="card-badge-code">EST-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Duchas de Amor Express (Mantenimiento)</h3>
+            <p class="card-desc">Baño de mantenimiento semanal o quincenal para mascotas que no requieren corte: desengrasado con agua tibia, champú aroma frutal, secado exprés y perfume Frupii de larga fijación.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 25.00 - S/ 45.00</span>
+              <span class="price-sub">Según tamaño del perrito</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20una%20Ducha%20de%20Amor%20Express%20(EST-002)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-shower"></i> Agendar Ducha
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Spa Pelitos Relajantes ⭐ -->
+      <div class="card-item" data-category="spa" data-keywords="spa relajante hidromasaje aromaterapia avena bienestar estres calmante">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/estetica.jpeg" alt="Spa Pelitos Relajantes con Hidromasaje" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Spa & Bienestar</span>
+          <span class="card-badge-code">EST-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Spa Pelitos Relajantes ⭐ (Hidromasaje & Avena)</h3>
+            <p class="card-desc">Experiencia multisensorial anti-estrés: doble enjabonado con extracto de avena coloidal, hidromasaje relajante en tina, acondicionador desenredante, música calmante y corte higiénico.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00 - S/ 70.00</span>
+              <span class="price-sub">Experiencia premium recomendada</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20el%20Spa%20Pelitos%20Relajantes%20(EST-003)%20para%20mi%20consentido." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-spa"></i> Reservar Spa
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Momento Real VIP 👑 -->
+      <div class="card-item" data-category="spa" data-keywords="momento real vip mascarilla argan bandana spa de lujo">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/perrito_cortado.jpg" alt="Momento Real VIP Spa y Mascarilla" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Spa & Bienestar</span>
+          <span class="card-badge-code">EST-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Momento Real VIP 👑 (Mascarilla Nutritiva & Look)</h3>
+            <p class="card-desc">El tratamiento más exclusivo de Pelitos: Spa completo + mascarilla ultra-nutritiva de aceite de argán, hidratación balsámica de almohadillas plantares y nariz, y bandana o moño artesanal de regalo.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 60.00 - S/ 95.00</span>
+              <span class="price-sub">Tratamiento de lujo con accesorio</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20la%20experiencia%20Momento%20Real%20VIP%20(EST-004)%20para%20mi%20mascota." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-crown"></i> Reservar VIP
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Primer Amor (Cachorros & Primerizos) -->
+      <div class="card-item" data-category="bano" data-keywords="cachorros bano en seco espuma hipoalergenica primerizos sin estres">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_03_maltipoo_blanco.png" alt="Primer Amor Baño al Seco para Cachorros" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Baños e Higiene</span>
+          <span class="card-badge-code">EST-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Primer Amor: Ducha en Seco para Cachorros</h3>
+            <p class="card-desc">Diseñado especialmente para cachorritos sin calendario vacunal completo o temerosos: baño en seco con espuma hipoalergénica botánica, cepillado sensorial positivo y refuerzo con premios.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 30.00</span>
+              <span class="price-sub">100% seguro sin riesgo de enfriamiento</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20tengo%20un%20cachorrito%20y%20deseo%20agendar%20su%20Primer%20Amor%20(EST-005)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-paw"></i> Agendar Cachorro
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Plan Piel Sana (Tratamiento Terapéutico Dermatológico) -->
+      <div class="card-item" data-category="spa" data-keywords="piel sana dermatitis bano medicado reposo terapeutico alergias">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/shampoo-4groomer-1x6.jpg" alt="Plan Piel Sana Baño Medicado" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Spa & Bienestar</span>
+          <span class="card-badge-code">EST-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Plan Piel Sana (30 Días Dermatológico)</h3>
+            <p class="card-desc">Protocolo dermatológico coordinado: incluye 1 evaluación clínica con la Dra. Julia + 2 duchas medicadas con champú terapéutico antiséptico y reposo guiado de 15 minutos en piel.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 85.00</span>
+              <span class="price-sub">Paquete dual médico-estético</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20informaci%C3%B3n%20para%20el%20Plan%20Piel%20Sana%20(EST-006)%20por%20alergia%20o%20dermatitis." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-hand-holding-medical"></i> Consultar Plan
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Deslanado Técnico Submanto (Anti-Caída) -->
+      <div class="card-item" data-category="deslanado" data-keywords="deslanado tecnico submanto pelo muerto husky golden pastor caida pelaje">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/trabajo_estetica.jpeg" alt="Deslanado Técnico Submanto con Turbina" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Deslanado & Submanto</span>
+          <span class="card-badge-code">EST-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Deslanado Técnico Submanto (Anti-Caída)</h3>
+            <p class="card-desc">Tratamiento para razas de doble capa (Husky, Golden, Akita, Pastor). Extracción de lana muerta y pelo apelmazado con rastrillos rotatorios y turbina de expulsión sin rapar el pelaje primario.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 50.00 - S/ 80.00</span>
+              <span class="price-sub">Elimina hasta el 90% de pelo muerto</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20un%20Deslanado%20T%C3%A9cnico%20(EST-007)%20para%20mi%20perro%20de%20doble%20capa." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-wind"></i> Cotizar Deslanado
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Look Solo Tijera Esculpido Artístico -->
+      <div class="card-item" data-category="cortes" data-keywords="look solo tijera poodle bichon maltipoo esculpido artesanal esponjoso">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_02_poodle_caramelo.png" alt="Look Solo Tijera Esculpido Artístico" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Cortes de Raza</span>
+          <span class="card-badge-code">EST-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Look Solo Tijera: Esculpido Artístico a Mano</h3>
+            <p class="card-desc">Corte 100% tijera a mano para Poodle, Maltipoo, Bichón Frisé y Pomerania. Esculpido de líneas esponjosas sin marcas de cuchilla, patas en columna y pompón facial estilo osito.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00 - S/ 85.00</span>
+              <span class="price-sub">Acabado de alta competencia</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20un%20Corte%20Solo%20Tijera%20(EST-008)%20para%20mi%20consentido." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-scissors"></i> Cotizar Tijera
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Corte Estándar de Raza (Schnauzer & Terriers) -->
+      <div class="card-item" data-category="cortes" data-keywords="corte raza schnauzer terrier faldon cejas barba estandar morfologico">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_01_schnauzer.png" alt="Corte Estándar Schnauzer y Terriers" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Cortes de Raza</span>
+          <span class="card-badge-code">EST-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Corte de Raza Estándar (Schnauzer & Terriers)</h3>
+            <p class="card-desc">Modelado morfológico según el estándar de raza: definición de cejas en bisel, barba pulida, faldón proporcionado y patitas cilíndricas con acabado profesional impecable.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00 - S/ 65.00</span>
+              <span class="price-sub">Look morfológico de raza</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20un%20Corte%20de%20Raza%20Schnauzer%20(EST-009)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-shield-dog"></i> Agendar Raza
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Corte y Pulido de Uñas LED + Limpieza Ótica -->
+      <div class="card-item" data-category="bano" data-keywords="corte unas led lima oidos limpieza otica sin dolor higiene">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/cortaunas-led.jpg" alt="Corte de Uñas LED y Limpieza Ótica" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Baños e Higiene</span>
+          <span class="card-badge-code">EST-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Corte de Uñas LED + Limpieza Ótica Especializada</h3>
+            <p class="card-desc">Corte seguro con visualizador LED para evitar sangrado o dolor, limado suave de bordes afilados y desinfección preventiva del canal auditivo con solución antiséptica no irritante.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 15.00</span>
+              <span class="price-sub">Servicio rápido sin cita previa</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20llevar%20a%20mi%20mascota%20para%20Corte%20de%20U%C3%B1as%20y%20O%C3%ADdos%20(EST-010)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-paw"></i> Coordinar Visita
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Cosmética Botánica e Hipoalergénica 4Groomer -->
+      <div class="card-item" data-category="spa" data-keywords="cosmetica 4groomer champu acondicionador hipoalergenico botanico brasileno">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/linea-4groomer.jpg" alt="Línea Cosmética 4Groomer" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Spa & Bienestar</span>
+          <span class="card-badge-code">EST-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cosmética Botánica e Hipoalergénica 4Groomer</h3>
+            <p class="card-desc">Productos brasileños de élite para mantos exigentes: extractos de manzanilla, aloe vera y proteínas de seda que reparan la cutícula pilosa dejando brillo sedoso y textura insuperable.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Adicional S/ 15.00</span>
+              <span class="price-sub">En cualquier servicio de baño</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20a%C3%B1adir%20el%20Tratamiento%204Groomer%20(EST-011)%20al%20ba%C3%B1o%20de%20mi%20perrito." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-sparkles"></i> Añadir al Baño
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Look Asiático y Carita Redonda (Shih Tzu / Lhasa) -->
+      <div class="card-item" data-category="cortes" data-keywords="corte asiatico carita redonda shih tzu lhasa pompon tierno osito">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_04_shih_tzu.png" alt="Look Asiático Carita Redonda Shih Tzu" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Cortes de Raza</span>
+          <span class="card-badge-code">EST-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Look Asiático Teddy Bear (Carita Redonda Osito)</h3>
+            <p class="card-desc">Técnica estilística moderna con tijeras curvas: redondeo perfecto del hocico, despeje de lagrimales, moño o copete simétrico y expresión tierna para Shih Tzu, Lhasa Apso y Caniches.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00 - S/ 65.00</span>
+              <span class="price-sub">Estilo asiático adorable</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20quiero%20el%20Look%20Asi%C3%A1tico%20Carita%20Redonda%20(EST-012)%20para%20mi%20perrito." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Pedir Look Asiático
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Tratamiento Térmico & Baño Reconstituyente (Husky / Nórdicos) -->
+      <div class="card-item" data-category="deslanado" data-keywords="husky nordicos bano termico reconstituyente doble capa volumen">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_10_husky_siberiano.png" alt="Tratamiento Térmico Husky Siberiano" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Deslanado & Submanto</span>
+          <span class="card-badge-code">EST-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tratamiento Térmico & Baño Reconstituyente (Nórdicos)</h3>
+            <p class="card-desc">Protocolo especializado para Husky Siberiano, Samoyedo y Alaska Malamute: acondicionamiento profundo de queratina que nutre el folículo, devuelve el volumen y protege del clima.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 65.00 - S/ 95.00</span>
+              <span class="price-sub">Razas grandes de manto denso</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20el%20Tratamiento%20N%C3%B3rdico%20(EST-013)%20para%20mi%20Husky." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-snowflake"></i> Cotizar Nórdico
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Instalaciones Exclusivas de Estética y Spa en Huánuco -->
+      <div class="card-item" data-category="instalaciones" data-keywords="instalaciones estetica huanuco tinas agua temperada mesas hidraulicas">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/entrada_estetica.jpeg" alt="Instalaciones de Pelitos Estética en Huánuco" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Instalaciones & Equipo</span>
+          <span class="card-badge-code">EST-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Instalaciones Exclusivas de Peluquería Canina</h3>
+            <p class="card-desc">Ambiente climatizado, mesas hidráulicas antideslizantes, bañeras de acero inoxidable con agua temperada continua y esterilización con luz UV de todas las herramientas entre paciente y paciente.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Visita Libre</span>
+              <span class="price-sub">Jr. Dos de Mayo 1234, Huánuco</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20conocer%20las%20instalaciones%20de%20Pelitos%20Est%C3%A9tica%20(EST-014)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-map-location-dot"></i> Conocer Sede
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. Recepción y Entrega Feliz de Mascotas -->
+      <div class="card-item" data-category="instalaciones" data-keywords="recepcion entrega sala de espera spa bienestar perros felices">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/recepcion_estetica.jpeg" alt="Recepción y Sala de Espera Spa" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Instalaciones & Equipo</span>
+          <span class="card-badge-code">EST-015</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Recepción Cómoda & Zona de Espera Segura</h3>
+            <p class="card-desc">Área de descanso sin jaulas invasivas. Notificación por WhatsApp con fotos y videos al momento exacto en que tu consentido está listo y perfumado para su entrega feliz.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Protocolo Seguro</span>
+              <span class="price-sub">Entrega puntual garantizada</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20consultar%20turnos%20disponibles%20para%20hoy%20en%20Est%C3%A9tica%20(EST-015)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-clock"></i> Consultar Turnos
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Antonella (Groomer Certificada & Manejo Low-Stress) -->
+      <div class="card-item" data-category="instalaciones" data-keywords="antonella groomer estilista certificada manejo respetuoso sin dolor">
+        <div class="card-image-box">
+          <img src="assets/images/equipo/antonella.jpg" alt="Antonella Groomer Certificada" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Instalaciones & Equipo</span>
+          <span class="card-badge-code">EST-016</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Antonella: Estilista Canina Profesional Titular</h3>
+            <p class="card-desc">Certificada en técnicas de corte comercial y de raza, experta en deslanado y manejo canino libre de estrés. Dedicación exclusiva y trato con infinita ternura para cada huésped.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Atención Directa</span>
+              <span class="price-sub">Coordinación 1 a 1 por WhatsApp</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20conversar%20contigo%20sobre%20el%20corte%20especial%20de%20mi%20mascota%20(EST-016)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-comment-dots"></i> Hablar con Antonella
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+            <!-- EST-017: Carda Grande de Cerdas Mixtas -->
+      <div class="card-item" data-category="herramientas" data-keywords="carda grande cerdas mixtas cepillado peluqueria grooming profesional">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/carda-grande.jpg" alt="Carda Grande de Cerdas Mixtas" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-017</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Carda Grande de Cerdas Mixtas</h3>
+            <p class="card-desc">Paleta de cerdas mixtas (nylon + acero) de uso profesional. Elimina nudos, escarcha y pelo muerto sin dañar la piel. Compatible con razas de pelo largo y medio.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-ruler"></i> Tamaño: L (cabezal 7 × 9 cm)</li><li><i class="fa-solid fa-star"></i> Uso: Peluquería y mantenimiento semanal</li><li><i class="fa-solid fa-shield-halved"></i> Cerdas antialergénicas certificadas</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00</span>
+              <span class="price-sub">Unidad · stock disponible</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Carda%20Grande%20de%20Cerdas%20Mixtas%20%28EST-017%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-018: Carda Pequeña de Cerdas Mixtas -->
+      <div class="card-item" data-category="herramientas" data-keywords="carda pequena cerdas mixtas cepillo preciso grooming cachorros">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/carda-pequena.jpg" alt="Carda Pequeña de Cerdas Mixtas" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-018</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Carda Pequeña de Cerdas Mixtas</h3>
+            <p class="card-desc">Versión compacta de la carda profesional, ideal para rostro, patas y zonas delicadas. Perfecta para cachorros o razas miniatura que requieren un cepillado suave y preciso.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-ruler"></i> Tamaño: S (cabezal 5 × 6 cm)</li><li><i class="fa-solid fa-star"></i> Uso: Acabado fino y detalle</li><li><i class="fa-solid fa-shield-halved"></i> Mango antideslizante ergonómico</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Unidad · acabado de precisión</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Carda%20Peque%C3%B1a%20de%20Cerdas%20Mixtas%20%28EST-018%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-019: Piedra de Stripping para Capa Dura -->
+      <div class="card-item" data-category="herramientas" data-keywords="piedra stripping capa dura terrier airedale schnauzer pelo duro desnudado">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/piedra-stripping.jpg" alt="Piedra de Stripping para Capa Dura" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-019</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Piedra de Stripping para Capa Dura</h3>
+            <p class="card-desc">Herramienta especializada para el desnudado de razas de capa dura (Terriers, Schnauzer, Airedale). Elimina el pelo muerto preservando la textura y color natural de la capa exterior sin dañar la piel.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-paw"></i> Razas: Terriers, Schnauzer, Wire Fox</li><li><i class="fa-solid fa-star"></i> Técnica: Stripping manual profesional</li><li><i class="fa-solid fa-certificate"></i> Preserva textura natural de raza</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 68.00</span>
+              <span class="price-sub">Herramienta de precisión</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Piedra%20de%20Stripping%20para%20Capa%20Dura%20%28EST-019%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-020: Rastrillo Deslanador 12 Dientes -->
+      <div class="card-item" data-category="herramientas" data-keywords="rastrillo deslanador submanto 12 dientes husky labrador golden caida pelo">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/rastrillo-deslanador.jpg" alt="Rastrillo Deslanador 12 Dientes" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-020</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Rastrillo Deslanador 12 Dientes</h3>
+            <p class="card-desc">Rastrillo profesional con 12 dientes de acero inoxidable para extracción eficiente del submanto (undercoat) en razas de doble capa. Reduce la caída de pelo hasta un 90% en una sola sesión de deslanado.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-paw"></i> Razas: Husky, Samoyedo, Golden, Labrador</li><li><i class="fa-solid fa-chart-bar"></i> Reducción de muda: hasta 90%</li><li><i class="fa-solid fa-star"></i> Acero inoxidable premium · mango caucho</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00</span>
+              <span class="price-sub">Profesional · uso salón</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Rastrillo%20Deslanador%2012%20Dientes%20%28EST-020%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-021: Tijera Curva para Redondeo de Patas -->
+      <div class="card-item" data-category="herramientas" data-keywords="tijera curva redondeo patas cabeza cola bichon poodle acabado curvo">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/tijera-curva.jpg" alt="Tijera Curva para Redondeo de Patas" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-021</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tijera Curva para Redondeo de Patas</h3>
+            <p class="card-desc">Tijera japonesa de 7" con hoja curva para lograr acabados redondeados impecables en cabeza, patas y cola. Hoja de acero japonés Hitachi 440C. Para cortes Teddy Bear, Poodle Show y Bichon.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-ruler"></i> Longitud: 7" · hoja curva 45°</li><li><i class="fa-solid fa-certificate"></i> Acero japonés 440C templado</li><li><i class="fa-solid fa-star"></i> Ideal: Poodle, Bichon, Maltés, Lhasa</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 120.00</span>
+              <span class="price-sub">Tijera premium japonesa</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Tijera%20Curva%20para%20Redondeo%20de%20Patas%20%28EST-021%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-022: Tijera de Entresacar 46 Dientes -->
+      <div class="card-item" data-category="herramientas" data-keywords="tijera entresacar 46 dientes desbultar volumen degradado natural">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/tijera-entresacar.jpg" alt="Tijera de Entresacar 46 Dientes" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-022</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tijera de Entresacar 46 Dientes</h3>
+            <p class="card-desc">Tijera de 7.5" con 46 dientes para texturizado y desbultado de volumen. Crea transiciones naturales e integra cortes evitando marcas. Fundamental para estilos Teddy Bear y cortes naturales en Spitz y Golden.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-ruler"></i> 7.5" · 46 dientes · eficiencia 30%</li><li><i class="fa-solid fa-star"></i> Resultado natural sin marcas visibles</li><li><i class="fa-solid fa-certificate"></i> Acero japonés con tornillo tensión ajustable</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 110.00</span>
+              <span class="price-sub">Profesional · 46 dientes</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Tijera%20de%20Entresacar%2046%20Dientes%20%28EST-022%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-023: Tijera Texturizadora Doble Filo -->
+      <div class="card-item" data-category="herramientas" data-keywords="tijera texturizadora doble filo volumen textura suavizado schnauzer">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/productos/tijera-texturizadora.jpg" alt="Tijera Texturizadora Doble Filo" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Herramientas Profesionales</span>
+          <span class="card-badge-code">EST-023</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tijera Texturizadora Doble Filo</h3>
+            <p class="card-desc">Tijera texturizadora de doble filo con dientes en ambas hojas para desbultado agresivo y texturizado extremo. Perfecta para suavizar capas densas en Schnauzer, Chow-Chow y Samoyedo manteniendo volumen controlado.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-ruler"></i> 6.5" · doble hoja dentada</li><li><i class="fa-solid fa-star"></i> Razas: Schnauzer, Chow-Chow, Spitz</li><li><i class="fa-solid fa-certificate"></i> Eficiencia de corte: 55% del pelo</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 98.00</span>
+              <span class="price-sub">Texturizado profesional</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Tijera%20Texturizadora%20Doble%20Filo%20%28EST-023%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar Herramienta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-024: Lhasa Apso — Corte Show Completo -->
+      <div class="card-item" data-category="galeria" data-keywords="lhasa apso corte show pelo largo galeria resultado estetica">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_05_lhasa_apso.png" alt="Lhasa Apso — Corte Show Completo" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Galería de Resultados</span>
+          <span class="card-badge-code">EST-024</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Lhasa Apso — Corte Show Completo</h3>
+            <p class="card-desc">Transformación completa de Lhasa Apso con lavado enzimático, sérum hidratante, corte de caída parejo y acabado de pelo largo estilo Show. Incluye perfume orgánico, moño decorativo y acondicionador de seda.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-clock"></i> Duración estimada: 2.5 hrs</li><li><i class="fa-solid fa-star"></i> Incluye: baño completo + hidratación + corte show</li><li><i class="fa-solid fa-paw"></i> Estilista: Antonella</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 80.00</span>
+              <span class="price-sub">Paquete Show completo</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Lhasa%20Apso%20%E2%80%94%20Corte%20Show%20Completo%20%28EST-024%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Reservar Experiencia
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-025: Poodle Crema — Corte Continental -->
+      <div class="card-item" data-category="galeria" data-keywords="poodle crema continental corte galeria resultado peluqueria canina">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_06_poodle_crema.png" alt="Poodle Crema — Corte Continental" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Galería de Resultados</span>
+          <span class="card-badge-code">EST-025</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Poodle Crema — Corte Continental</h3>
+            <p class="card-desc">Poodle crema trabajado con corte continental: pompones en caderas y patas, cabeza afro esférica y cola con pompón final. Baño con champú proteínico, sérum rizos y secado con difusor para definir la riza natural.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-clock"></i> Duración estimada: 3 hrs</li><li><i class="fa-solid fa-star"></i> Incluye: baño proteínico + corte show + pompones</li><li><i class="fa-solid fa-paw"></i> Estilista: Antonella</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 95.00</span>
+              <span class="price-sub">Corte continental show</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Poodle%20Crema%20%E2%80%94%20Corte%20Continental%20%28EST-025%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Reservar Experiencia
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-026: Pequinés Mix — Corte Práctico Express -->
+      <div class="card-item" data-category="galeria" data-keywords="pequines mix corte practico galeria resultado bajo mantenimiento">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_07_pequines_mix.png" alt="Pequinés Mix — Corte Práctico Express" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Galería de Resultados</span>
+          <span class="card-badge-code">EST-026</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pequinés Mix — Corte Práctico Express</h3>
+            <p class="card-desc">Corte express de bajo mantenimiento para Pequinés mixto: baño hipoalergénico, recorte de patas, cara y cola. Ideal para climas cálidos como Huánuco. Se elimina el exceso de pelo sin perder el look de la raza.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-clock"></i> Duración estimada: 1.5 hrs</li><li><i class="fa-solid fa-star"></i> Incluye: baño + corte express + secado</li><li><i class="fa-solid fa-paw"></i> Estilista: Antonella</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00</span>
+              <span class="price-sub">Corte express práctico</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Pequin%C3%A9s%20Mix%20%E2%80%94%20Corte%20Pr%C3%A1ctico%20Express%20%28EST-026%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Reservar Experiencia
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-027: Chihuahua Mix — Baño Especial Spa -->
+      <div class="card-item" data-category="galeria" data-keywords="chihuahua mix bano especial galeria resultado aromaterapia spa pequeno">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_08_chihuahua_mix.png" alt="Chihuahua Mix — Baño Especial Spa" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Galería de Resultados</span>
+          <span class="card-badge-code">EST-027</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Chihuahua Mix — Baño Especial Spa</h3>
+            <p class="card-desc">Chihuahua mix trabajado con el paquete Spa: champú hipoalergénico botánico, mascarilla nutritiva de avena, aromaterapia de lavanda y secado suave con temperatura controlada. Acabado brillante y piel libre de irritaciones.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-clock"></i> Duración estimada: 1 hr</li><li><i class="fa-solid fa-star"></i> Incluye: champú botánico + mascarilla + aromaterapia</li><li><i class="fa-solid fa-paw"></i> Estilista: Antonella</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00</span>
+              <span class="price-sub">Baño Spa completo</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Chihuahua%20Mix%20%E2%80%94%20Ba%C3%B1o%20Especial%20Spa%20%28EST-027%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Reservar Experiencia
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EST-028: Bichón Frisé — Corte Osito Teddy Bear -->
+      <div class="card-item" data-category="galeria" data-keywords="bichon frise corte osito teddy bear galeria resultado esponjoso">
+        <div class="card-image-box">
+          <img src="assets/images/estetica/mejores_obras/obra_09_bichon_frise.png" alt="Bichón Frisé — Corte Osito Teddy Bear" loading="lazy">
+          <span class="card-badge-cat" style="color: #6B2D82;">Galería de Resultados</span>
+          <span class="card-badge-code">EST-028</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bichón Frisé — Corte Osito Teddy Bear</h3>
+            <p class="card-desc">Resultado icónico Teddy Bear en Bichón Frisé: cabeza esférica esponjosa, cuerpo redondeado uniforme y patas cilíndricas con gran volumen. Champú blanqueador óptico + batido de airbrush para efecto esponjado máximo.</p>
+            <ul class="card-specs"><li><i class="fa-solid fa-clock"></i> Duración estimada: 2.5 hrs</li><li><i class="fa-solid fa-star"></i> Incluye: champú blanqueador + corte Teddy + batido</li><li><i class="fa-solid fa-paw"></i> Estilista: Antonella</li></ul>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 85.00</span>
+              <span class="price-sub">Corte Teddy Bear premium</span>
+            </div>
+            <a href="https://wa.me/51948426656?text=Hola%20Antonella%20%28Est%C3%A9tica%29%2C%20deseo%20consultar%20por%20Bich%C3%B3n%20Fris%C3%A9%20%E2%80%94%20Corte%20Osito%20Teddy%20Bear%20%28EST-028%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Reservar Experiencia
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="catalog-footer">
+    <div class="container">
+      <p><strong>Pelitos Veterinaria — Estética Canina & Spa</strong> · Jirón Dos de Mayo N.° 1234, Huánuco, Perú</p>
+      <p style="margin-top: 4px;">Atención con Antonella: Lunes a Sábado de 8:30 a. m. a 6:30 p. m. &middot; WhatsApp exclusivo: <strong>+51 948 426 656</strong></p>
+      <p style="margin-top: 10px;">
+        <a href="../pelitos_veterinaria/pages/estetica.html" style="color: #6B2D82; text-decoration: none; font-weight: 700;">
+          <i class="fa-solid fa-globe"></i> Visitar la sección oficial de Pelitos Estética en la Web Principal ↗
+        </a>
+      </p>
+    </div>
+  </footer>
+
+    <!-- SCRIPTS DE INTERACCIÓN DE ALTO RENDIMIENTO -->
+  <button class="btn-back-to-top" id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <div class="toast-notification" id="toastBox">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">¡Enlace copiado al portapapeles!</span>
+  </div>
+
+  <script>
+    let currentCategory = 'all';
+
+    function filterItems(category, btn) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyCombinedFilter();
+    }
+
+    function searchProducts() {
+      applyCombinedFilter();
+    }
+
+    // Compatibilidad para búsqueda en consultorio y estética
+    function searchServices() { applyCombinedFilter(); }
+    function searchGrooming() { applyCombinedFilter(); }
+
+    function applyCombinedFilter() {
+      const input = document.getElementById('searchInput');
+      const q = input ? input.value.toLowerCase().trim() : '';
+      const items = document.querySelectorAll('.card-item');
+      let visibleCount = 0;
+
+      items.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const title = card.querySelector('.card-title') ? card.querySelector('.card-title').textContent.toLowerCase() : '';
+        const desc = card.querySelector('.card-desc') ? card.querySelector('.card-desc').textContent.toLowerCase() : '';
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+
+        const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchesQuery = (!q || title.includes(q) || desc.includes(q) || keywords.includes(q));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Actualizar contador
+      const counter = document.getElementById('resultsCount');
+      if (counter) {
+        counter.innerHTML = `Mostrando <strong>${visibleCount}</strong> items disponibles`;
+      }
+
+      // Estado vacío
+      const emptyState = document.getElementById('emptyState');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.style.display = 'block';
+          const querySpan = document.getElementById('emptyQuery');
+          if (querySpan) querySpan.textContent = q || currentCategory;
+        } else {
+          emptyState.style.display = 'none';
+        }
+      }
+    }
+
+    function resetSearchAndFilter() {
+      const input = document.getElementById('searchInput');
+      if (input) input.value = '';
+      currentCategory = 'all';
+      const firstChip = document.querySelector('.filter-chip');
+      if (firstChip) filterItems('all', firstChip);
+      applyCombinedFilter();
+    }
+
+    function copyCatalogLink(catalogName) {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast(`¡Enlace de ${catalogName} copiado! Listo para enviar por WhatsApp.`);
+        }).catch(() => fallbackCopy(url, catalogName));
+      } else {
+        fallbackCopy(url, catalogName);
+      }
+    }
+
+    function fallbackCopy(text, catalogName) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(`¡Enlace de ${catalogName} copiado al portapapeles!`);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTopBtn');
+      if (btn) {
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyCombinedFilter();
+    });
+  </script>
+</body>
+</html>

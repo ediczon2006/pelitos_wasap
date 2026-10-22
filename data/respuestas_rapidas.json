@@ -1,0 +1,79 @@
+[
+  {
+    "codigo": "/horario",
+    "titulo": "Horarios de Atención Institucional",
+    "canal": "Todos (Recepción, Consultorio, Estética)",
+    "mensaje": "⏰ *Horarios de Atención en Pelitos Veterinaria*:\n\n• *Lunes a Sábado:* 8:30 a. m. – 7:30 p. m.\n• *Domingos y Feriados:* 9:00 a. m. – 2:00 p. m. (Previa cita / emergencias)\n\n📍 Nos ubicamos en Huánuco, Perú. ¡Estaremos encantados de cuidar a tu engreído! 🐾💜",
+    "categoria": "Informativo"
+  },
+  {
+    "codigo": "/ubicacion",
+    "titulo": "Dirección y Cómo Llegar",
+    "canal": "Todos",
+    "mensaje": "📍 *Ubicación de Pelitos Veterinaria*:\n\nNos encontramos en: Jirón Dos de Mayo N.° 1234, Huánuco, Perú (Referencia: a media cuadra del Parque Amarilis).\n\n🗺️ *Ver ubicación en Google Maps:* https://maps.app.goo.gl/pelitosveterinaria\n🚗 Contamos con zona de desembarque rápido para pacientes.",
+    "categoria": "Informativo"
+  },
+  {
+    "codigo": "/cita_medica",
+    "titulo": "Agendar Cita en Consultorio Médico",
+    "canal": "Consultorio (939 356 376) y Recepción",
+    "mensaje": "🩺 *Reserva de Consulta Médica Veterinaria* 🐾\n\nCon mucho gusto te agendamos una cita con la *Dra. Julia*. Por favor compártenos:\n1. 🐶🐱 Nombre y especie de tu mascota:\n2. ⚖️ Edad aproximada y peso:\n3. 🩺 Motivo de la consulta (control, vacunas o síntoma visible):\n4. 📅 Día y hora que prefieres venir:\n\n¡Te confirmaremos el horario disponible de inmediato! 💜",
+    "categoria": "Reservas"
+  },
+  {
+    "codigo": "/estetica_cotizar",
+    "titulo": "Cotización y Reserva de Spa y Baño",
+    "canal": "Estética (948 426 656) y Recepción",
+    "mensaje": "✂️🛁 *Cotización de Estética y Spa Pelitos* 🐶🐱\n\n¡Hola! Con mucho gusto te cotizamos la experiencia ideal para tu peludito con *Antonella*. Por favor indícanos:\n1. 🐾 Raza y tamaño (o foto actual):\n2. 🧶 ¿Presenta nudos o pelo largo?:\n3. ✨ Servicio deseado: *Ducha Express*, *Clásico Funcional*, *Spa Relajante* o *Momento Real* (corte de raza).\n\n¡Cuidamos su pelaje con amor y paciencia! 💜",
+    "categoria": "Cotizaciones"
+  },
+  {
+    "codigo": "/vacunas",
+    "titulo": "Información de Vacunación y Desparasitación",
+    "canal": "Consultorio y Recepción",
+    "mensaje": "💉 *Protección y Medicina Preventiva Pelitos* 🛡️\n\n• *Vacunación Canina:* Quíntuple/Séxtuple (S/ 55.00) y Antirrábica.\n• *Vacunación Felina:* Triple Felina + Rabia (S/ 50.00).\n• *Desparasitación Integral:* Desde S/ 25.00 (dosificado exacto según peso).\n\n📋 *Nota:* Toda vacunación incluye una evaluación médica previa gratuita para verificar que tu mascota esté apta y saludable. ¿Deseas agendar fecha?",
+    "categoria": "Servicios Médicos"
+  },
+  {
+    "codigo": "/farmacia",
+    "titulo": "Consulta de Productos de Farmacia",
+    "canal": "Recepción (927 301 122)",
+    "mensaje": "💊 *Farmacia Veterinaria Pelitos*\n\nContamos con antiparasitarios líderes (NexGard, Bravecto, Simparica), champús dermatológicos, limpiadores óticos y suplementos articulares de laboratorio autorizado.\n\n⚠️ *Aviso sanitario:* Los medicamentos antibióticos o especializados requieren prescripción médica emitida en consulta. ¿Qué producto o molestia deseas consultar?",
+    "categoria": "Farmacia"
+  },
+  {
+    "codigo": "/petshop",
+    "titulo": "Disponibilidad de Alimentos y Accesorios",
+    "canal": "Recepción (927 301 122)",
+    "mensaje": "🛍️ *Pet Shop Pelitos — Nutrición y Diversión*\n\nDisponemos de alimentos súper premium (Hill's, Royal Canin, Pro Plan, Taste of the Wild), snacks 100% naturales, juguetes KONG y arneses ergonómicos.\n\n📦 Contamos con recojo en clínica y envíos locales en Huánuco. ¿Para qué especie y peso estás buscando alimento?",
+    "categoria": "Pet Shop"
+  },
+  {
+    "codigo": "/confirmar_cita",
+    "titulo": "Confirmación de Cita / Reserva",
+    "canal": "Todos",
+    "mensaje": "✅ *¡Cita Confirmada con Éxito en Pelitos Veterinaria!* 🐾\n\n• *Paciente:* [Nombre Mascota]\n• *Servicio:* [Servicio Agendado]\n• *Fecha y Hora:* [Día y Hora]\n• *Especialista:* [Dra. Julia / Antonella / Recepción]\n\n📌 *Recomendación:* Por favor llegar 5 minutos antes con collar/correa o transportador en caso de felinos. Si necesitas reprogramar, avísanos con al menos 2 horas de anticipación. ¡Los esperamos! 💜",
+    "categoria": "Atención"
+  },
+  {
+    "codigo": "/reprogramar",
+    "titulo": "Reprogramación Amable de Cita",
+    "canal": "Todos",
+    "mensaje": "🗓️ *Reprogramación de Cita*\n\nEntendemos totalmente que surjan imprevistos. No te preocupes, con gusto reprogramamos la atención de tu mascota.\n\n¿Qué otro día y rango de horario te acomoda mejor para verificar los turnos disponibles en agenda?",
+    "categoria": "Atención"
+  },
+  {
+    "codigo": "/urgencia",
+    "titulo": "Atención de Emergencia / Urgencia",
+    "canal": "Todos",
+    "mensaje": "🚨 *Atención de Urgencia Pelitos Veterinaria*\n\nSi tu mascota presenta dificultad respiratoria grave, convulsiones, traumatismo por atropello o sangrado profuso, acude de inmediato a nuestras instalaciones en Jr. Dos de Mayo N.° 1234.\n\n📞 Para coordinar recepción inmediata de emergencia, comunícate al *939 356 376* (Dra. Julia). ¡Mantén la calma, te esperamos!",
+    "categoria": "Emergencia"
+  },
+  {
+    "codigo": "/seguimiento",
+    "titulo": "Seguimiento Post-Atención Médica o Estética",
+    "canal": "Consultorio y Estética",
+    "mensaje": "🐾💜 *Seguimiento de Paciente — Pelitos Veterinaria*\n\n¡Hola! Te escribe el equipo de Pelitos para saber cómo amaneció y cómo se siente [Nombre de la mascota] tras su atención de ayer.\n\n¿Ha comido bien y continuado con su tratamiento o descanso? Recuerda que estamos atentos a cualquier consulta. «Expertos en cuidar a quien más te ama».",
+    "categoria": "Fidelización"
+  }
+]

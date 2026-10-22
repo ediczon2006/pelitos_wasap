@@ -1,0 +1,3247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Shop & Farmacia Veterinaria | Pelitos Veterinaria (Huánuco)</title>
+  <!-- Tipografía Neo-Futurista Editorial -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=Satoshi:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/catalogos.css">
+  <style>
+    :root {
+      --primary: #4A154B;
+      --primary-dark: #2B0830;
+      --secondary: #00A884;
+      --gold: #F59E0B;
+    }
+    .header-direct-link {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #1A0D2E !important;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      border: none !important;
+    }
+    .header-direct-link:hover {
+      background: #FBBF24 !important;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER ESPECÍFICO DEL CANAL RECEPCIÓN -->
+  <header class="catalog-header">
+    <div class="container">
+      <div class="header-nav-bar">
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <a href="index.html" class="back-hub-btn">
+            <i class="fa-solid fa-arrow-left"></i> Portal General
+          </a>
+          <!-- LINK DIRECTO A LA PÁGINA WEB OFICIAL -->
+          <a href="../pelitos_veterinaria/pages/productos.html" class="back-hub-btn header-direct-link">
+            <i class="fa-solid fa-globe"></i> Ir a la Tienda en la Web Oficial
+          </a>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <button class="btn-copy-catalog-link" onclick="copyCatalogLink('Pet Shop y Farmacia')">
+            <i class="fa-solid fa-share-nodes"></i> Copiar Enlace para WhatsApp
+          </button>
+          <div class="channel-pill-badge">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Recepción: 927 301 122
+          </div>
+        </div>
+      </div>
+      <div class="header-main-info">
+        <h1>Pet Shop & Farmacia Veterinaria Pelitos</h1>
+        <p>Alimentos balanceados de alta digestibilidad, snacks naturales horneados, accesorios ergonómicos y medicamentos veterinarios con registro oficial. Recojo inmediato en Jr. Dos de Mayo N.° 1234 o delivery en Huánuco.</p>
+        <div class="responsible-box">
+          <i class="fa-solid fa-headset"></i> Atendido por: <strong>Diego (Counter Recepción)</strong> | Teléfono exclusivo: <strong>+51 927 301 122</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- TOOLBAR DE BÚSQUEDA Y FILTROS -->
+    <div class="catalog-toolbar">
+      <div class="filter-group">
+        <button class="filter-chip active" onclick="filterItems('all', this)">Todos los Productos</button>
+        <button class="filter-chip" onclick="filterItems('alimentos', this)">Alimentos Balanceados</button>
+        <button class="filter-chip" onclick="filterItems('snacks', this)">Snacks Naturalistic</button>
+        <button class="filter-chip" onclick="filterItems('farmacia', this)">Farmacia y Antipulgas</button>
+        <button class="filter-chip" onclick="filterItems('accesorios', this)">Accesorios y Paseo</button>
+        <button class="filter-chip" onclick="filterItems('higiene', this)">Camas, Ropa e Higiene</button>
+        <button class="filter-chip" onclick="filterItems('juguetes', this)">Juguetes</button>
+        <button class="filter-chip" onclick="filterItems('transporte', this)">Transporte</button>
+      </div>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Buscar por producto, marca o código..." onkeyup="searchProducts()">
+      </div>
+    </div>
+
+    <!-- BARRA DE ESTADO / CONTADOR DE PRODUCTOS -->
+    <div class="catalog-status-bar">
+      <span id="resultsCount">Mostrando <strong>125</strong> productos disponibles</span>
+      <span class="badge-counter"><i class="fa-solid fa-truck-fast"></i> Envíos a todo Huánuco y recojo en clínica</span>
+    </div>
+
+    <!-- ESTADO VACÍO (EMPTY STATE) -->
+    <div class="empty-state-box" id="emptyState">
+      <i class="fa-solid fa-box-open"></i>
+      <h3>No se encontraron productos</h3>
+      <p>No hay artículos que coincidan con "<span id="emptyQuery"></span>". Intenta con otra palabra clave o restablece los filtros.</p>
+      <button class="empty-state-btn" onclick="resetSearchAndFilter()">Ver todos los productos</button>
+    </div>
+
+    <!-- AVISO DE COMPRA RESPONSABLE -->
+    <div class="notice-box">
+      <i class="fa-solid fa-truck-fast fa-lg"></i>
+      <div>
+        <strong>Atención y Envíos:</strong> Diego atiende de lunes a sábado de 8:30 a. m. a 7:30 p. m. Todo pedido puede retirarse en clínica o coordinarse por delivery. Pagos por Yape, Plin, transferencia o POS.
+      </div>
+    </div>
+
+    <!-- GRID DE PRODUCTOS CON FOTOS ÚNICAS REALES -->
+    <div class="items-grid" id="productsGrid">
+
+      <!-- 1. Alimento Super Premium -->
+      <div class="card-item" data-category="alimentos" data-keywords="alimento super premium canino comida croquetas pollo salmon">
+        <div class="card-image-box">
+          <img src="assets/images/productos/producto-1.jpg" alt="Alimento Súper Premium Canino" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Alimento Súper Premium Canino</h3>
+            <p class="card-desc">Fórmula de alta digestibilidad con prebióticos y omegas 3 y 6 para pelaje brillante. Opciones: Pollo & Arroz, Salmón o Cordero.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 48.00</span>
+              <span class="price-sub">Bolsa 1.5 kg (hasta 15 kg)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20pedir%20el%20Alimento%20S%C3%BAper%20Premium%20Canino%20(PET-001)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Ricocan Cachorros -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocan cachorro leche cereales perro pequeno">
+        <div class="card-image-box">
+          <img src="assets/images/productos/ricocan-cachorros-1kg.jpg" alt="Ricocan Cachorros" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocan Cachorro Razas Pequeñas x 1 kg</h3>
+            <p class="card-desc">Croquetas pequeñas sabor carne y leche, con DHA, minerales orgánicos y prebióticos para un óptimo desarrollo.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 12.00</span>
+              <span class="price-sub">Bolsa 1 kg sellada</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20comprar%20Ricocan%20Cachorro%201kg%20(PET-002)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Ricocat Gatitos -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocat gatitos 1kg comida gato pescado leche">
+        <div class="card-image-box">
+          <img src="assets/images/productos/ricocat-gatitos-1kg.jpg" alt="Ricocat Gatitos" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocat Gatitos Pescado & Leche x 1 kg</h3>
+            <p class="card-desc">Nutrición balanceada para gatos de 1 a 12 meses con taurina, calcio y fósforo para cerebro y visión protegida.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 12.00</span>
+              <span class="price-sub">Bolsa 1 kg sellada</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20comprar%20Ricocat%20Gatitos%201kg%20(PET-003)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Canbo Cachorro Cordero -->
+      <div class="card-item" data-category="alimentos" data-keywords="canbo cachorro cordero super premium 1kg raza pequena">
+        <div class="card-image-box">
+          <img src="assets/images/productos/canbo-cachorro-cordero-1kg.jpg" alt="Canbo Cachorro Cordero" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Canbo Super Premium Cachorro Cordero (1 kg)</h3>
+            <p class="card-desc">Fórmula de cordero de alta digestibilidad con 30% de proteína, glucosamina articular, prebióticos y DHA/EPA.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Bolsa 1 kg sellada</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Canbo%20Cachorro%20Cordero%201kg%20(PET-004)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Canbo Gatitos Pollo -->
+      <div class="card-item" data-category="alimentos" data-keywords="canbo gatitos pollo super premium 1kg felino">
+        <div class="card-image-box">
+          <img src="assets/images/productos/canbo-gatitos-pollo-1kg.jpg" alt="Canbo Gatitos Pollo" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Canbo Super Premium Gatitos Pollo (1 kg)</h3>
+            <p class="card-desc">Nutrición de alta densidad con 40% de proteína, tecnología Bio Protect, taurina y vitamina A para gatitos hasta 12 meses.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Bolsa 1 kg sellada</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Canbo%20Gatitos%20Pollo%201kg%20(PET-005)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. NexGard / Antipulgas -->
+      <div class="card-item" data-category="farmacia" data-keywords="antipulgas desparasitantes pastilla pipeta nexgard bravecto pulgas garrapatas">
+        <div class="card-image-box">
+          <img src="assets/images/productos/producto-antipulgas.jpg" alt="Antipulgas y Desparasitantes" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Antipulgas y Garrapatas (NexGard / Bravecto)</h3>
+            <p class="card-desc">Pastillas masticables y pipetas de laboratorio internacional con registro SENASA. Protección mensual o trimestral contra ectoparásitos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Desde S/ 50.00</span>
+              <span class="price-sub">Según peso de la mascota</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20consultar%20antipulgas%20seg%C3%BAn%20peso%20(FAR-001)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Consultar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Arnés Antitirones -->
+      <div class="card-item" data-category="accesorios" data-keywords="arnes correas perro paseo seguridad reflectivo antitirones">
+        <div class="card-image-box">
+          <img src="assets/images/productos/producto-arnes.jpg" alt="Arnés y Correas para Mascotas" loading="lazy">
+          <span class="card-badge-cat">Accesorios</span>
+          <span class="card-badge-code">PET-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Arnés Antitirones Ergonómico Reflectivo</h3>
+            <p class="card-desc">Arnés con enganche frontal en pecho para paseos controlados sin lastimar la tráquea. Malla transpirable en tallas S, M, L y XL.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 38.00</span>
+              <span class="price-sub">Talla S / M / L</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Arn%C3%A9s%20Antitirones%20(PET-006)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Cama Ortopédica -->
+      <div class="card-item" data-category="higiene" data-keywords="cama ortopedica descanso colchon suave almohada perro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/producto-cama.jpg" alt="Cama Ortopédica y Suave" loading="lazy">
+          <span class="card-badge-cat">Higiene & Descanso</span>
+          <span class="card-badge-code">PET-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Ortopédica y Acolchada Lavable</h3>
+            <p class="card-desc">Espuma viscoelástica que alivia puntos de presión en huesos y articulaciones. Funda con cierre para lavado en lavadora.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00</span>
+              <span class="price-sub">Talla mediana (M)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20comprar%20la%20Cama%20Ortop%C3%A9dica%20(PET-007)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Comedero y Bebedero Ergonómico -->
+      <div class="card-item" data-category="accesorios" data-keywords="comedero bebedero acero inoxidable ergonomico plato">
+        <div class="card-image-box">
+          <img src="assets/images/productos/producto-comedero.jpg" alt="Comedero Ergonómico" loading="lazy">
+          <span class="card-badge-cat">Accesorios</span>
+          <span class="card-badge-code">PET-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Comedero y Bebedero Doble Ergonómico</h3>
+            <p class="card-desc">Platos dobles de acero inoxidable extraíbles con base elevada antiderrame para una postura digestiva cómoda.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 28.00</span>
+              <span class="price-sub">Set doble acero</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Comedero%20Doble%20Ergon%C3%B3mico%20(PET-008)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Shampoo Dermatológico -->
+      <div class="card-item" data-category="higiene" data-keywords="shampoo dermatologico jabon bano pelo piel sensible manzanilla">
+        <div class="card-image-box">
+          <img src="assets/images/productos/producto-shampoo.jpg" alt="Shampoo Dermatológico" loading="lazy">
+          <span class="card-badge-cat">Higiene</span>
+          <span class="card-badge-code">PET-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Shampoo y Cuidado Dermatológico (500 ml)</h3>
+            <p class="card-desc">Fórmula con pH neutro equilibrado, enriquecida con aloe vera y manzanilla para evitar picazón y resequedad cutánea.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 25.00</span>
+              <span class="price-sub">Frasco 500 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Shampoo%20Dermatol%C3%B3gico%20(PET-009)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Snack Meat Mix Pollo & Pato -->
+      <div class="card-item" data-category="snacks" data-keywords="naturalistic meat mix pato pollo premio golosina snack">
+        <div class="card-image-box">
+          <img src="assets/images/productos/naturalistic-meat-mix-pollo-pato-frente.jpg" alt="Naturalistic Meat Mix" loading="lazy">
+          <span class="card-badge-cat">Snacks</span>
+          <span class="card-badge-code">SNK-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Meat Mix Pollo con Goji & Pato con Arándano</h3>
+            <p class="card-desc">Premios horneados a baja temperatura con antioxidantes naturales y carne magra para reforzar el sistema inmunológico.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 19.00</span>
+              <span class="price-sub">Bolsa 80g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Meat%20Mix%20Pollo%20y%20Pato%20(SNK-001)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Snack Chicken Sushi -->
+      <div class="card-item" data-category="snacks" data-keywords="naturalistic chicken sushi pollo pescado snack natural">
+        <div class="card-image-box">
+          <img src="assets/images/productos/naturalistic-chicken-sushi-frente.jpg" alt="Naturalistic Chicken Sushi" loading="lazy">
+          <span class="card-badge-cat">Snacks</span>
+          <span class="card-badge-code">SNK-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Chicken Sushi 94% Carne Real (80g)</h3>
+            <p class="card-desc">Rollitos irresistibles de pechuga de pollo y pescado blanco. Alta palatabilidad, ideales para adiestramiento.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 19.00</span>
+              <span class="price-sub">Bolsa 80g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Chicken%20Sushi%20(SNK-002)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Snack Lamb Strips -->
+      <div class="card-item" data-category="snacks" data-keywords="naturalistic lamb strips cordero tiras hipoalergenico">
+        <div class="card-image-box">
+          <img src="assets/images/productos/naturalistic-lamb-strips-frente.jpg" alt="Naturalistic Lamb Strips" loading="lazy">
+          <span class="card-badge-cat">Snacks</span>
+          <span class="card-badge-code">SNK-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Lamb Strips 74% Carne (Tiras de Cordero)</h3>
+            <p class="card-desc">Tiras de cordero deshidratadas libres de gluten y granos, ideales para mascotas con sensibilidad digestiva.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 19.00</span>
+              <span class="price-sub">Bolsa 80g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Lamb%20Strips%20Cordero%20(SNK-003)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Meatballs Salmón & Camote -->
+      <div class="card-item" data-category="snacks" data-keywords="naturalistic meatballs salmon camote albondigas snack">
+        <div class="card-image-box">
+          <img src="assets/images/productos/naturalistic-meatballs-salmon-camote-frente.jpg" alt="Meatballs Salmón y Camote" loading="lazy">
+          <span class="card-badge-cat">Snacks</span>
+          <span class="card-badge-code">SNK-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Meat Balls Salmón & Camote (80g)</h3>
+            <p class="card-desc">Albóndigas horneadas de salmón rico en ácidos grasos EPA/DHA y camote nutritivo para una piel brillante.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 19.00</span>
+              <span class="price-sub">Bolsa 80g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Meatballs%20Salm%C3%B3n%20y%20Camote%20(SNK-004)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. Meatballs Pato & Manzana -->
+      <div class="card-item" data-category="snacks" data-keywords="naturalistic meatballs pato manzana snack albondiga">
+        <div class="card-image-box">
+          <img src="assets/images/productos/naturalistic-meatballs-pato-manzana-frente.jpg" alt="Meatballs Pato y Manzana" loading="lazy">
+          <span class="card-badge-cat">Snacks</span>
+          <span class="card-badge-code">SNK-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Meat Balls Pato & Manzana (80g)</h3>
+            <p class="card-desc">Bocados tiernos de pato con fibra natural de manzana, facilitan la digestión y aportan energía balanceada.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 19.00</span>
+              <span class="price-sub">Bolsa 80g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Meatballs%20Pato%20y%20Manzana%20(SNK-005)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Beef Burger BBQ -->
+      <div class="card-item" data-category="snacks" data-keywords="naturalistic grill beef burger bbq hamburguesa carne res snack">
+        <div class="card-image-box">
+          <img src="assets/images/productos/naturalistic-grill-beef-burger-bbq-frente.jpg" alt="Beef Burger BBQ" loading="lazy">
+          <span class="card-badge-cat">Snacks</span>
+          <span class="card-badge-code">SNK-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Grill Beef Burger BBQ (Hamburguesitas de Res)</h3>
+            <p class="card-desc">Mini hamburguesas a base de carne vacuna con aroma ahumado irresistible. 100% digestibles y ricas en hierro.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 19.00</span>
+              <span class="price-sub">Bolsa 80g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20Beef%20Burger%20BBQ%20(SNK-006)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. Comedero Doble Dispensador -->
+      <div class="card-item" data-category="accesorios" data-keywords="comedero doble dispensador agua botella carita gato">
+        <div class="card-image-box">
+          <img src="assets/images/productos/comedero-doble-dispensador.jpg" alt="Comedero Doble con Dispensador" loading="lazy">
+          <span class="card-badge-cat">Accesorios</span>
+          <span class="card-badge-code">PET-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Comedero Doble con Dispensador de Agua Automático</h3>
+            <p class="card-desc">Diseño integrado con carita de gato y botella dispensadora por gravedad que mantiene el agua siempre limpia y fresca.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 10.00</span>
+              <span class="price-sub">Color Rosado pastel</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Comedero%20Doble%20con%20Dispensador%20(PET-010)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18. Comedero Doble Carita de Oso -->
+      <div class="card-item" data-category="accesorios" data-keywords="comedero doble carita oso base ancha plato hondo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/comedero-doble-oso.jpg" alt="Comedero Doble Carita de Oso" loading="lazy">
+          <span class="card-badge-cat">Accesorios</span>
+          <span class="card-badge-code">PET-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Comedero Doble Carita de Oso Base Antiderrame</h3>
+            <p class="card-desc">Dos tazones hondos en base ancha de resina higiénica resistente que evita deslizamientos o volcados durante la comida.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 15.00</span>
+              <span class="price-sub">Set doble osito</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Comedero%20Carita%20de%20Oso%20(PET-011)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. Tazón Cerámica Huellitas -->
+      <div class="card-item" data-category="accesorios" data-keywords="tazon ceramica huellitas naranja comida plato">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tazon-huellitas-naranja.jpg" alt="Tazón Huellitas Naranja" loading="lazy">
+          <span class="card-badge-cat">Accesorios</span>
+          <span class="card-badge-code">PET-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tazón Cerámica Esmaltada Huellitas Naranja</h3>
+            <p class="card-desc">Plato pesado no poroso que evita la acumulación de bacterias del acné felino y se limpia con facilidad.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Cerámica horneada</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Taz%C3%B3n%20Huellitas%20Naranja%20(PET-012)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20. Chaleco Polar Lila -->
+      <div class="card-item" data-category="higiene" data-keywords="ropa chaleco lila polar abrigo perro friaje">
+        <div class="card-image-box">
+          <img src="assets/images/productos/vitrina-chaleco-lila.jpg" alt="Chaleco Polar Lila" loading="lazy">
+          <span class="card-badge-cat">Ropa & Abrigo</span>
+          <span class="card-badge-code">PET-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Chaleco Térmico Polar Lila para Invierno</h3>
+            <p class="card-desc">Confección abrigadora antialérgica con elástico abdominal para máxima comodidad al caminar y hacer sus necesidades.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 35.00</span>
+              <span class="price-sub">Tallas S, M, L</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20(Recepci%C3%B3n)%2C%20deseo%20el%20Chaleco%20Polar%20Lila%20(PET-013)." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-014: Ricocan Adultos Cordero y Cereales -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocan adultos cordero comida croquetas perro huanuco">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ricocan-adultos-cordero.jpg" alt="Ricocan Adultos Cordero y Cereales" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocan Adultos Cordero y Cereales</h3>
+            <p class="card-desc">Fórmula equilibrada con proteínas de cordero de alta asimilación y omega para piel y pelaje saludable.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 38.00</span>
+              <span class="price-sub">Bolsa 3 kg (hasta 15 kg)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ricocan%20Adultos%20Cordero%20y%20Cereales%20%28PET-014%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-015: Purina Dog Chow Adultos Carne y Pollo -->
+      <div class="card-item" data-category="alimentos" data-keywords="dog chow adultos carne pollo purina comida balanceado">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/dog-chow-adultos.jpg" alt="Purina Dog Chow Adultos Carne y Pollo" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-015</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Purina Dog Chow Adultos Carne y Pollo</h3>
+            <p class="card-desc">Nutrición con ExtraLife, mezcla especial de antioxidantes, vitaminas y minerales que maximiza la calidad de vida.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 46.00</span>
+              <span class="price-sub">Bolsa 3 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Purina%20Dog%20Chow%20Adultos%20Carne%20y%20Pollo%20%28PET-015%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-016: Purina Dog Chow Cachorros con ExtraLife -->
+      <div class="card-item" data-category="alimentos" data-keywords="dog chow cachorros purina cachorro crecimiento dha extralife">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/dog-chow-cachorros.jpg" alt="Purina Dog Chow Cachorros con ExtraLife" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-016</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Purina Dog Chow Cachorros con ExtraLife</h3>
+            <p class="card-desc">Favorece el desarrollo cerebral y visual con DHA natural. Nutrición óptima para cachorros en fase activa de crecimiento.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 49.00</span>
+              <span class="price-sub">Bolsa 3 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Purina%20Dog%20Chow%20Cachorros%20con%20ExtraLife%20%28PET-016%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-017: Purina Pro Plan Puppy Razas Pequeñas -->
+      <div class="card-item" data-category="alimentos" data-keywords="pro plan puppy purina optistart razas pequenas calostro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pro-plan-puppy.jpg" alt="Purina Pro Plan Puppy Razas Pequeñas" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-017</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Purina Pro Plan Puppy Razas Pequeñas</h3>
+            <p class="card-desc">Tecnología OptiStart con calostro maternal para fortalecer defensas inmunitarias en cachorros de razas pequeñas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 78.00</span>
+              <span class="price-sub">Bolsa 3 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Purina%20Pro%20Plan%20Puppy%20Razas%20Peque%C3%B1as%20%28PET-017%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-018: Michicat Adultos Nutrición Felina -->
+      <div class="card-item" data-category="alimentos" data-keywords="michicat 9kg alimento gatos economico saco croquetas">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/michicat-9kg.jpg" alt="Michicat Adultos Nutrición Felina" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-018</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Michicat Adultos Nutrición Felina</h3>
+            <p class="card-desc">Alimento balanceado con taurina y pH controlado para tracto urinario felino saludable. Formato familiar súper rendidor.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 75.00</span>
+              <span class="price-sub">Saco 9 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Michicat%20Adultos%20Nutrici%C3%B3n%20Felina%20%28PET-018%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-019: SuperCat Adultos Salmón y Atún -->
+      <div class="card-item" data-category="alimentos" data-keywords="supercat adultos salmon atun croquetas gatos omega">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/supercat-adultos.jpg" alt="SuperCat Adultos Salmón y Atún" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-019</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">SuperCat Adultos Salmón y Atún</h3>
+            <p class="card-desc">Combinación marina rica en omegas 3 y 6. Control de bolas de pelo con fibras digestivas naturales.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 39.00</span>
+              <span class="price-sub">Bolsa 3 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20SuperCat%20Adultos%20Salm%C3%B3n%20y%20At%C3%BAn%20%28PET-019%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-020: Ricocat Adultos Pescado y Mariscos -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocat adultos pescado mariscos comida croquetas gato">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ricocat-adultos.jpg" alt="Ricocat Adultos Pescado y Mariscos" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-020</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocat Adultos Pescado y Mariscos</h3>
+            <p class="card-desc">Fórmula con proteínas de mar, pulpa de remolacha y extracto de yucca para deposiciones firmes y menor olor.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 36.00</span>
+              <span class="price-sub">Bolsa 3 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ricocat%20Adultos%20Pescado%20y%20Mariscos%20%28PET-020%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-021: Kyro-Kan Mantenimiento Canino -->
+      <div class="card-item" data-category="alimentos" data-keywords="kyro kan mantenimiento canino saco perro economico">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/kyro-kan.jpg" alt="Kyro-Kan Mantenimiento Canino" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-021</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Kyro-Kan Mantenimiento Canino</h3>
+            <p class="card-desc">Nutrición de mantenimiento diario con cereales seleccionados y extractos proteínicos de alto rendimiento.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 65.00</span>
+              <span class="price-sub">Saco 15 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Kyro-Kan%20Mantenimiento%20Canino%20%28PET-021%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-022: Pitu-Kan Nutrición Balanceada para Canes -->
+      <div class="card-item" data-category="alimentos" data-keywords="pitu kan nutricion balanceada perros croquetas saco">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pitu-kan.jpg" alt="Pitu-Kan Nutrición Balanceada para Canes" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-022</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pitu-Kan Nutrición Balanceada para Canes</h3>
+            <p class="card-desc">Alimento completo con 20% de proteína bruta para perros adultos de energía moderada a alta.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 58.00</span>
+              <span class="price-sub">Saco 15 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pitu-Kan%20Nutrici%C3%B3n%20Balanceada%20para%20Canes%20%28PET-022%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-023: Atomil Plus Multivitamínico Canino -->
+      <div class="card-item" data-category="alimentos" data-keywords="atomil plus vitaminas minerales suplemento calcio tableta">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/atomil-plus.jpg" alt="Atomil Plus Multivitamínico Canino" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-023</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Atomil Plus Multivitamínico Canino</h3>
+            <p class="card-desc">Suplemento nutricional con vitaminas A, D3, E, complejo B y aminoácidos esenciales para recuperación y vigor.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Frasco 100 tabletas</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Atomil%20Plus%20Multivitam%C3%ADnico%20Canino%20%28PET-023%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-024: Ricocan Trozos Jugosos Carne y Verduras -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocan lata trozos jugosos carne verduras humedo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ricocan-lata-carne-verduras.jpg" alt="Ricocan Trozos Jugosos Carne y Verduras" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-024</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocan Trozos Jugosos Carne y Verduras</h3>
+            <p class="card-desc">Alimento húmedo en suculenta salsa casera. Aporta hidratación y palatabilidad extrema a la dieta diaria.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 8.50</span>
+              <span class="price-sub">Lata 330g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ricocan%20Trozos%20Jugosos%20Carne%20y%20Verduras%20%28PET-024%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-025: Ricocan Paté Finas Hierbas y Cordero -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocan lata cordero pate trozos alimento humedo perro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ricocan-lata-cordero.jpg" alt="Ricocan Paté Finas Hierbas y Cordero" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-025</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocan Paté Finas Hierbas y Cordero</h3>
+            <p class="card-desc">Suave paté de cordero cocido al vapor, ideal para perros inapetentes, senior o como premio especial.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 8.50</span>
+              <span class="price-sub">Lata 330g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ricocan%20Pat%C3%A9%20Finas%20Hierbas%20y%20Cordero%20%28PET-025%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-026: Ricocat Paté Hígado y Pollo Felino -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocat pate higado pollo gato lata comida humeda">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ricocat-pate-higado-pollo.jpg" alt="Ricocat Paté Hígado y Pollo Felino" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-026</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocat Paté Hígado y Pollo Felino</h3>
+            <p class="card-desc">Exquisita textura suave con taurina y minerales equilibrados para felinos de paladar exigente.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 6.50</span>
+              <span class="price-sub">Lata 156g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ricocat%20Pat%C3%A9%20H%C3%ADgado%20y%20Pollo%20Felino%20%28PET-026%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-027: Ricocat Paté Pavo e Hígado Felino -->
+      <div class="card-item" data-category="alimentos" data-keywords="ricocat pate pavo higado lata comida humeda gatos">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ricocat-pate-pavo-higado.jpg" alt="Ricocat Paté Pavo e Hígado Felino" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-027</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ricocat Paté Pavo e Hígado Felino</h3>
+            <p class="card-desc">Paté de pavo magro con alta digestibilidad e hidratación óptima para prevenir afecciones renales.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 6.50</span>
+              <span class="price-sub">Lata 156g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ricocat%20Pat%C3%A9%20Pavo%20e%20H%C3%ADgado%20Felino%20%28PET-027%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-028: Canbo Veterinary Care Mobility & Articulaciones -->
+      <div class="card-item" data-category="alimentos" data-keywords="canbo lata articulaciones veterinary care mobility glucosamina condroitina">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/canbo-lata-articulaciones.jpg" alt="Canbo Veterinary Care Mobility & Articulaciones" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-028</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Canbo Veterinary Care Mobility & Articulaciones</h3>
+            <p class="card-desc">Fórmula húmeda clínica con glucosamina, condroitina y colágeno para perros con desgaste articular o artrosis.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 14.50</span>
+              <span class="price-sub">Lata clínica 300g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Canbo%20Veterinary%20Care%20Mobility%20%26%20Articulaciones%20%28PET-028%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PET-029: Canbo Veterinary Care Gastrointestinal -->
+      <div class="card-item" data-category="alimentos" data-keywords="canbo lata digestion gastrointestinal veterinary care sensible">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/canbo-lata-digestion.jpg" alt="Canbo Veterinary Care Gastrointestinal" loading="lazy">
+          <span class="card-badge-cat">Alimentos</span>
+          <span class="card-badge-code">PET-029</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Canbo Veterinary Care Gastrointestinal</h3>
+            <p class="card-desc">Alimento clínico coadyuvante para trastornos digestivos, gastritis o recuperación posoperatoria.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 14.50</span>
+              <span class="price-sub">Lata clínica 300g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Canbo%20Veterinary%20Care%20Gastrointestinal%20%28PET-029%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNK-007: Galletas Crocantes Rico-Crack Caninas -->
+      <div class="card-item" data-category="snacks" data-keywords="rico crack galletas crocantes premio perro galleta">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/rico-crack.jpg" alt="Galletas Crocantes Rico-Crack Caninas" loading="lazy">
+          <span class="card-badge-cat">Snacks Naturalistic</span>
+          <span class="card-badge-code">SNK-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Galletas Crocantes Rico-Crack Caninas</h3>
+            <p class="card-desc">Snack horneado crocante con calcio y fósforo. Excelente reforzador positivo para adiestramiento diario.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 7.00</span>
+              <span class="price-sub">Bolsa 200g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Galletas%20Crocantes%20Rico-Crack%20Caninas%20%28SNK-007%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNK-008: Inaba Churu Puré Cremoso para Gatos (Pack x4) -->
+      <div class="card-item" data-category="snacks" data-keywords="churu inaba pure cremoso gato golosina premio pollo atun">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/churu.jpg" alt="Inaba Churu Puré Cremoso para Gatos (Pack x4)" loading="lazy">
+          <span class="card-badge-cat">Snacks Naturalistic</span>
+          <span class="card-badge-code">SNK-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Inaba Churu Puré Cremoso para Gatos (Pack x4)</h3>
+            <p class="card-desc">La golosina felina número 1 del mundo. Tubitos de puré irresistible de pollo o atún libre de granos y conservantes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 14.00</span>
+              <span class="price-sub">Pack 4 tubos × 14g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Inaba%20Churu%20Pur%C3%A9%20Cremoso%20para%20Gatos%20%28Pack%20x4%29%20%28SNK-008%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNK-009: Yamis Bocaditos Horneados de Pollo e Hígado -->
+      <div class="card-item" data-category="snacks" data-keywords="yamis bocadito horneado pollo higado premio canino">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/yamis-bocadito.jpg" alt="Yamis Bocaditos Horneados de Pollo e Hígado" loading="lazy">
+          <span class="card-badge-cat">Snacks Naturalistic</span>
+          <span class="card-badge-code">SNK-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Yamis Bocaditos Horneados de Pollo e Hígado</h3>
+            <p class="card-desc">Deliciosos bocaditos suaves semihúmedos elaborados con auténtica carne. Recompensa sabrosa y nutritiva.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 8.50</span>
+              <span class="price-sub">Bolsa 150g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Yamis%20Bocaditos%20Horneados%20de%20Pollo%20e%20H%C3%ADgado%20%28SNK-009%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-002: Bravecto Masticable 20-40 kg (1000 mg) -->
+      <div class="card-item" data-category="farmacia" data-keywords="bravecto 20 40 kg antipulgas garrapatas 12 semanas fluralaner">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/bravecto-20-40.jpg" alt="Bravecto Masticable 20-40 kg (1000 mg)" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bravecto Masticable 20-40 kg (1000 mg)</h3>
+            <p class="card-desc">Protección continua y comprobada durante 12 semanas completas contra pulgas y garrapatas con Fluralaner.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 128.00</span>
+              <span class="price-sub">Tableta masticable (3 meses)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Bravecto%20Masticable%2020-40%20kg%20%281000%20mg%29%20%28FAR-002%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-003: Proteggo Plus Antipulgas 2 a 4.5 kg -->
+      <div class="card-item" data-category="farmacia" data-keywords="proteggo plus antipulgas garrapatas 2 4.5 kg sarolaner">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/proteggo-4-5.jpg" alt="Proteggo Plus Antipulgas 2 a 4.5 kg" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Proteggo Plus Antipulgas 2 a 4.5 kg</h3>
+            <p class="card-desc">Comprimido masticable palatable de acción rápida mensual contra pulgas, garrapatas y ácaros de la sarna.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 52.00</span>
+              <span class="price-sub">Tableta 30 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Proteggo%20Plus%20Antipulgas%202%20a%204.5%20kg%20%28FAR-003%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-004: Proteggo Plus Antipulgas 4.5 a 10 kg -->
+      <div class="card-item" data-category="farmacia" data-keywords="proteggo plus antipulgas garrapatas 4.5 10 kg perro pequeno">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/proteggo-4-10.jpg" alt="Proteggo Plus Antipulgas 4.5 a 10 kg" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Proteggo Plus Antipulgas 4.5 a 10 kg</h3>
+            <p class="card-desc">Protección mensual integral con amplio espectro antiparasitario para razas pequeñas y medianas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 58.00</span>
+              <span class="price-sub">Tableta 30 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Proteggo%20Plus%20Antipulgas%204.5%20a%2010%20kg%20%28FAR-004%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-005: Proteggo Plus Antipulgas 10 a 20 kg -->
+      <div class="card-item" data-category="farmacia" data-keywords="proteggo plus antipulgas garrapatas 10 20 kg perro mediano">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/proteggo-10-20.jpg" alt="Proteggo Plus Antipulgas 10 a 20 kg" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Proteggo Plus Antipulgas 10 a 20 kg</h3>
+            <p class="card-desc">Fórmula palatable sabor carne para canes de 10 a 20 kg. Efecto de volteo en pocas horas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 66.00</span>
+              <span class="price-sub">Tableta 30 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Proteggo%20Plus%20Antipulgas%2010%20a%2020%20kg%20%28FAR-005%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-006: Proteggo Plus Antipulgas 20 a 40 kg -->
+      <div class="card-item" data-category="farmacia" data-keywords="proteggo plus antipulgas garrapatas 20 40 kg perro grande">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/proteggo-20-40.jpg" alt="Proteggo Plus Antipulgas 20 a 40 kg" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Proteggo Plus Antipulgas 20 a 40 kg</h3>
+            <p class="card-desc">Tableta masticable de alta potencia contra infestaciones severas de garrapatas y pulgas en perros grandes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 76.00</span>
+              <span class="price-sub">Tableta 30 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Proteggo%20Plus%20Antipulgas%2020%20a%2040%20kg%20%28FAR-006%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-007: Rivolta Antiparasitario Pipeta Tópica -->
+      <div class="card-item" data-category="farmacia" data-keywords="rivolta pipeta topica selamectina pulgas sarna gato perro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/rivolta-pipeta.jpg" alt="Rivolta Antiparasitario Pipeta Tópica" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Rivolta Antiparasitario Pipeta Tópica</h3>
+            <p class="card-desc">Solución spot-on con Selamectina para control de pulgas, sarna sarcóptica y parásitos internos en gatos y canes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 38.00</span>
+              <span class="price-sub">Pipeta monodosis</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Rivolta%20Antiparasitario%20Pipeta%20T%C3%B3pica%20%28FAR-007%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-008: Simparica Sarolaner 40-60 kg (120 mg) -->
+      <div class="card-item" data-category="farmacia" data-keywords="simparica 40 60 kg 120mg antipulgas garrapatas zoetis gigante">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/simparica-40.jpg" alt="Simparica Sarolaner 40-60 kg (120 mg)" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Simparica Sarolaner 40-60 kg (120 mg)</h3>
+            <p class="card-desc">Tableta masticable de Zoetis de 35 días de protección continua contra garrapatas, pulgas y ácaros para razas gigantes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 54.00</span>
+              <span class="price-sub">Tableta 35 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Simparica%20Sarolaner%2040-60%20kg%20%28120%20mg%29%20%28FAR-008%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-009: Matanox 20EC Concentrado Ambiental -->
+      <div class="card-item" data-category="farmacia" data-keywords="matanox 20ec cipermetrina ambiental garrapatas pulgas fumigacion">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/matanox-20ec.jpg" alt="Matanox 20EC Concentrado Ambiental" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Matanox 20EC Concentrado Ambiental</h3>
+            <p class="card-desc">Emulsión concentrada para desinfección y pulverización de patios, perreras y jardines contra garrapatas y pulgas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 24.00</span>
+              <span class="price-sub">Frasco 100 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Matanox%2020EC%20Concentrado%20Ambiental%20%28FAR-009%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-010: Tranquiliss Gotas Calmantes Naturales -->
+      <div class="card-item" data-category="farmacia" data-keywords="tranquiliss gotas calmante natural estres pirotecnia viajes">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/tranquiliss-gotas.jpg" alt="Tranquiliss Gotas Calmantes Naturales" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tranquiliss Gotas Calmantes Naturales</h3>
+            <p class="card-desc">Extracto botánico de pasiflora y valeriana para aliviar ansiedad por pirotecnia, viajes o visitas veterinarias.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 28.00</span>
+              <span class="price-sub">Gotero 30 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Tranquiliss%20Gotas%20Calmantes%20Naturales%20%28FAR-010%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-011: Ecaklin Desinfectante Enzimático Ambiental -->
+      <div class="card-item" data-category="farmacia" data-keywords="ecaklin desinfectante ambientes spray viricida bactericida">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ecaklin-desinfectante-ambientes.jpg" alt="Ecaklin Desinfectante Enzimático Ambiental" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ecaklin Desinfectante Enzimático Ambiental</h3>
+            <p class="card-desc">Potente viricida y bactericida con aroma fresco para esterilización de transportadoras, camas y pisos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Frasco spray 500 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ecaklin%20Desinfectante%20Enzim%C3%A1tico%20Ambiental%20%28FAR-011%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-012: Ecaotic Solución Limpiadora Auricular -->
+      <div class="card-item" data-category="farmacia" data-keywords="ecaotic limpiador auricular otitis cerumen orejas perro gato">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ecaotic-limpiador-auricular.jpg" alt="Ecaotic Solución Limpiadora Auricular" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ecaotic Solución Limpiadora Auricular</h3>
+            <p class="card-desc">Disolvente suave de cerumen y suciedad ótica con acción antiséptica preventiva para oídos limpios y sin mal olor.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 35.00</span>
+              <span class="price-sub">Frasco aplicador 100 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ecaotic%20Soluci%C3%B3n%20Limpiadora%20Auricular%20%28FAR-012%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-013: Ecaderm Crema Regeneradora y Cicatrizante -->
+      <div class="card-item" data-category="farmacia" data-keywords="ecaderm crema regeneradora cicatrizante heridas piel perro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ecaderm-crema-regeneradora.jpg" alt="Ecaderm Crema Regeneradora y Cicatrizante" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ecaderm Crema Regeneradora y Cicatrizante</h3>
+            <p class="card-desc">Pomada dérmica estimulante de la epitelización con óxido de zinc y aloe vera para raspaduras, cortes y rozaduras.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 29.00</span>
+              <span class="price-sub">Tubo 60g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ecaderm%20Crema%20Regeneradora%20y%20Cicatrizante%20%28FAR-013%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-014: Collar Seresto Bayer 8 Meses de Protección -->
+      <div class="card-item" data-category="farmacia" data-keywords="collar seresto bayer brentag antipulgas garrapatas 8 meses">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/collar-seresto.jpg" alt="Collar Seresto Bayer 8 Meses de Protección" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Collar Seresto Bayer 8 Meses de Protección</h3>
+            <p class="card-desc">La matriz polimérica patentada más duradera del mercado. Libera dosis bajas constantes de Imidacloprid y Flumetrina.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 145.00</span>
+              <span class="price-sub">Collar ajustable 8 meses</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Collar%20Seresto%20Bayer%208%20Meses%20de%20Protecci%C3%B3n%20%28FAR-014%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-015: Collar Isabelino Confort con Borde Acolchado -->
+      <div class="card-item" data-category="farmacia" data-keywords="collar isabelino postquirurgico cono proteccion acolchado">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/collar-isabelino.jpg" alt="Collar Isabelino Confort con Borde Acolchado" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-015</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Collar Isabelino Confort con Borde Acolchado</h3>
+            <p class="card-desc">Cono de polipropileno translúcido con bordes de franela suave para evitar automutilación y lamido de heridas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 18.00</span>
+              <span class="price-sub">Tallas 1 a 7 disponibles</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Collar%20Isabelino%20Confort%20con%20Borde%20Acolchado%20%28FAR-015%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-016: Ecaderm Solución Tópica Antiséptica -->
+      <div class="card-item" data-category="farmacia" data-keywords="ecaderm solucion topica antiseptico spray spray desinfeccion">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ecaderm-solucion-topica.jpg" alt="Ecaderm Solución Tópica Antiséptica" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-016</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ecaderm Solución Tópica Antiséptica</h3>
+            <p class="card-desc">Spray de cloruro de benzalconio y extractos antisépticos para limpieza rápida de heridas, suturas y almohadillas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Frasco atomizador 120 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ecaderm%20Soluci%C3%B3n%20T%C3%B3pica%20Antis%C3%A9ptica%20%28FAR-016%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-017: Simparica Sarolaner 10-20 kg (40 mg) -->
+      <div class="card-item" data-category="farmacia" data-keywords="simparica 10 20 kg 40mg sarolaner zoetis antipulgas perro mediano">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/simparica-10.jpg" alt="Simparica Sarolaner 10-20 kg (40 mg)" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-017</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Simparica Sarolaner 10-20 kg (40 mg)</h3>
+            <p class="card-desc">Tableta masticable Zoetis de acción rápida contra 5 especies de garrapatas, 3 tipos de sarna y pulgas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 46.00</span>
+              <span class="price-sub">Tableta 35 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Simparica%20Sarolaner%2010-20%20kg%20%2840%20mg%29%20%28FAR-017%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAR-018: Simparica Sarolaner 20-40 kg (80 mg) -->
+      <div class="card-item" data-category="farmacia" data-keywords="simparica 20 40 kg 80mg sarolaner zoetis antipulgas perro grande">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/simparica-20.jpg" alt="Simparica Sarolaner 20-40 kg (80 mg)" loading="lazy">
+          <span class="card-badge-cat">Farmacia</span>
+          <span class="card-badge-code">FAR-018</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Simparica Sarolaner 20-40 kg (80 mg)</h3>
+            <p class="card-desc">Tableta masticable Zoetis de protección de amplio espectro durante 35 días completos para canes grandes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 50.00</span>
+              <span class="price-sub">Tableta 35 días</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Simparica%20Sarolaner%2020-40%20kg%20%2880%20mg%29%20%28FAR-018%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-001: 4Groomer Acondicionador Desenredante -->
+      <div class="card-item" data-category="higiene" data-keywords="4groomer acondicionador pelo manto suave peluqueria bano">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/4groomer-condicionador.jpg" alt="4Groomer Acondicionador Desenredante" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">4Groomer Acondicionador Desenredante</h3>
+            <p class="card-desc">Emulsión nutritiva rica en keratina y siliconas cosméticas para peinado sin tirones y brillo de exposición.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 42.00</span>
+              <span class="price-sub">Botella 500 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%204Groomer%20Acondicionador%20Desenredante%20%28HIG-001%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-002: 4Groomer Máscara Texturizadora Nutritiva -->
+      <div class="card-item" data-category="higiene" data-keywords="4groomer mascara texturizadora volumen peluqueria canina spa">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/4groomer-mascara-texturizadora.jpg" alt="4Groomer Máscara Texturizadora Nutritiva" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">4Groomer Máscara Texturizadora Nutritiva</h3>
+            <p class="card-desc">Tratamiento de nutrición profunda para mantos secos, castigados o con falta de densidad. Aroma delicioso.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 48.00</span>
+              <span class="price-sub">Pote 300g</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%204Groomer%20M%C3%A1scara%20Texturizadora%20Nutritiva%20%28HIG-002%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-003: Ibasa Champú Medicado Clorhexidina & Keto -->
+      <div class="card-item" data-category="higiene" data-keywords="ibasa champu medicado clorhexidina ketoconazol dermatologico">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ibasa-champu-medicado.jpg" alt="Ibasa Champú Medicado Clorhexidina & Keto" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ibasa Champú Medicado Clorhexidina & Keto</h3>
+            <p class="card-desc">Fórmula dermatológica veterinaria coadyuvante en piodermas bacterianas, malassezia y dermatitis fúngicas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 46.00</span>
+              <span class="price-sub">Frasco 250 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Ibasa%20Champ%C3%BA%20Medicado%20Clorhexidina%20%26%20Keto%20%28HIG-003%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-004: Aqua Dog Colonia y Perfume Hipoalergénico -->
+      <div class="card-item" data-category="higiene" data-keywords="aqua dog colonia perfume mascotas hipoalergenico fresco">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/aqua-dog.jpg" alt="Aqua Dog Colonia y Perfume Hipoalergénico" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Aqua Dog Colonia y Perfume Hipoalergénico</h3>
+            <p class="card-desc">Fragancia fresca y duradera libre de alcohol irritante. Respeta el agudo olfato canino y felino.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Frasco 120 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Aqua%20Dog%20Colonia%20y%20Perfume%20Hipoalerg%C3%A9nico%20%28HIG-004%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-005: Vaso Limpiador de Patas con Cerdas de Silicona -->
+      <div class="card-item" data-category="higiene" data-keywords="limpiador patitas vaso silicona lavado patas paseo barro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/limpiador-patitas.jpg" alt="Vaso Limpiador de Patas con Cerdas de Silicona" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Vaso Limpiador de Patas con Cerdas de Silicona</h3>
+            <p class="card-desc">Vaso ergonómico con cepillo interior de silicona médica para remover barro y bacterias al volver del paseo.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 26.00</span>
+              <span class="price-sub">Vaso portátil</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Vaso%20Limpiador%20de%20Patas%20con%20Cerdas%20de%20Silicona%20%28HIG-005%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-006: Peine Metálico Antiestático Profesional -->
+      <div class="card-item" data-category="higiene" data-keywords="peine metalico acero desanudador peluqueria acabado manto">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/peine-metalico.jpg" alt="Peine Metálico Antiestático Profesional" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Peine Metálico Antiestático Profesional</h3>
+            <p class="card-desc">Peine de acero templado con sección mixta (dientes anchos y finos) para desanudar y pulir el manto.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 18.00</span>
+              <span class="price-sub">Longitud 19 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Peine%20Met%C3%A1lico%20Antiest%C3%A1tico%20Profesional%20%28HIG-006%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-007: Peine con Depósito Dispensador de Espuma -->
+      <div class="card-item" data-category="higiene" data-keywords="peine dispensador talco espuma bano en seco masajeador">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/peine-dispensador.jpg" alt="Peine con Depósito Dispensador de Espuma" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Peine con Depósito Dispensador de Espuma</h3>
+            <p class="card-desc">Permite aplicar champú en seco o polvos desodorizantes mientras se desenreda el pelaje de forma homogénea.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 24.00</span>
+              <span class="price-sub">Unidad ergonómica</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Peine%20con%20Dep%C3%B3sito%20Dispensador%20de%20Espuma%20%28HIG-007%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-008: Carda Autolimpiante con Pulsador Retráctil -->
+      <div class="card-item" data-category="higiene" data-keywords="cepillo carda azul cerdas autolimpiante boton retractil">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cepillo-carda-azul.jpg" alt="Carda Autolimpiante con Pulsador Retráctil" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Carda Autolimpiante con Pulsador Retráctil</h3>
+            <p class="card-desc">Puntas de acero pulido protegidas con gotas de gel para cepillado relajante sin arañar la piel.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 25.00</span>
+              <span class="price-sub">Unidad con botón</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Carda%20Autolimpiante%20con%20Pulsador%20Retr%C3%A1ctil%20%28HIG-008%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-009: Guante Masajeador Retira-Pelo de Silicona -->
+      <div class="card-item" data-category="higiene" data-keywords="guante cepillo silicona masaje bano pelo muerto muda">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/guante-cepillo.jpg" alt="Guante Masajeador Retira-Pelo de Silicona" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Guante Masajeador Retira-Pelo de Silicona</h3>
+            <p class="card-desc">Retira el pelo muerto en caricias agradables. Funciona en seco o durante el baño diario.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 16.00</span>
+              <span class="price-sub">Unidad diestra adaptable</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Guante%20Masajeador%20Retira-Pelo%20de%20Silicona%20%28HIG-009%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-010: Set Cortaúñas de Precisión + Lima Canina -->
+      <div class="card-item" data-category="higiene" data-keywords="set cortaunas alicate lima diamantada unas corte seguro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/set-cortaunas.jpg" alt="Set Cortaúñas de Precisión + Lima Canina" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Set Cortaúñas de Precisión + Lima Canina</h3>
+            <p class="card-desc">Cuchillas de acero afiladas con tope de seguridad de profundidad para evitar cortar el nervio ungueal.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Set alicate + lima</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Set%20Corta%C3%BA%C3%B1as%20de%20Precisi%C3%B3n%20%2B%20Lima%20Canina%20%28HIG-010%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-011: Pinza Tijera Sanitaria Recoge-Desechos -->
+      <div class="card-item" data-category="higiene" data-keywords="tijera recolectora heces pinza sanitaria pinzas desechos">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/tijera-recolectora.jpg" alt="Pinza Tijera Sanitaria Recoge-Desechos" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pinza Tijera Sanitaria Recoge-Desechos</h3>
+            <p class="card-desc">Herramienta higiénica con mandíbulas dentadas para levantar residuos del césped o vereda sin agacharse ni tocar.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 28.00</span>
+              <span class="price-sub">Brazo largo 60 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pinza%20Tijera%20Sanitaria%20Recoge-Desechos%20%28HIG-011%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-012: Medias Antideslizantes Dog Socks (Pack x4) -->
+      <div class="card-item" data-category="higiene" data-keywords="medias dog socks antideslizantes proteccion patas piso">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/medias-dog-socks.jpg" alt="Medias Antideslizantes Dog Socks (Pack x4)" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Medias Antideslizantes Dog Socks (Pack x4)</h3>
+            <p class="card-desc">Con suela de huellitas de silicona que previene resbalones en cerámico o parquet y protege las patitas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 15.00</span>
+              <span class="price-sub">Pack 4 unidades (S, M, L)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Medias%20Antideslizantes%20Dog%20Socks%20%28Pack%20x4%29%20%28HIG-012%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-013: Pañales Absorbentes Desechables Huellas -->
+      <div class="card-item" data-category="higiene" data-keywords="panales absorbentes desechables huellas descalonia cachorros">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/huellas-descalonia-serie.jpg" alt="Pañales Absorbentes Desechables Huellas" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pañales Absorbentes Desechables Huellas</h3>
+            <p class="card-desc">Núcleo de gel súper absorbente con neutralizador de olores y cintas adhesivas reposicionables.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 34.00</span>
+              <span class="price-sub">Paquete 12 unidades</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pa%C3%B1ales%20Absorbentes%20Desechables%20Huellas%20%28HIG-013%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-014: Cama Acolchada Térmica Forro Borrego Azul -->
+      <div class="card-item" data-category="higiene" data-keywords="cama borrego azul termica suave acolchada descanso invierno">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-borrego-azul.jpg" alt="Cama Acolchada Térmica Forro Borrego Azul" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Acolchada Térmica Forro Borrego Azul</h3>
+            <p class="card-desc">Interior afelpado tipo corderito súper suave y cálido con bordes acolchados elevados para apoyar la cabeza.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 58.00</span>
+              <span class="price-sub">Talla M (60 × 50 cm)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Cama%20Acolchada%20T%C3%A9rmica%20Forro%20Borrego%20Azul%20%28HIG-014%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-015: Colchoneta Ortopédica Impermeable Celeste -->
+      <div class="card-item" data-category="higiene" data-keywords="cama colchoneta celeste impermeable lavable espuma ortopedica">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-colchoneta-celeste.jpg" alt="Colchoneta Ortopédica Impermeable Celeste" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-015</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Colchoneta Ortopédica Impermeable Celeste</h3>
+            <p class="card-desc">Funda removible con cierre lavable y tela repelente de líquidos. Relleno de espuma de alta resiliencia.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 48.00</span>
+              <span class="price-sub">Talla L (80 × 60 cm)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Colchoneta%20Ortop%C3%A9dica%20Impermeable%20Celeste%20%28HIG-015%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-016: Colchoneta Confort Gris Grafito Premium -->
+      <div class="card-item" data-category="higiene" data-keywords="cama colchoneta gris grafito descanso resistente acolchado">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-colchoneta-gris.jpg" alt="Colchoneta Confort Gris Grafito Premium" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-016</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Colchoneta Confort Gris Grafito Premium</h3>
+            <p class="card-desc">Diseño sobrio y moderno con costuras reforzadas que soportan rasguños y uso intenso de canes grandes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 52.00</span>
+              <span class="price-sub">Talla L (85 × 65 cm)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Colchoneta%20Confort%20Gris%20Grafito%20Premium%20%28HIG-016%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-017: Cama Nido Felina Formato Carita Gatuna -->
+      <div class="card-item" data-category="higiene" data-keywords="cama gato carita felina nido cueva orejas descanso">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-gato-carita.jpg" alt="Cama Nido Felina Formato Carita Gatuna" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-017</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Nido Felina Formato Carita Gatuna</h3>
+            <p class="card-desc">Cama circular acolchada con borde mullido y diseño de carita con orejitas. Brinda sensación de protección.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00</span>
+              <span class="price-sub">Diámetro 45 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Cama%20Nido%20Felina%20Formato%20Carita%20Gatuna%20%28HIG-017%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-018: Cama Iglú Térmica Cerrada con Orejitas -->
+      <div class="card-item" data-category="higiene" data-keywords="cama iglu orejitas cueva termica cerrada gatos cachorros">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-iglu-orejitas.jpg" alt="Cama Iglú Térmica Cerrada con Orejitas" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-018</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Iglú Térmica Cerrada con Orejitas</h3>
+            <p class="card-desc">Refugio tipo cueva térmica 2 en 1 que aísla de corrientes de aire y ruidos. Colchón interior extraíble.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 62.00</span>
+              <span class="price-sub">Formato cueva térmico</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Cama%20Igl%C3%BA%20T%C3%A9rmica%20Cerrada%20con%20Orejitas%20%28HIG-018%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-019: Cama Circular Estampado Patitas Morada -->
+      <div class="card-item" data-category="higiene" data-keywords="cama patitas morada acolchada circular felpa descanso">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-patitas-morada.jpg" alt="Cama Circular Estampado Patitas Morada" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-019</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Circular Estampado Patitas Morada</h3>
+            <p class="card-desc">Relleno siliconado mullido con estampado de huellitas. Base antideslizante impermeable.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 54.00</span>
+              <span class="price-sub">Diámetro 55 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Cama%20Circular%20Estampado%20Patitas%20Morada%20%28HIG-019%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-020: Cama Sofá Rectangular Café Chocolate -->
+      <div class="card-item" data-category="higiene" data-keywords="cama rectangular cafe chocolate sofa descanso perro grande">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-rectangular-cafe.jpg" alt="Cama Sofá Rectangular Café Chocolate" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-020</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Sofá Rectangular Café Chocolate</h3>
+            <p class="card-desc">Estructura tipo sofá con respaldo acolchado para máximo descanso articular de perros medianos y grandes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 65.00</span>
+              <span class="price-sub">Talla XL (90 × 70 cm)</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Cama%20Sof%C3%A1%20Rectangular%20Caf%C3%A9%20Chocolate%20%28HIG-020%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-021: Cama Dona Anti-Ansiedad Fluffy Clásica -->
+      <div class="card-item" data-category="higiene" data-keywords="cama redonda clasica dona fluffy anti ansiedad pelo largo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cama-redonda-clasica.jpg" alt="Cama Dona Anti-Ansiedad Fluffy Clásica" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-021</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cama Dona Anti-Ansiedad Fluffy Clásica</h3>
+            <p class="card-desc">Pelo largo sintético ultra sedoso que simula el calor materno para un sueño profundo y reparador.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00</span>
+              <span class="price-sub">Diámetro 60 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Cama%20Dona%20Anti-Ansiedad%20Fluffy%20Cl%C3%A1sica%20%28HIG-021%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIG-022: Set Dental Canino: Pasta Enzimática + Cepillos -->
+      <div class="card-item" data-category="higiene" data-keywords="set dental pasta enzimatica cepillos higiene bucal sarro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/set-dental.jpg" alt="Set Dental Canino: Pasta Enzimática + Cepillos" loading="lazy">
+          <span class="card-badge-cat">Camas, Ropa e Higiene</span>
+          <span class="card-badge-code">HIG-022</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Set Dental Canino: Pasta Enzimática + Cepillos</h3>
+            <p class="card-desc">Kit con pasta enzimática sabor carne no tóxica, cepillo de doble cabezal y dos cepillos dedales de silicona.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Kit integral 4 piezas</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Set%20Dental%20Canino%3A%20Pasta%20Enzim%C3%A1tica%20%2B%20Cepillos%20%28HIG-022%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-001: Correa Retráctil Automática con Freno Rápido -->
+      <div class="card-item" data-category="accesorios" data-keywords="correa retractil automatica freno extensible paseo 5m">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/correa-retractil.jpg" alt="Correa Retráctil Automática con Freno Rápido" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Correa Retráctil Automática con Freno Rápido</h3>
+            <p class="card-desc">Cinta de nylon de 5 metros con mecanismo de recogida suave y botón de bloqueo instantáneo con una sola mano.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 35.00</span>
+              <span class="price-sub">Extensión 5 metros</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Correa%20Retr%C3%A1ctil%20Autom%C3%A1tica%20con%20Freno%20R%C3%A1pido%20%28ACC-001%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-002: Correa de Cadena Cromada con Asa Acolchada -->
+      <div class="card-item" data-category="accesorios" data-keywords="correa cadena eslabon cromado asa acolchada anti mordedura">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/correa-cadena.jpg" alt="Correa de Cadena Cromada con Asa Acolchada" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Correa de Cadena Cromada con Asa Acolchada</h3>
+            <p class="card-desc">Eslabones de acero con baño de níquel cromado a prueba de mordeduras, unida a un asa suave de neopreno.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 28.00</span>
+              <span class="price-sub">Largo 1.2 m</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Correa%20de%20Cadena%20Cromada%20con%20Asa%20Acolchada%20%28ACC-002%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-003: Correa de Montaña Soga con Hilos Reflectivos -->
+      <div class="card-item" data-category="accesorios" data-keywords="correa soga reforzada reflectiva montana escalada perro fuerte">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/correa-soga-reforzada.jpg" alt="Correa de Montaña Soga con Hilos Reflectivos" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Correa de Montaña Soga con Hilos Reflectivos</h3>
+            <p class="card-desc">Cuerda de escalada trenzada con mosquetón giratorio de aleación de zinc de 360° para perros vigorosos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Largo 1.5 m</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Correa%20de%20Monta%C3%B1a%20Soga%20con%20Hilos%20Reflectivos%20%28ACC-003%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-004: Correa Marina Trenzada de Paseo Ergonómica -->
+      <div class="card-item" data-category="accesorios" data-keywords="correas soga trenzada marinera agarre seguro colores">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/correas-soga.jpg" alt="Correa Marina Trenzada de Paseo Ergonómica" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Correa Marina Trenzada de Paseo Ergonómica</h3>
+            <p class="card-desc">Tejido tubular suave que no corta las manos del guía ante tirones bruscos. Varios colores.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 29.00</span>
+              <span class="price-sub">Unidad 1.5 m</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Correa%20Marina%20Trenzada%20de%20Paseo%20Ergon%C3%B3mica%20%28ACC-004%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-005: Set Pechera Ajustable + Correa de Poliéster -->
+      <div class="card-item" data-category="accesorios" data-keywords="pechera correa simple ajustable nylon paseo comodo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pechera-correa-simple.jpg" alt="Set Pechera Ajustable + Correa de Poliéster" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Set Pechera Ajustable + Correa de Poliéster</h3>
+            <p class="card-desc">Arnés ligero de ajuste en H que distribuye la tracción en el pecho sin presionar el cuello ni la tráquea.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 25.00</span>
+              <span class="price-sub">Tallas XS, S, M</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Set%20Pechera%20Ajustable%20%2B%20Correa%20de%20Poli%C3%A9ster%20%28ACC-005%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-006: Pechera FaiPet Cuero Genuino Reforzado -->
+      <div class="card-item" data-category="accesorios" data-keywords="pechera faipet cuero genuino artesanal tachas resistencia">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pechera-faipet-cuero.jpg" alt="Pechera FaiPet Cuero Genuino Reforzado" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pechera FaiPet Cuero Genuino Reforzado</h3>
+            <p class="card-desc">Elaboración artesanal con cuero vacuno legítimo de doble grosor y remaches de alta carga para razas fuertes.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 65.00</span>
+              <span class="price-sub">Hebillas de acero fundido</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pechera%20FaiPet%20Cuero%20Genuino%20Reforzado%20%28ACC-006%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-007: Pechera Táctica FaiPet Oxford Transpirable -->
+      <div class="card-item" data-category="accesorios" data-keywords="pechera faipet nylon tactica acolchada transpirable pecho">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pechera-faipet-nylon.jpg" alt="Pechera Táctica FaiPet Oxford Transpirable" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pechera Táctica FaiPet Oxford Transpirable</h3>
+            <p class="card-desc">Diseño deportivo ergonómico con forro interno acolchado en malla y anillo frontal anti-tirones.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 48.00</span>
+              <span class="price-sub">Tallas M, L, XL</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pechera%20T%C3%A1ctica%20FaiPet%20Oxford%20Transpirable%20%28ACC-007%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-008: Pechera Acolchada Estampado Patitas -->
+      <div class="card-item" data-category="accesorios" data-keywords="pechera huella estampado patitas reflectante suave">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pechera-huella.jpg" alt="Pechera Acolchada Estampado Patitas" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pechera Acolchada Estampado Patitas</h3>
+            <p class="card-desc">Chaleco ligero y cómodo para paseos diarios con bordes ribeteados reflectantes para visibilidad nocturna.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 30.00</span>
+              <span class="price-sub">Tallas S, M</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pechera%20Acolchada%20Estampado%20Patitas%20%28ACC-008%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-009: Arnés Pechera de Seguridad Nocturna 3M -->
+      <div class="card-item" data-category="accesorios" data-keywords="pechera reflectante nocturna seguridad arnes tiras luz">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pechera-reflectante.jpg" alt="Arnés Pechera de Seguridad Nocturna 3M" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Arnés Pechera de Seguridad Nocturna 3M</h3>
+            <p class="card-desc">Cintas cruzadas con bandas de reflexión lumínica total que garantizan visibilidad a más de 100 metros.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 38.00</span>
+              <span class="price-sub">Ajustable 4 puntos</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Arn%C3%A9s%20Pechera%20de%20Seguridad%20Nocturna%203M%20%28ACC-009%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-010: Collar Fashion con Dijes de Corazones -->
+      <div class="card-item" data-category="accesorios" data-keywords="collar corazones fashonista cuero sintetico pedreria">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/collar-corazones.jpg" alt="Collar Fashion con Dijes de Corazones" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Collar Fashion con Dijes de Corazones</h3>
+            <p class="card-desc">Collar elegante para razas pequeñas con detalles metálicos brillantes y hebilla cromada resistente.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 18.00</span>
+              <span class="price-sub">Ajustable 20-30 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Collar%20Fashion%20con%20Dijes%20de%20Corazones%20%28ACC-010%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-011: Bozal Tipo Canasta Siliconado Ergonómico -->
+      <div class="card-item" data-category="accesorios" data-keywords="bozal canasta siliconado ventilado respirar beber seguro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/bozal-canasta.jpg" alt="Bozal Tipo Canasta Siliconado Ergonómico" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bozal Tipo Canasta Siliconado Ergonómico</h3>
+            <p class="card-desc">Permite jadear, beber agua y recibir premios mientras previene mordeduras o ingesta de basura en la calle.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Tallas 1 a 5</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Bozal%20Tipo%20Canasta%20Siliconado%20Ergon%C3%B3mico%20%28ACC-011%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-012: Bozal de Cuero Clásico Ventilado -->
+      <div class="card-item" data-category="accesorios" data-keywords="bozal cuero clasico remaches veterinario paseo seguro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/bozal-cuero.jpg" alt="Bozal de Cuero Clásico Ventilado" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bozal de Cuero Clásico Ventilado</h3>
+            <p class="card-desc">Ajuste seguro con doble correa para visitas veterinarias, transporte público o adiestramiento de seguridad.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 36.00</span>
+              <span class="price-sub">Tallas M, L</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Bozal%20de%20Cuero%20Cl%C3%A1sico%20Ventilado%20%28ACC-012%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-013: Dispensador Huesito + 3 Rollos de Bolsas -->
+      <div class="card-item" data-category="accesorios" data-keywords="dispensador bolsas sanitarias forma hueso paseo limpio">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/dispensador-bolsas.jpg" alt="Dispensador Huesito + 3 Rollos de Bolsas" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Dispensador Huesito + 3 Rollos de Bolsas</h3>
+            <p class="card-desc">Cápsula con mosquetón para enganchar en la correa. Incluye 45 bolsas biodegradables resistentes a derrames.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 12.00</span>
+              <span class="price-sub">Dispensador + 3 rollos</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Dispensador%20Huesito%20%2B%203%20Rollos%20de%20Bolsas%20%28ACC-013%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-014: Arnés Mochila Aventurera con Bolsillos -->
+      <div class="card-item" data-category="accesorios" data-keywords="arnes mochila tactica bolsillos aventura senderismo perro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/arnes-mochila.jpg" alt="Arnés Mochila Aventurera con Bolsillos" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Arnés Mochila Aventurera con Bolsillos</h3>
+            <p class="card-desc">Permite que tu perro lleve sus premios, bolsitas y agua en caminatas o senderismo sin desbalancear su peso.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 48.00</span>
+              <span class="price-sub">Bolsillos impermeables</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Arn%C3%A9s%20Mochila%20Aventurera%20con%20Bolsillos%20%28ACC-014%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-015: Chaleco Militar de Entrenamiento Táctico K9 -->
+      <div class="card-item" data-category="accesorios" data-keywords="chaleco k9 tactico militar arnes agarre entrenamiento servicio">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/chaleco-k9.jpg" alt="Chaleco Militar de Entrenamiento Táctico K9" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-015</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Chaleco Militar de Entrenamiento Táctico K9</h3>
+            <p class="card-desc">Nylon 1000D de grado militar con paneles Molle laterales para accesorios y asa de sujeción inmediata.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 72.00</span>
+              <span class="price-sub">Tallas M y L</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Chaleco%20Militar%20de%20Entrenamiento%20T%C3%A1ctico%20K9%20%28ACC-015%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-016: Comedero Doble Plástico Antivuelco Ovalado -->
+      <div class="card-item" data-category="accesorios" data-keywords="comedero doble plastico antivuelco tazon comida agua">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/comedero-doble-ovalado.jpg" alt="Comedero Doble Plástico Antivuelco Ovalado" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-016</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Comedero Doble Plástico Antivuelco Ovalado</h3>
+            <p class="card-desc">Base estable con dos compartimientos para agua y croquetas en una sola pieza fácil de lavar.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 18.00</span>
+              <span class="price-sub">Capacidad 500 ml x 2</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Comedero%20Doble%20Pl%C3%A1stico%20Antivuelco%20Ovalado%20%28ACC-016%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-017: Base Elevada con Platos de Acero Inoxidable -->
+      <div class="card-item" data-category="accesorios" data-keywords="comedero elevado acero inoxidable base madera ergonomico">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/comedero-elevado-acero.jpg" alt="Base Elevada con Platos de Acero Inoxidable" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-017</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Base Elevada con Platos de Acero Inoxidable</h3>
+            <p class="card-desc">Mejora la digestión y postura cervical evitando tensión en articulaciones durante la alimentación.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 48.00</span>
+              <span class="price-sub">2 tazones de 700 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Base%20Elevada%20con%20Platos%20de%20Acero%20Inoxidable%20%28ACC-017%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-018: Estación Elevada Regulable Antirreflujo -->
+      <div class="card-item" data-category="accesorios" data-keywords="comedero elevado graduable altura perros grandes ergonomico">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/comedero-elevado.jpg" alt="Estación Elevada Regulable Antirreflujo" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-018</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Estación Elevada Regulable Antirreflujo</h3>
+            <p class="card-desc">Ajustable en 3 alturas diferentes, crece con tu mascota desde cachorro hasta adulto de raza grande.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 58.00</span>
+              <span class="price-sub">Altura graduable</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Estaci%C3%B3n%20Elevada%20Regulable%20Antirreflujo%20%28ACC-018%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-019: Plato de Acero Inoxidable Antideslizante -->
+      <div class="card-item" data-category="accesorios" data-keywords="plato acero inoxidable huellas base goma antideslizante">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/plato-acero-huellas.jpg" alt="Plato de Acero Inoxidable Antideslizante" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-019</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Plato de Acero Inoxidable Antideslizante</h3>
+            <p class="card-desc">Aro de goma en la base que evita desplazamientos y ruidos molestos sobre el piso. Acero higiénico bactericida.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 20.00</span>
+              <span class="price-sub">Capacidad 800 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Plato%20de%20Acero%20Inoxidable%20Antideslizante%20%28ACC-019%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-020: Comedero Lento Laberinto Anti-Glotonería -->
+      <div class="card-item" data-category="accesorios" data-keywords="plato regulador laberinto comedero lento anti ansiedad reflujo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/plato-regulador.jpg" alt="Comedero Lento Laberinto Anti-Glotonería" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-020</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Comedero Lento Laberinto Anti-Glotonería</h3>
+            <p class="card-desc">Laberinto interactivo que multiplica por 10 el tiempo de ingestión previniendo asfixia, gases y torsión gástrica.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Diámetro 20 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Comedero%20Lento%20Laberinto%20Anti-Glotoner%C3%ADa%20%28ACC-020%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-021: Tazón de Cerámica Esmaltada Diseño Woof -->
+      <div class="card-item" data-category="accesorios" data-keywords="tazon woof rosado ceramica pesada esmaltada elegante">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/tazon-woof-rosado.jpg" alt="Tazón de Cerámica Esmaltada Diseño Woof" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-021</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Tazón de Cerámica Esmaltada Diseño Woof</h3>
+            <p class="card-desc">Cerámica vitrificada pesada que no se vuelca fácilmente. Apta para microondas y lavavajillas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 26.00</span>
+              <span class="price-sub">Capacidad 600 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Taz%C3%B3n%20de%20Cer%C3%A1mica%20Esmaltada%20Dise%C3%B1o%20Woof%20%28ACC-021%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-022: Botella Dispensadora Portátil con Bebedero -->
+      <div class="card-item" data-category="accesorios" data-keywords="botella agua portatil bebedero paseo viaje boton bloqueo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/botella-agua.jpg" alt="Botella Dispensadora Portátil con Bebedero" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-022</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Botella Dispensadora Portátil con Bebedero</h3>
+            <p class="card-desc">Bebedero integrado en curva con botón dispensador y retorno de agua sobrante para cero desperdicio.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 24.00</span>
+              <span class="price-sub">Capacidad 500 ml</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Botella%20Dispensadora%20Port%C3%A1til%20con%20Bebedero%20%28ACC-022%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-023: Kit de Paseo Básico: Collar + Correa + Placa -->
+      <div class="card-item" data-category="accesorios" data-keywords="kit accesorios basico collar correa placa paseo inicial">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/kit-accesorios-basico.jpg" alt="Kit de Paseo Básico: Collar + Correa + Placa" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-023</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Kit de Paseo Básico: Collar + Correa + Placa</h3>
+            <p class="card-desc">Todo lo necesario para el primer día en casa: correa de nylon resistente, collar regulable y chapita identificatoria.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Set 3 piezas</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Kit%20de%20Paseo%20B%C3%A1sico%3A%20Collar%20%2B%20Correa%20%2B%20Placa%20%28ACC-023%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-024: Kit de Paseo Completo Aventura Urbana -->
+      <div class="card-item" data-category="accesorios" data-keywords="kit accesorios completo arnes correa plato portatil bolsas">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/kit-accesorios-completo.jpg" alt="Kit de Paseo Completo Aventura Urbana" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-024</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Kit de Paseo Completo Aventura Urbana</h3>
+            <p class="card-desc">Incluye arnés acolchado, correa reforzada, plato plegable de silicona y dispensador con bolsas sanitarias.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00</span>
+              <span class="price-sub">Set completo 4 en 1</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Kit%20de%20Paseo%20Completo%20Aventura%20Urbana%20%28ACC-024%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACC-025: Kit Gatuno Esencial: Pechera + Correa Ligera -->
+      <div class="card-item" data-category="accesorios" data-keywords="kit accesorios gatos arnes pechera correa cascabel seguro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/kit-accesorios-gatos.jpg" alt="Kit Gatuno Esencial: Pechera + Correa Ligera" loading="lazy">
+          <span class="card-badge-cat">Accesorios y Paseo</span>
+          <span class="card-badge-code">ACC-025</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Kit Gatuno Esencial: Pechera + Correa Ligera</h3>
+            <p class="card-desc">Diseñado anatómicamente para evitar que el felino se escurra. Cierres de clic de apertura rápida.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 28.00</span>
+              <span class="price-sub">Set pechera + correa</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Kit%20Gatuno%20Esencial%3A%20Pechera%20%2B%20Correa%20Ligera%20%28ACC-025%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-001: Frisbee Aerodinámico de Goma Flexible -->
+      <div class="card-item" data-category="juguetes" data-keywords="frisbee aerodinamico goma flexible flotante perro parque">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/frisbee.jpg" alt="Frisbee Aerodinámico de Goma Flexible" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Frisbee Aerodinámico de Goma Flexible</h3>
+            <p class="card-desc">Disco volador suave que cuida los dientes y encías de tu can durante recepciones en el aire. No se astilla.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 18.00</span>
+              <span class="price-sub">Diámetro 22 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Frisbee%20Aerodin%C3%A1mico%20de%20Goma%20Flexible%20%28JUG-001%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-002: Pack x3 Pelotas Tipo Tenis Especial Canina -->
+      <div class="card-item" data-category="juguetes" data-keywords="pelota tenis canina reforzada no abrasiva dientes pack">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pelota-tenis.jpg" alt="Pack x3 Pelotas Tipo Tenis Especial Canina" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pack x3 Pelotas Tipo Tenis Especial Canina</h3>
+            <p class="card-desc">Fieltro especial no abrasivo que no gasta el esmalte dental de tu mascota como las de tenis convencionales.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 15.00</span>
+              <span class="price-sub">Pack 3 pelotas</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pack%20x3%20Pelotas%20Tipo%20Tenis%20Especial%20Canina%20%28JUG-002%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-003: Pelota con Sensor de Rebote y Luces LED -->
+      <div class="card-item" data-category="juguetes" data-keywords="pelota luces led rebote sensor nocturna interactiva">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pelota-luces.jpg" alt="Pelota con Sensor de Rebote y Luces LED" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pelota con Sensor de Rebote y Luces LED</h3>
+            <p class="card-desc">Se enciende con destellos multicolor al impactar en el suelo. Diversión garantizada en paseos al atardecer.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Diámetro 7.5 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pelota%20con%20Sensor%20de%20Rebote%20y%20Luces%20LED%20%28JUG-003%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-004: Hueso Masticable Prensado 100% Natural -->
+      <div class="card-item" data-category="juguetes" data-keywords="hueso carnaza masticable prensado natural anti sarro">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/hueso-carnaza.jpg" alt="Hueso Masticable Prensado 100% Natural" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Hueso Masticable Prensado 100% Natural</h3>
+            <p class="card-desc">Satisface el instinto natural de masticación, reduce el estrés y previene la formación de placa bacteriana.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 12.00</span>
+              <span class="price-sub">Largo 20 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Hueso%20Masticable%20Prensado%20100%25%20Natural%20%28JUG-004%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-005: Hueso Macizo Texturizado de Caucho TPR -->
+      <div class="card-item" data-category="juguetes" data-keywords="hueso plastico caucho termoplastico flexible mordedor resistente">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/hueso-plastico.jpg" alt="Hueso Macizo Texturizado de Caucho TPR" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Hueso Macizo Texturizado de Caucho TPR</h3>
+            <p class="card-desc">Material flexible y resistente a mordiscos intensos con relieves que masajean las encías en cada masticada.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 16.00</span>
+              <span class="price-sub">Largo 15 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Hueso%20Macizo%20Texturizado%20de%20Caucho%20TPR%20%28JUG-005%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-006: Hueso Mordedor de Yute Natural y Soga -->
+      <div class="card-item" data-category="juguetes" data-keywords="hueso yute cuerda natural resistente mordidas juego tironeo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/hueso-yute.jpg" alt="Hueso Mordedor de Yute Natural y Soga" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Hueso Mordedor de Yute Natural y Soga</h3>
+            <p class="card-desc">Especial para juegos de forcejeo y tironeo controlado. Fibras vegetales biodegradables de alta durabilidad.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 20.00</span>
+              <span class="price-sub">Largo 25 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Hueso%20Mordedor%20de%20Yute%20Natural%20y%20Soga%20%28JUG-006%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-007: Pollo Sonoro Chiflador con Cascabel -->
+      <div class="card-item" data-category="juguetes" data-keywords="pollo cascabel juguete chiflador latex sonido divertido">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pollo-cascabel.jpg" alt="Pollo Sonoro Chiflador con Cascabel" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pollo Sonoro Chiflador con Cascabel</h3>
+            <p class="card-desc">Juguete clásico de látex flexible que chilla al presionarlo, manteniendo a tu perro activo y entretenido.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 12.00</span>
+              <span class="price-sub">Largo 20 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pollo%20Sonoro%20Chiflador%20con%20Cascabel%20%28JUG-007%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-008: Pollo Chillón Clásico de Goma Extralargo -->
+      <div class="card-item" data-category="juguetes" data-keywords="pollo hule chillon clasico goma perro sonido gracioso">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/pollo-hule.jpg" alt="Pollo Chillón Clásico de Goma Extralargo" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pollo Chillón Clásico de Goma Extralargo</h3>
+            <p class="card-desc">El favorito indiscutible de todos los canes con chillido potente al morderlo. Goma gruesa durable.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 14.00</span>
+              <span class="price-sub">Largo 30 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Pollo%20Chill%C3%B3n%20Cl%C3%A1sico%20de%20Goma%20Extralargo%20%28JUG-008%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-009: Ratón de Peluche Felino con Catnip -->
+      <div class="card-item" data-category="juguetes" data-keywords="raton juguete catnip cascabel pluma gato peluche">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/raton-juguete.jpg" alt="Ratón de Peluche Felino con Catnip" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Ratón de Peluche Felino con Catnip</h3>
+            <p class="card-desc">Relleno de hierba gatera fresca (nepeta cataria) y cola de pluma para despertar el instinto cazador felino.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 8.00</span>
+              <span class="price-sub">Unidad 10 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Rat%C3%B3n%20de%20Peluche%20Felino%20con%20Catnip%20%28JUG-009%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-010: Juguete Colgante para Puerta con Ratón Elástico -->
+      <div class="card-item" data-category="juguetes" data-keywords="raton suspendido puerta elastico plumas juego salto gato">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/raton-suspendido.jpg" alt="Juguete Colgante para Puerta con Ratón Elástico" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Juguete Colgante para Puerta con Ratón Elástico</h3>
+            <p class="card-desc">Se cuelga del marco de cualquier puerta con una ventosa o gancho elástico. Tu gato saltará incansablemente.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 18.00</span>
+              <span class="price-sub">Cuerda elástica 1.8 m</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Juguete%20Colgante%20para%20Puerta%20con%20Rat%C3%B3n%20El%C3%A1stico%20%28JUG-010%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-011: Hámster Mecánico a Cuerda Corredizo -->
+      <div class="card-item" data-category="juguetes" data-keywords="hamster cuerda corredizo juguete mecanico gato persigue">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/hamster-cuerda.jpg" alt="Hámster Mecánico a Cuerda Corredizo" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Hámster Mecánico a Cuerda Corredizo</h3>
+            <p class="card-desc">Tira de la cuerda y el hámster vibrará y correrá por el suelo activando la persecución y ejercicio de tu michi.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 14.00</span>
+              <span class="price-sub">Mecanismo a cuerda</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20H%C3%A1mster%20Mec%C3%A1nico%20a%20Cuerda%20Corredizo%20%28JUG-011%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-012: Vara Caña Telescópica con Plumas y Cascabel -->
+      <div class="card-item" data-category="juguetes" data-keywords="cana pescar gatos varita plumas cascabel interactivo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/cana-pescar-gatos.jpg" alt="Vara Caña Telescópica con Plumas y Cascabel" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Vara Caña Telescópica con Plumas y Cascabel</h3>
+            <p class="card-desc">Varita flexible de fibra de vidrio extensible para compartir momentos de juego interactivo con tu gato.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 16.00</span>
+              <span class="price-sub">Extensible hasta 90 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Vara%20Ca%C3%B1a%20Telesc%C3%B3pica%20con%20Plumas%20y%20Cascabel%20%28JUG-012%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-013: Torre Pista Circular de 3 Niveles con Bolitas -->
+      <div class="card-item" data-category="juguetes" data-keywords="torre pelotas 3 niveles pista rodante gatos diversion">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/torre-pelotas.jpg" alt="Torre Pista Circular de 3 Niveles con Bolitas" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Torre Pista Circular de 3 Niveles con Bolitas</h3>
+            <p class="card-desc">Juguete de estimulación sensorial con 3 bolas que ruedan en canales cerrados sin salirse. Ideal cuando están solos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 28.00</span>
+              <span class="price-sub">Torre 3 niveles</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Torre%20Pista%20Circular%20de%203%20Niveles%20con%20Bolitas%20%28JUG-013%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUG-014: Mega Pack Variado Gatuno 12 Piezas -->
+      <div class="card-item" data-category="juguetes" data-keywords="set juegos gatunos pack 12 piezas ratones resortes pelotas">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/set-juegos-gatunos.jpg" alt="Mega Pack Variado Gatuno 12 Piezas" loading="lazy">
+          <span class="card-badge-cat">Juguetes</span>
+          <span class="card-badge-code">JUG-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Mega Pack Variado Gatuno 12 Piezas</h3>
+            <p class="card-desc">Incluye pelotitas sonajeras, ratoncitos con cascabel, resortes de plástico flexibles y varitas con plumas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 32.00</span>
+              <span class="price-sub">Caja con 12 juguetes</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Mega%20Pack%20Variado%20Gatuno%2012%20Piezas%20%28JUG-014%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-001: Bolso de Transporte Elegance Negro -->
+      <div class="card-item" data-category="transporte" data-keywords="bolso transportador negro tela oxford plegable avion cabina">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/bolso-transportador-negro.jpg" alt="Bolso de Transporte Elegance Negro" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bolso de Transporte Elegance Negro</h3>
+            <p class="card-desc">Tejido Oxford impermeable de alta densidad con ventanas de malla en 3 lados. Aprobado para cabina de avión.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 68.00</span>
+              <span class="price-sub">Mascotas hasta 8 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Bolso%20de%20Transporte%20Elegance%20Negro%20%28TRA-001%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-002: Bolso Transportador Acolchado Rosa Pastel -->
+      <div class="card-item" data-category="transporte" data-keywords="bolso transportador rosa acolchado ventilado viaje veterinario">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/bolso-transportador-rosa.jpg" alt="Bolso Transportador Acolchado Rosa Pastel" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bolso Transportador Acolchado Rosa Pastel</h3>
+            <p class="card-desc">Con base rígida acolchada extraíble, bolsillo para cartilla de vacunación y correa de seguridad interna.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 65.00</span>
+              <span class="price-sub">Mascotas hasta 7 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Bolso%20Transportador%20Acolchado%20Rosa%20Pastel%20%28TRA-002%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-003: Mochila Burbuja Astronauta Panorámica Rosa -->
+      <div class="card-item" data-category="transporte" data-keywords="mochila rosa burbuja astronauta capsula ventana transparente">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/mochila-rosa.jpg" alt="Mochila Burbuja Astronauta Panorámica Rosa" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Mochila Burbuja Astronauta Panorámica Rosa</h3>
+            <p class="card-desc">Cúpula esférica transparente para que tu mascota disfrute del paisaje durante caminatas o paseos en moto/bici.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 78.00</span>
+              <span class="price-sub">Mascotas hasta 7 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Mochila%20Burbuja%20Astronauta%20Panor%C3%A1mica%20Rosa%20%28TRA-003%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-004: Mochila Astronauta Panorámica Verde Militar -->
+      <div class="card-item" data-category="transporte" data-keywords="mochila verde oliva burbuja panoramica capsula aventura paseo">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/mochila-verde.jpg" alt="Mochila Astronauta Panorámica Verde Militar" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Mochila Astronauta Panorámica Verde Militar</h3>
+            <p class="card-desc">Con 9 orificios metálicos de ventilación cruzada y espaldar ergonómico acolchado con soporte lumbar.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 78.00</span>
+              <span class="price-sub">Mascotas hasta 7 kg</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Mochila%20Astronauta%20Panor%C3%A1mica%20Verde%20Militar%20%28TRA-004%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-005: Maletín Transportador Semi-Rígido con Mallas -->
+      <div class="card-item" data-category="transporte" data-keywords="transportadora malla maletin semirigido transpirable viaje auto">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/transportadora-malla.jpg" alt="Maletín Transportador Semi-Rígido con Mallas" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Maletín Transportador Semi-Rígido con Mallas</h3>
+            <p class="card-desc">Estructura que mantiene la forma sin colapsar. Incluye asa de mano y correa de hombro ajustable acolchada.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 72.00</span>
+              <span class="price-sub">Medidas 44 × 28 × 28 cm</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Malet%C3%ADn%20Transportador%20Semi-R%C3%ADgido%20con%20Mallas%20%28TRA-005%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-006: Transportadora Rígida Homologada IATA -->
+      <div class="card-item" data-category="transporte" data-keywords="transportadora rigida iata puerta metalica viajes aereos homologada">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/transportadora-rigida.jpg" alt="Transportadora Rígida Homologada IATA" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Transportadora Rígida Homologada IATA</h3>
+            <p class="card-desc">Caja transportadora de polímero de alto impacto con puerta metálica y cerrojo de resorte para máxima seguridad.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 95.00</span>
+              <span class="price-sub">Apta viajes terrestres y aéreos</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Transportadora%20R%C3%ADgida%20Homologada%20IATA%20%28TRA-006%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-007: Dúo de Biberones Neonatales para Mascotas -->
+      <div class="card-item" data-category="transporte" data-keywords="biberones cachorros gatitos neonatos lactancia maternidad pack">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/biberones.jpg" alt="Dúo de Biberones Neonatales para Mascotas" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Dúo de Biberones Neonatales para Mascotas</h3>
+            <p class="card-desc">Botellas dosificadoras de 60 ml graduadas con tetinas de silicona suave para alimentación de huérfanos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 16.00</span>
+              <span class="price-sub">Pack 2 biberones</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20D%C3%BAo%20de%20Biberones%20Neonatales%20para%20Mascotas%20%28TRA-007%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRA-008: Kit Completo de Lactancia y Crianza Neonatal -->
+      <div class="card-item" data-category="transporte" data-keywords="set biberon crianza lactancia neonatos tetinas escobilla">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/set-biberon.jpg" alt="Kit Completo de Lactancia y Crianza Neonatal" loading="lazy">
+          <span class="card-badge-cat">Transporte</span>
+          <span class="card-badge-code">TRA-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Kit Completo de Lactancia y Crianza Neonatal</h3>
+            <p class="card-desc">Incluye biberón graduado, 4 tetinas de recambio de distintas formas, punzón esterilizado y escobilla de limpieza.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 22.00</span>
+              <span class="price-sub">Set completo 7 piezas</span>
+            </div>
+            <a href="https://wa.me/51927301122?text=Hola%20Diego%20%28Recepci%C3%B3n%29%2C%20deseo%20pedir%20el%20Kit%20Completo%20de%20Lactancia%20y%20Crianza%20Neonatal%20%28TRA-008%29." target="_blank" class="cta-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i> Pedir
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="catalog-footer">
+    <div class="container">
+      <p><strong>Pelitos Veterinaria — Recepción & Tienda Oficial</strong> · Jirón Dos de Mayo N.° 1234, Huánuco, Perú</p>
+      <p style="margin-top: 4px;">Atención de pedidos y delivery: Lunes a Sábado de 8:30 a. m. a 7:30 p. m. · Teléfono: +51 927 301 122</p>
+    </div>
+  </footer>
+
+    <!-- SCRIPTS DE INTERACCIÓN DE ALTO RENDIMIENTO -->
+  <button class="btn-back-to-top" id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <div class="toast-notification" id="toastBox">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">¡Enlace copiado al portapapeles!</span>
+  </div>
+
+  <script>
+    let currentCategory = 'all';
+
+    function filterItems(category, btn) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyCombinedFilter();
+    }
+
+    function searchProducts() {
+      applyCombinedFilter();
+    }
+
+    // Compatibilidad para búsqueda en consultorio y estética
+    function searchServices() { applyCombinedFilter(); }
+    function searchGrooming() { applyCombinedFilter(); }
+
+    function applyCombinedFilter() {
+      const input = document.getElementById('searchInput');
+      const q = input ? input.value.toLowerCase().trim() : '';
+      const items = document.querySelectorAll('.card-item');
+      let visibleCount = 0;
+
+      items.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const title = card.querySelector('.card-title') ? card.querySelector('.card-title').textContent.toLowerCase() : '';
+        const desc = card.querySelector('.card-desc') ? card.querySelector('.card-desc').textContent.toLowerCase() : '';
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+
+        const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchesQuery = (!q || title.includes(q) || desc.includes(q) || keywords.includes(q));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Actualizar contador
+      const counter = document.getElementById('resultsCount');
+      if (counter) {
+        counter.innerHTML = `Mostrando <strong>${visibleCount}</strong> items disponibles`;
+      }
+
+      // Estado vacío
+      const emptyState = document.getElementById('emptyState');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.style.display = 'block';
+          const querySpan = document.getElementById('emptyQuery');
+          if (querySpan) querySpan.textContent = q || currentCategory;
+        } else {
+          emptyState.style.display = 'none';
+        }
+      }
+    }
+
+    function resetSearchAndFilter() {
+      const input = document.getElementById('searchInput');
+      if (input) input.value = '';
+      currentCategory = 'all';
+      const firstChip = document.querySelector('.filter-chip');
+      if (firstChip) filterItems('all', firstChip);
+      applyCombinedFilter();
+    }
+
+    function copyCatalogLink(catalogName) {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast(`¡Enlace de ${catalogName} copiado! Listo para enviar por WhatsApp.`);
+        }).catch(() => fallbackCopy(url, catalogName));
+      } else {
+        fallbackCopy(url, catalogName);
+      }
+    }
+
+    function fallbackCopy(text, catalogName) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(`¡Enlace de ${catalogName} copiado al portapapeles!`);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTopBtn');
+      if (btn) {
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyCombinedFilter();
+    });
+  </script>
+</body>
+</html>

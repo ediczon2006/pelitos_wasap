@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultorio Médico Veterinario | Pelitos Veterinaria (Huánuco)</title>
+  <!-- Fuentes e Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/catalogos.css">
+  <style>
+    .header-direct-btn {
+      background: linear-gradient(135deg, #00A884, #008769);
+      color: #ffffff !important;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 168, 132, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .header-direct-btn:hover {
+      background: #00BF96 !important;
+      transform: translateY(-2px);
+    }
+    .cta-wa-btn {
+      background: #25D366;
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+      transition: all 0.2s;
+    }
+    .cta-wa-btn:hover {
+      background: #1eb956;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER ESPECÍFICO DEL CANAL MÉDICO -->
+  <header class="catalog-header" style="background: linear-gradient(135deg, #1A365D, #2B6CB0, #319795);">
+    <div class="container">
+      <div class="header-nav-bar">
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <a href="index.html" class="back-hub-btn">
+            <i class="fa-solid fa-arrow-left"></i> Volver al Portal General
+          </a>
+          <!-- LINK DIRECTO A LA PÁGINA WEB OFICIAL -->
+          <a href="../pelitos_veterinaria/pages/servicios.html" class="back-hub-btn header-direct-btn">
+            <i class="fa-solid fa-globe"></i> Ir a la Web Oficial de Servicios Médicos ↗
+          </a>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <button class="btn-copy-catalog-link" onclick="copyCatalogLink('Consultorio Médico')">
+            <i class="fa-solid fa-share-nodes"></i> Copiar Enlace para WhatsApp
+          </button>
+          <div class="channel-pill-badge" style="background: #319795;">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Consultorio: 939 356 376
+          </div>
+        </div>
+      </div>
+      <div class="header-main-info">
+        <h1>Catálogo de Servicios Médicos Veterinarios</h1>
+        <p>Atención clínica especializada para perros y gatos en Huánuco. Diagnóstico oportuno, prevención certificada, laboratorio automatizado y procedimientos con riguroso estándar veterinario.</p>
+        <div class="responsible-box">
+          <i class="fa-solid fa-user-doctor"></i> Responsable Médico: <strong>Dra. Julia (Médico Veterinario Titular)</strong> | Teléfono exclusivo: <strong>+51 939 356 376</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- TOOLBAR DE FILTROS -->
+    <div class="catalog-toolbar">
+      <div class="filter-group">
+        <button class="filter-chip active" onclick="filterItems('all', this)">Todos los Servicios</button>
+        <button class="filter-chip" onclick="filterItems('general', this)">Medicina General</button>
+        <button class="filter-chip" onclick="filterItems('preventiva', this)">Vacunas & Prevención</button>
+        <button class="filter-chip" onclick="filterItems('laboratorio', this)">Laboratorio Clínico</button>
+        <button class="filter-chip" onclick="filterItems('cirugia', this)">Cirugía & Dental</button>
+        <button class="filter-chip" onclick="filterItems('movil', this)">Pelitos Móvil</button>
+      </div>
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Buscar por servicio médico..." onkeyup="searchServices()">
+      </div>
+    </div>
+
+    <!-- AVISO DEONTOLÓGICO CLÍNICO -->
+    <div class="notice-box" style="background: #EBF8FF; border-left-color: #3182CE; color: #2B6CB0;">
+      <i class="fa-solid fa-stethoscope fa-lg"></i>
+      <div>
+        <strong>Compromiso Deontológico:</strong> En Pelitos Veterinaria no emitimos diagnósticos definitivos ni recetamos fármacos de control por mensajería. Toda atención requiere evaluación física presencial por la Dra. Julia para garantizar la vida y salud de tu mascota.
+      </div>
+    </div>
+
+    <!-- GRID DE SERVICIOS MÉDICOS (14 SERVICIOS CON FOTOS 100% ÚNICAS Y DATOS COMPLETOS) -->
+    <div class="items-grid" id="servicesGrid">
+
+      <!-- 1. Consulta Médico-Veterinaria General -->
+      <div class="card-item" data-category="general" data-keywords="consulta medica general evaluacion fisica salud triaje anamnesis dra julia">
+        <div class="card-image-box">
+          <img src="assets/images/servicios/consulta.jpeg" alt="Consulta Médico-Veterinaria General" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Medicina General</span>
+          <span class="card-badge-code">MED-001</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Consulta Médico-Veterinaria General</h3>
+            <p class="card-desc">Evaluación clínica completa (30-40 min): anamnesis minuciosa, toma de constantes fisiológicas, auscultación cardiopulmonar, revisión ocular, ótica, dermatológica y plan terapéutico.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 35.00</span>
+              <span class="price-sub">Tarifa fija por evaluación presencial</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%20(Consultorio)%2C%20deseo%20agendar%20una%20Consulta%20M%C3%A9dica%20General%20(MED-001)%20para%20mi%20mascota." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-calendar-check"></i> Agendar Cita
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Control Médico y Reevaluación Post-Consulta -->
+      <div class="card-item" data-category="general" data-keywords="control medico seguimiento post consulta tratamiento evolucion reevaluacion">
+        <div class="card-image-box">
+          <img src="assets/images/instalaciones/consultorio2_veterinaria.jpg" alt="Control Médico y Reevaluación" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Medicina General</span>
+          <span class="card-badge-code">MED-002</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Control Médico Post-Consulta (7 Días)</h3>
+            <p class="card-desc">Reevaluación clínica de seguimiento para pacientes bajo tratamiento prescrito en Pelitos dentro de los 7 días posteriores a su consulta inicial para verificar respuesta terapéutica.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 15.00</span>
+              <span class="price-sub">Control preferencial de paciente</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20solicito%20coordinar%20el%20Control%20M%C3%A9dico%20Post-Consulta%20(MED-002)%20de%20mi%20mascota." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-calendar-check"></i> Coordinar Control
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Chequeo Integral Preventivo por Edad -->
+      <div class="card-item" data-category="preventiva" data-keywords="medicina preventiva chequeo anual geriatrico cachorro salud">
+        <div class="card-image-box">
+          <img src="assets/images/instalaciones/recepcionveterinaria.jpg" alt="Medicina Preventiva y Chequeo Integral" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Prevención</span>
+          <span class="card-badge-code">MED-003</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Chequeo Integral Preventivo (Cachorros / Senior)</h3>
+            <p class="card-desc">Protocolo preventivo individualizado: pesaje exacto, índice de condición corporal, examen bucal preventivo, palpación abdominal y asesoría nutricional según etapa biológica.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00</span>
+              <span class="price-sub">Incluye cartilla de seguimiento</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20agendar%20un%20Chequeo%20Integral%20Preventivo%20(MED-003)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-calendar-check"></i> Agendar Chequeo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Vacunación Canina Séxtuple + Rabia -->
+      <div class="card-item" data-category="preventiva" data-keywords="vacuna sextuple canina parvovirus distemper rabia carnet inmunizacion">
+        <div class="card-image-box">
+          <img src="assets/images/servicios/vacunacion.jpeg" alt="Vacunación Canina Certificada" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Prevención</span>
+          <span class="card-badge-code">MED-004</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Vacunación Canina Séxtuple + Rabia</h3>
+            <p class="card-desc">Inmunización completa importada con control estricto de cadena de frío contra Parvovirus, Moquillo (Distemper), Hepatitis, Adenovirus, Parainfluenza, Leptospirosis y Rabia con sello médico.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 50.00</span>
+              <span class="price-sub">Por dosis con cartilla oficial</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20agendar%20la%20Vacunaci%C3%B3n%20S%C3%A9xtuple%20Canina%20(MED-004)%20para%20mi%20perrito." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-syringe"></i> Agendar Vacuna
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Vacunación Felina Triple Felina + Rabia -->
+      <div class="card-item" data-category="preventiva" data-keywords="vacunacion felina gato triple leucemia panleucopenia calicivirus rinotraqueitis">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/simparica-20.jpg" alt="Vacunación Felina Triple y Rabia" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Prevención</span>
+          <span class="card-badge-code">MED-005</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Vacunación Felina (Triple Felina + Rabia)</h3>
+            <p class="card-desc">Inmunización de alta seguridad para gatitos y gatos adultos contra Panleucopenia, Rinotraqueítis vírica y Calicivirus felino con previa evaluación de temperatura y bienestar.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 55.00</span>
+              <span class="price-sub">Por dosis con carné felino</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20agendar%20la%20Vacunaci%C3%B3n%20Triple%20Felina%20(MED-005)%20para%20mi%20gato." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-syringe"></i> Agendar Vacuna
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Desparasitación Interna y Externa Guiada -->
+      <div class="card-item" data-category="preventiva" data-keywords="desparasitacion antipulgas garrapatas tenias nematodos simparica bravecto dosis">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/simparica-10.jpg" alt="Desparasitación Integral Interna y Externa" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Prevención</span>
+          <span class="card-badge-code">MED-006</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Desparasitación Interna y Externa por Peso</h3>
+            <p class="card-desc">Cálculo de dosis farmacológica milimétrica según balanza digital. Erradicación de nemátodos, céstodos, pulgas y garrapatas con productos líderes (Bravecto, Simparica, NexGard, Drontal).</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 25.00</span>
+              <span class="price-sub">Dosis básica (varía según peso)</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20consultar%20dosis%20y%20agendar%20Desparasitaci%C3%B3n%20(MED-006)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-pills"></i> Consultar Dosis
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Hemograma Completo Computarizado -->
+      <div class="card-item" data-category="laboratorio" data-keywords="laboratorio hemograma recuento sanguineo anemia plaquetas leucocitos globulos">
+        <div class="card-image-box">
+          <img src="assets/images/laboratorio/laboratorio_equipo.png" alt="Hemograma Computarizado Automatizado" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Laboratorio Clínico</span>
+          <span class="card-badge-code">MED-007</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Hemograma Completo Computarizado</h3>
+            <p class="card-desc">Análisis automatizado en analizador hematológico computarizado de 3 estirpes: serie roja, recuento plaquetario y fórmula leucocitaria para descartar anemia, infecciones y ehrlichiosis.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 45.00</span>
+              <span class="price-sub">Entrega el mismo día</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20solicitar%20un%20Hemograma%20Completo%20(MED-007)%20para%20mi%20mascota." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-flask-vial"></i> Solicitar Análisis
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Bioquímica Clínica: Perfil Hepático y Renal -->
+      <div class="card-item" data-category="laboratorio" data-keywords="bioquimica renal hepatico urea creatinina tgo tgp perfil prequirurgico">
+        <div class="card-image-box">
+          <img src="assets/images/laboratorio/laboratorio_profesional.jpg" alt="Bioquímica Sanguínea Perfil Hepático y Renal" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Laboratorio Clínico</span>
+          <span class="card-badge-code">MED-008</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Bioquímica Sanguínea (Perfil Hepático & Renal)</h3>
+            <p class="card-desc">Evaluación metabólica cuantitativa: Urea, Creatinina, TGO, TGP, Fosfatasa Alcalina y Glucosa. Fundamental para pacientes geriátricos y evaluación prequirúrgica obligatoria.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 65.00</span>
+              <span class="price-sub">Perfil bioquímico dual</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20agendar%20Bioqu%C3%ADmica%20Sangu%C3%ADnea%20(MED-008)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-microscope"></i> Solicitar Bioquímica
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Dermatología & Raspado Cutáneo Diagnóstico -->
+      <div class="card-item" data-category="laboratorio" data-keywords="dermatologia raspado cutaneo hongos sarna acaros pelo piel picazon">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/ecaderm-solucion-topica.jpg" alt="Dermatología y Raspado Cutáneo" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Laboratorio Clínico</span>
+          <span class="card-badge-code">MED-009</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Dermatología & Raspado Cutáneo Directo</h3>
+            <p class="card-desc">Toma de muestra y observación microscópica de piel y folículos pilosos para la identificación certera de ácaros (demodex, sarcoptes), levaduras (malassezia) y dermatofitos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 30.00</span>
+              <span class="price-sub">Lectura microscópica inmediata</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20mi%20mascota%20tiene%20problemas%20en%20la%20piel.%20Deseo%20agendar%20un%20Raspado%20Cut%C3%A1neo%20(MED-009)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-magnifying-glass"></i> Agendar Evaluación
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Profilaxis Dental Ultrasónica -->
+      <div class="card-item" data-category="cirugia" data-keywords="profilaxis dental sarro limpieza ultrasonica dientes boca halitosis cavitador">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/set-dental.jpg" alt="Profilaxis Dental Ultrasónica" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Cirugía & Dental</span>
+          <span class="card-badge-code">MED-010</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Profilaxis Dental Ultrasónica con Cavitador</h3>
+            <p class="card-desc">Eliminación completa de sarro y placa bacteriana supra y subgingival con ultrasonido médico, pulido coronario y tratamiento periodontal para evitar pérdida de piezas y mal aliento.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 120.00</span>
+              <span class="price-sub">Requiere sedación controlada</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20cotizar%20y%20agendar%20Profilaxis%20Dental%20Ultras%C3%B3nica%20(MED-010)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-tooth"></i> Cotizar Profilaxis
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Cirugía Menor y Esterilización Quirúrgica Electiva -->
+      <div class="card-item" data-category="cirugia" data-keywords="cirugia esterilizacion castracion sutura quirofano anestesia ovariohisterectomia">
+        <div class="card-image-box">
+          <img src="assets/images/productos/tienda/collar-isabelino.jpg" alt="Cirugía y Esterilización Electiva" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Cirugía & Dental</span>
+          <span class="card-badge-code">MED-011</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Cirugía Electiva & Esterilización Programada</h3>
+            <p class="card-desc">Ovariohisterectomía en hembras y orquiectomía en machos caninos y felinos. Quirófano con estricta asepsia, protocolo anestésico seguro, analgesia postoperatoria y retiro de puntos.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Desde S/ 180.00</span>
+              <span class="price-sub">Según peso y especie</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20informaci%C3%B3n%20y%20requisitos%20para%20Esterilizaci%C3%B3n%2FCirug%C3%ADa%20(MED-011)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-hospital"></i> Consultar Cirugía
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Pelitos Móvil: Atención Veterinaria a Domicilio -->
+      <div class="card-item" data-category="movil" data-keywords="pelitos movil van a domicilio casa huanuco consulta vacunas">
+        <div class="card-image-box">
+          <img src="assets/images/pelitos_movil/van_pelitos.jpg" alt="Pelitos Móvil Atención Veterinaria a Domicilio" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Pelitos Móvil</span>
+          <span class="card-badge-code">MED-012</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Pelitos Móvil: Consulta Médica a Domicilio</h3>
+            <p class="card-desc">Llevamos la clínica a la puerta de tu hogar en nuestra van equipada. Atención médica completa, vacunación, desparasitación y toma de muestras sin el estrés del traslado para tu mascota.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">S/ 60.00</span>
+              <span class="price-sub">Cobertura urbana en Huánuco</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20solicitar%20la%20Van%20de%20Pelitos%20M%C3%B3vil%20a%20Domicilio%20(MED-012)%20para%20mi%20mascota." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-van-shuttle"></i> Pedir a Domicilio
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Farmacia Veterinaria Especializada -->
+      <div class="card-item" data-category="general" data-keywords="farmacia medicamentos antibiticos colirios jarabes receta veterinaria">
+        <div class="card-image-box">
+          <img src="assets/images/instalaciones/farmacia_veterinaria.jpg" alt="Farmacia Veterinaria Especializada" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Medicina General</span>
+          <span class="card-badge-code">MED-013</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Farmacia Veterinaria y Fármacos de Prescripción</h3>
+            <p class="card-desc">Dispensación ética y profesional de antibióticos, antiinflamatorios no esteroideos, protectores gástricos, colirios oftálmicos y suplementos de soporte hepático bajo receta médica.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Desde S/ 15.00</span>
+              <span class="price-sub">Sujeto a receta médica</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20tengo%20una%20receta%20m%C3%A9dica%20y%20deseo%20consultar%20disponibilidad%20de%20f%C3%A1rmacos%20(MED-013)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-prescription-bottle-medical"></i> Consultar Receta
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Dra. Julia: Consulta de Triaje y Tele-Orientación -->
+      <div class="card-item" data-category="general" data-keywords="dra julia orientacion triaje medico cita previa especialista">
+        <div class="card-image-box">
+          <img src="assets/images/equipo/julia.jpg" alt="Dra. Julia Médico Veterinario Titular" loading="lazy">
+          <span class="card-badge-cat" style="color: #2B6CB0;">Medicina General</span>
+          <span class="card-badge-code">MED-014</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Triaje y Tele-Orientación Médica Previa</h3>
+            <p class="card-desc">Comunicación directa con la Dra. Julia para coordinar horarios de atención, preparación en ayunas para análisis de sangre o ecografías, y priorización de urgencias clínicas.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="price-main">Sin Costo</span>
+              <span class="price-sub">Canal de coordinación directa</span>
+            </div>
+            <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20orientaci%C3%B3n%20para%20agendar%20la%20cita%20m%C3%A9dica%20de%20mi%20mascota%20(MED-014)." 
+               target="_blank" class="cta-wa-btn">
+              <i class="fa-solid fa-headset"></i> Hablar con la Dra.
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="catalog-footer">
+    <div class="container">
+      <p><strong>Pelitos Veterinaria — Consultorio Médico</strong> · Jirón Dos de Mayo N.° 1234, Huánuco, Perú</p>
+      <p style="margin-top: 4px;">Atención con la Dra. Julia: Lunes a Sábado de 9:00 a. m. a 7:00 p. m. &middot; WhatsApp exclusivo: <strong>+51 939 356 376</strong></p>
+      <p style="margin-top: 10px;">
+        <a href="../pelitos_veterinaria/pages/servicios.html" style="color: #2B6CB0; text-decoration: none; font-weight: 700;">
+          <i class="fa-solid fa-globe"></i> Visitar la sección oficial de Servicios Médicos en la Web Principal ↗
+        </a>
+      </p>
+    </div>
+  </footer>
+
+    <!-- SCRIPTS DE INTERACCIÓN DE ALTO RENDIMIENTO -->
+  <button class="btn-back-to-top" id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <div class="toast-notification" id="toastBox">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">¡Enlace copiado al portapapeles!</span>
+  </div>
+
+  <script>
+    let currentCategory = 'all';
+
+    function filterItems(category, btn) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyCombinedFilter();
+    }
+
+    function searchProducts() {
+      applyCombinedFilter();
+    }
+
+    // Compatibilidad para búsqueda en consultorio y estética
+    function searchServices() { applyCombinedFilter(); }
+    function searchGrooming() { applyCombinedFilter(); }
+
+    function applyCombinedFilter() {
+      const input = document.getElementById('searchInput');
+      const q = input ? input.value.toLowerCase().trim() : '';
+      const items = document.querySelectorAll('.card-item');
+      let visibleCount = 0;
+
+      items.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const title = card.querySelector('.card-title') ? card.querySelector('.card-title').textContent.toLowerCase() : '';
+        const desc = card.querySelector('.card-desc') ? card.querySelector('.card-desc').textContent.toLowerCase() : '';
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+
+        const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchesQuery = (!q || title.includes(q) || desc.includes(q) || keywords.includes(q));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Actualizar contador
+      const counter = document.getElementById('resultsCount');
+      if (counter) {
+        counter.innerHTML = `Mostrando <strong>${visibleCount}</strong> items disponibles`;
+      }
+
+      // Estado vacío
+      const emptyState = document.getElementById('emptyState');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.style.display = 'block';
+          const querySpan = document.getElementById('emptyQuery');
+          if (querySpan) querySpan.textContent = q || currentCategory;
+        } else {
+          emptyState.style.display = 'none';
+        }
+      }
+    }
+
+    function resetSearchAndFilter() {
+      const input = document.getElementById('searchInput');
+      if (input) input.value = '';
+      currentCategory = 'all';
+      const firstChip = document.querySelector('.filter-chip');
+      if (firstChip) filterItems('all', firstChip);
+      applyCombinedFilter();
+    }
+
+    function copyCatalogLink(catalogName) {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast(`¡Enlace de ${catalogName} copiado! Listo para enviar por WhatsApp.`);
+        }).catch(() => fallbackCopy(url, catalogName));
+      } else {
+        fallbackCopy(url, catalogName);
+      }
+    }
+
+    function fallbackCopy(text, catalogName) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(`¡Enlace de ${catalogName} copiado al portapapeles!`);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTopBtn');
+      if (btn) {
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyCombinedFilter();
+    });
+  </script>
+</body>
+</html>

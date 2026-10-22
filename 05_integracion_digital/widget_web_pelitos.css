@@ -1,0 +1,284 @@
+/* ESTILOS DEL WIDGET MULTICANAL PELITOS CONECTA 2026 */
+:root {
+  --pelitos-purple: #4A154B;
+  --pelitos-purple-light: #6B2D82;
+  --pelitos-wa-green: #25D366;
+  --pelitos-wa-dark-green: #075E54;
+  --pelitos-bg-light: #F8F4F9;
+  --pelitos-text: #2D3748;
+  --pelitos-gray: #718096;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #F3F4F6;
+  color: var(--pelitos-text);
+}
+
+.demo-bg {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.demo-card {
+  max-width: 650px;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border-top: 6px solid var(--pelitos-purple);
+}
+
+.demo-card h2 {
+  color: var(--pelitos-purple);
+  margin-top: 0;
+}
+
+.tagline {
+  color: var(--pelitos-purple-light);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* WIDGET CONTAINER */
+.pelitos-wa-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* LAUNCHER BUTTON */
+.pelitos-wa-launcher {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.pelitos-wa-launcher:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.6);
+}
+
+.pelitos-wa-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #E53E3E;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+/* POPUP WINDOW */
+.pelitos-wa-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 360px;
+  max-width: 90vw;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(74, 21, 75, 0.2);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  animation: slideUp 0.3s ease forwards;
+  border: 1px solid rgba(107, 45, 130, 0.15);
+}
+
+.pelitos-wa-window.active {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HEADER */
+.pelitos-wa-header {
+  background: linear-gradient(135deg, var(--pelitos-purple), var(--pelitos-purple-light));
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pelitos-wa-avatar {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.pelitos-wa-header-info {
+  flex: 1;
+}
+
+.pelitos-wa-header-info h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pelitos-wa-status {
+  font-size: 11px;
+  color: #D1C4D9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pelitos-wa-status .dot {
+  width: 8px;
+  height: 8px;
+  background: #25D366;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pelitos-wa-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.pelitos-wa-close:hover {
+  opacity: 1;
+}
+
+/* BODY */
+.pelitos-wa-body {
+  padding: 16px;
+  background-color: var(--pelitos-bg-light);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.pelitos-wa-intro {
+  font-size: 12px;
+  margin: 0 0 4px 0;
+  color: var(--pelitos-gray);
+  line-height: 1.4;
+}
+
+/* CHANNEL CARDS */
+.pelitos-channel-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #EAE2EE;
+  transition: all 0.2s ease;
+}
+
+.pelitos-channel-card:hover {
+  transform: translateX(4px);
+  border-color: var(--pelitos-purple-light);
+  box-shadow: 0 4px 12px rgba(107, 45, 130, 0.12);
+}
+
+.channel-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #F3ECF6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.channel-info {
+  flex: 1;
+}
+
+.channel-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pelitos-purple);
+}
+
+.channel-desc {
+  display: block;
+  font-size: 11px;
+  color: var(--pelitos-gray);
+  margin-top: 2px;
+}
+
+.channel-num {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--pelitos-wa-dark-green);
+  margin-top: 2px;
+}
+
+.channel-arrow {
+  color: var(--pelitos-purple-light);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+.pelitos-wa-footer {
+  padding: 10px 16px;
+  background: #FFFFFF;
+  text-align: center;
+  font-size: 11px;
+  color: var(--pelitos-gray);
+  border-top: 1px solid #EAE2EE;
+}
