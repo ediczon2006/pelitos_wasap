@@ -1133,6 +1133,12 @@ Disponemos de alimentos súper premium, snacks naturales Naturalistic, camas té
         setTimeout(() => toast.classList.remove('show'), 3800);
       }
     }
+      // Adaptador de navegación resiliente para GitHub Pages
+    if (window.location.hostname.includes('github.io')) {
+      document.querySelectorAll('a[href*="pelitos_veterinaria"]').forEach(a => {
+        a.href = a.href.replace(/pelitos_veterinaria/gi, 'Pelitos_Veterinarias');
+      });
+    }
   </script>
 </body>
 </html>
