@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pelitos Veterinaria — Catálogos Oficiales de Estética, Productos y Servicios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary-blue: #1E40AF;
+      --blue-light: #3B82F6;
+      --blue-bg: #EFF6FF;
+      --mint-green: #10B981;
+      --mint-dark: #059669;
+      --mint-bg: #ECFDF5;
+      --accent-orange: #F97316;
+      --orange-dark: #EA580C;
+      --orange-bg: #FFF7ED;
+      --bg-page: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --shadow-card: 0 4px 18px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 14px 30px rgba(30, 64, 175, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-body);
+      line-height: 1.6;
+      padding-bottom: 50px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* TOP BAR LOCAL */
+    .top-announcement {
+      background: var(--primary-blue);
+      color: #FFFFFF;
+      padding: 8px 16px;
+      font-size: 13px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .top-announcement strong { color: #FDE047; }
+
+    /* HEADER HERO */
+    .hero-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #10B981 100%);
+      color: #FFFFFF;
+      padding: 45px 20px 65px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      color: #FDE047;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hero-header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .hero-header p {
+      font-size: clamp(14px, 2vw, 16px);
+      color: #E2E8F0;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    /* TABS DE CATÁLOGOS */
+    .catalog-nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: -30px;
+      margin-bottom: 35px;
+      position: relative;
+      z-index: 10;
+    }
+    .nav-tab-btn {
+      background: #FFFFFF;
+      color: var(--text-body);
+      border: 1.5px solid var(--border-color);
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.2s ease;
+    }
+    .nav-tab-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue-light);
+    }
+    .nav-tab-btn.active {
+      background: var(--primary-blue);
+      color: #FFFFFF;
+      border-color: var(--primary-blue);
+      box-shadow: 0 6px 18px rgba(30, 64, 175, 0.25);
+    }
+
+    /* SECCIONES DE CATÁLOGO */
+    .catalog-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .catalog-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-intro-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 28px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .section-intro-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-intro-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      max-width: 780px;
+    }
+
+    /* GRID DE TARJETAS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .catalog-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+    }
+    .catalog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .card-img-wrapper {
+      height: 190px;
+      background: #F1F5F9;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .catalog-card:hover .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .badge-category {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(4px);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .badge-estetica { color: #8B5CF6; }
+    .badge-producto { color: #059669; }
+    .badge-servicio { color: #2563EB; }
+
+    .card-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .card-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .price-tag {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--mint-dark);
+    }
+    .price-consult {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-orange);
+    }
+
+    .card-cta-btn {
+      background: var(--mint-green);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .card-cta-btn:hover {
+      background: var(--mint-dark);
+      transform: translateY(-1px);
+    }
+
+    /* SECCIÓN FINAL DE LLAMADOS A LA ACCIÓN */
+    .cta-banner-section {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      margin-top: 30px;
+    }
+    .cta-banner-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .cta-banner-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .cta-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .cta-card-box {
+      border-radius: var(--radius-md);
+      padding: 22px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 1px solid var(--border-color);
+    }
+    .cta-box-wa { background: var(--mint-bg); border-color: #A7F3D0; }
+    .cta-box-loc { background: var(--blue-bg); border-color: #BFDBFE; }
+    .cta-box-prod { background: var(--orange-bg); border-color: #FED7AA; }
+
+    .cta-box-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .cta-box-wa .cta-box-icon { background: #10B981; color: #FFFFFF; }
+    .cta-box-loc .cta-box-icon { background: #2563EB; color: #FFFFFF; }
+    .cta-box-prod .cta-box-icon { background: #EA580C; color: #FFFFFF; }
+
+    .cta-card-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .cta-card-box p {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    .btn-big-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 13.5px;
+      transition: all 0.2s ease;
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-cta-green { background: #10B981; color: #FFFFFF; }
+    .btn-cta-green:hover { background: #059669; transform: translateY(-2px); }
+
+    .btn-cta-blue { background: #2563EB; color: #FFFFFF; }
+    .btn-cta-blue:hover { background: #1D4ED8; transform: translateY(-2px); }
+
+    .btn-cta-orange { background: #EA580C; color: #FFFFFF; }
+    .btn-cta-orange:hover { background: #C2410C; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .section-intro-box { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ANUNCIO SUPERIOR -->
+  <aside class="top-announcement">
+    <span>🐾 <strong>Pelitos Veterinaria Huánuco:</strong> Amor, ciencia y dedicación para quien más te ama.</span>
+    <span>📍 Jr. Dos de Mayo 1234, Huánuco &middot; ⏰ Lun a Sáb: 8:30 a. m. a 7:30 p. m.</span>
+  </aside>
+
+  <!-- HERO HEADER -->
+  <header class="hero-header">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-certificate"></i> Catálogos Oficiales 2026 &middot; Huánuco, Perú
+      </div>
+      <h1>Catálogos Comerciales Pelitos Veterinaria</h1>
+      <p>Explora nuestras 3 áreas de especialidad: Estética y Spa canino sin estrés, Pet Shop con nutrición garantizada, y Servicios Médicos clínicos con atención presencial y Pelitos Móvil a domicilio.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SELECTOR DE CATÁLOGOS (TABS) -->
+    <nav class="catalog-nav-tabs" aria-label="Navegación entre catálogos">
+      <button class="nav-tab-btn active" onclick="switchCatalog('estetica', this)">
+        <i class="fa-solid fa-scissors"></i> Catálogo de Estética & Spa
+      </button>
+      <button class="nav-tab-btn" onclick="switchCatalog('productos', this)">
+        <i class="fa-solid fa-bag-shopping"></i> Catálogo de Productos & Pet Shop
+      </button>
+      <button class="nav-tab-btn" onclick="switchCatalog('servicios', this)">
+        <i class="fa-solid fa-stethoscope"></i> Catálogo de Servicios Médicos
+      </button>
+    </nav>
+
+    <!-- =========================================================================
+         CATÁLOGO 1: ESTÉTICA Y SPA CANINO
+         ========================================================================= -->
+    <section id="cat-estetica" class="catalog-section active">
+      <div class="section-intro-box">
+        <div>
+          <h2><i class="fa-solid fa-wand-magic-sparkles" style="color:#8B5CF6;"></i> Catálogo de Estética, Grooming & Spa</h2>
+          <p>Experiencias de higiene, relajación y peluquería canina realizadas con agua temperada, cosmética hipoalergénica botánica y un manejo respetuoso <strong>100% libre de sedantes</strong> para consentir a tu engreído en Huánuco.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Item 1 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/estetica/perrito_.jpg" alt="Servicio Clásico Funcional" onerror="this.src='assets/images/estetica/perrito_.jpg'">
+            <span class="badge-category badge-estetica">Higiene & Baño</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Servicio Clásico Funcional</h3>
+              <p class="card-desc">Duchita tibia con champú desengrasante formulado, secado con turbina de aire tibio, corte de uñas, limpieza de oídos y perfumado prolongado.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 35.00 - S/ 55.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20cotizar%20el%20Servicio%20Cl%C3%A1sico%20Funcional" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/estetica/perrito-entregado.jpg" alt="Duchas de Amor Express" onerror="this.src='assets/images/estetica/perrito-entregado.jpg'">
+            <span class="badge-category badge-estetica">Mantenimiento</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Duchas de Amor Express</h3>
+              <p class="card-desc">Baño exprés de mantenimiento para mascotas que no requieren corte: agua tibia, champú aromatizado frutal, secado y perfume Frupii.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 25.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agendar%20Duchas%20de%20Amor%20Express" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/estetica/trabajo_estetica.jpeg" alt="Spa Pelitos Relajante" onerror="this.src='assets/images/estetica/trabajo_estetica.jpeg'">
+            <span class="badge-category badge-estetica">Spa & Bienestar</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Spa Pelitos Relajante</h3>
+              <p class="card-desc">Hidromasaje relajante con sales minerales, champú de avena y aloe vera para pieles sensibles, mascarilla hidratante y masajes antiestrés.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 45.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20el%20Spa%20Pelitos%20Relajante" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/estetica/mejores_obras/obra_01_schnauzer.png" alt="Corte de Raza a Tijera" onerror="this.src='assets/images/estetica/mejores_obras/obra_01_schnauzer.png'">
+            <span class="badge-category badge-estetica">Corte de Raza</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Momento Real: Corte de Raza</h3>
+              <p class="card-desc">Corte morfológico especializado a tijera para Schnauzer, Poodle, Bichón Frisé, Shih Tzu o estilo cachorro Teddy Bear. Acabado simétrico impecable.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 45.00 - S/ 65.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20cotizar%20Corte%20de%20Raza" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/estetica/mejores_obras/obra_10_husky_siberiano.png" alt="Deslanado Técnico Submanto" onerror="this.src='assets/images/estetica/mejores_obras/obra_10_husky_siberiano.png'">
+            <span class="badge-category badge-estetica">Deslanado</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Deslanado Técnico de Submanto</h3>
+              <p class="card-desc">Extracción del manto muerto en razas de doble capa (Husky, Golden, Samoyedo). Reduce la caída del pelaje en el hogar hasta en un 90%.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-consult">Consultar precio</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20consultar%20por%20Deslanado%20T%C3%A9cnico" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Consultar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/estetica/perrito_cortado.jpg" alt="Plan Piel Sana Baño Medicado" onerror="this.src='assets/images/estetica/perrito_cortado.jpg'">
+            <span class="badge-category badge-estetica">Salud Dermatológica</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Plan Piel Sana: Baño Medicado</h3>
+              <p class="card-desc">Baño terapéutico antiséptico con clorhexidina o ketoconazol para dermatitis alérgica, seborrea o piodermas bajo indicación médica.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 40.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20el%20Plan%20Piel%20Sana" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 7 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/limpiador-patitas.jpg" alt="Pedi-Spa y Limpieza de Almohadillas" onerror="this.src='assets/images/productos/tienda/limpiador-patitas.jpg'">
+            <span class="badge-category badge-estetica">Higiene & Patitas</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Pedi-Spa & Cuidado de Almohadillas</h3>
+              <p class="card-desc">Corte de uñas con alicate ergonómico y lima diamantada para evitar sangrados, más exfoliación e hidratación con bálsamo natural de patitas.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 15.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20agregar%20Pedi-Spa" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 8 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/set-dental.jpg" alt="Profilaxis Higiénica & Limpieza Ótica" onerror="this.src='assets/images/productos/tienda/set-dental.jpg'">
+            <span class="badge-category badge-estetica">Higiene Bucal & Oído</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Higiene Ótica & Limpieza Bucal</h3>
+              <p class="card-desc">Limpieza profunda del canal auditivo para remover cerumen y cepillado dental con dedal y gel enzimático anti-sarro de agradable sabor.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 15.00</span>
+              <a href="https://wa.me/51948426656?text=Hola%20Antonella%2C%20deseo%20higiene%20dental%20y%20%C3%B3tica" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CATÁLOGO 2: PRODUCTOS Y PET SHOP
+         ========================================================================= -->
+    <section id="cat-productos" class="catalog-section">
+      <div class="section-intro-box">
+        <div>
+          <h2><i class="fa-solid fa-bone" style="color:#10B981;"></i> Catálogo de Pet Shop, Nutrición & Farmacia</h2>
+          <p>Alimentos balanceados certificados de marcas líderes, golosinas y snacks 100% naturales horneados, antipulgas originales de laboratorio y accesorios de primera para consentir a tu perrito o gatito.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Item 1 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/ricocan-adultos-cordero.jpg" alt="Alimento Ricocan Cordero y Cereales" onerror="this.src='assets/images/productos/tienda/ricocan-adultos-cordero.jpg'">
+            <span class="badge-category badge-producto">Alimentación Canina</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Ricocan Adultos Cordero & Cereales</h3>
+              <p class="card-desc">Fórmula balanceada con proteínas de alta asimilación, omegas para pelaje brillante y pulpa de remolacha para deposiciones firmes.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 38.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20pedir%20Ricocan%20Adultos%20Cordero" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/pro-plan-puppy.jpg" alt="Purina Pro Plan Puppy Razas Pequeñas" onerror="this.src='assets/images/productos/tienda/pro-plan-puppy.jpg'">
+            <span class="badge-category badge-producto">Alimento Súper Premium</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Purina Pro Plan Puppy OptiStart</h3>
+              <p class="card-desc">Nutrición de grado veterinario con calostro maternal, DHA y anticuerpos activos para cachorros en pleno crecimiento inmunológico.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 78.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20Purina%20Pro%20Plan%20Puppy" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/naturalistic-chicken-sushi-frente.jpg" alt="Naturalistic Chicken Sushi" onerror="this.src='assets/images/productos/tienda/naturalistic-chicken-sushi-frente.jpg'">
+            <span class="badge-category badge-producto">Snacks Naturales</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Naturalistic Chicken Sushi 94% Carne</h3>
+              <p class="card-desc">Rollitos horneados deshidratados de pechuga de pollo y pescado blanco. Libre de granos y harinas, ideal para premios de adiestramiento.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 16.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20Naturalistic%20Chicken%20Sushi" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/churu.jpg" alt="Inaba Churu Puré Cremoso Felino" onerror="this.src='assets/images/productos/tienda/churu.jpg'">
+            <span class="badge-category badge-producto">Snacks para Gatos</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Inaba Churu Puré Cremoso (Pack x4)</h3>
+              <p class="card-desc">La golosina favorita de los felinos a base de pollo o atún de mar. Hidrata al michi y facilita la administración de medicamentos.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 14.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20Churu%20para%20gatos" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/simparica-10.jpg" alt="Simparica Antipulgas y Garrapatas" onerror="this.src='assets/images/productos/tienda/simparica-10.jpg'">
+            <span class="badge-category badge-producto">Salud & Antipulgas</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Simparica Sarolaner (10 - 20 kg)</h3>
+              <p class="card-desc">Comprimido masticable con sabor agradable que elimina pulgas, garrapatas y ácaros de la sarna durante 35 días continuos comprobados.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 46.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20Simparica%2010-20kg" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/collar-seresto.jpg" alt="Collar Seresto Bayer 8 Meses" onerror="this.src='assets/images/productos/tienda/collar-seresto.jpg'">
+            <span class="badge-category badge-producto">Antiparasitario Larga Duración</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Collar Seresto Bayer (8 Meses)</h3>
+              <p class="card-desc">Matriz polimérica patentada resistente al agua que libera microdosis constantes contra pulgas y garrapatas durante 8 meses completos.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 145.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20el%20Collar%20Seresto" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 7 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/pechera-faipet-nylon.jpg" alt="Pechera Táctica FaiPet Oxford" onerror="this.src='assets/images/productos/tienda/pechera-faipet-nylon.jpg'">
+            <span class="badge-category badge-producto">Paseo & Accesorios</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Pechera Táctica Oxford FaiPet</h3>
+              <p class="card-desc">Arnés ergonómico antitirones con interior acolchado transpirable y bandas reflectivas 3M para paseos nocturnos seguros.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 48.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20la%20Pechera%20T%C3%A1ctica%20FaiPet" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 8 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/productos/tienda/cama-borrego-azul.jpg" alt="Cama Térmica Forro Borrego" onerror="this.src='assets/images/productos/tienda/cama-borrego-azul.jpg'">
+            <span class="badge-category badge-producto">Camas & Confort</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Cama Térmica Forro Borrego Azul</h3>
+              <p class="card-desc">Cama acolchada con textura corderito súper cálida para noches frescas en Huánuco. Base antideslizante con bordes elevados de descanso.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 58.00</span>
+              <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20la%20Cama%20Borrego%20Azul" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CATÁLOGO 3: SERVICIOS MÉDICOS VETERINARIOS
+         ========================================================================= -->
+    <section id="cat-servicios" class="catalog-section">
+      <div class="section-intro-box">
+        <div>
+          <h2><i class="fa-solid fa-heart-pulse" style="color:#2563EB;"></i> Catálogo de Servicios Médicos & Cirugía</h2>
+          <p>Medicina veterinaria integral con equipamiento de diagnóstico, cirugías seguras, laboratorio clínico y la van <strong>Pelitos Móvil</strong> que llega hasta la puerta de tu hogar en Huánuco.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Item 1 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/servicios/consulta.jpeg" alt="Consulta Médico-Veterinaria General" onerror="this.src='assets/images/servicios/consulta.jpeg'">
+            <span class="badge-category badge-servicio">Medicina General</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Consulta Médica Veterinaria General</h3>
+              <p class="card-desc">Evaluación clínica detallada (30-40 min): anamnesis, constantes fisiológicas, auscultación cardiopulmonar, revisión dérmica y plan terapéutico.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 35.00</span>
+              <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20agendar%20una%20Consulta%20M%C3%A9dica%20General" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/servicios/vacunacion.jpeg" alt="Plan de Vacunación Canina" onerror="this.src='assets/images/servicios/vacunacion.jpeg'">
+            <span class="badge-category badge-servicio">Prevención</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Vacunación Canina Séxtuple + Rabia</h3>
+              <p class="card-desc">Protección contra distemper, parvovirus, hepatitis, parainfluenza y leptospirosis. Incluye triaje médico previo y carnét oficial de control.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">S/ 55.00</span>
+              <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20agendar%20Vacunaci%C3%B3n%20Canina" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Agendar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/laboratorio/laboratorio_equipo.png" alt="Hemograma y Bioquímica Clínica" onerror="this.src='assets/images/laboratorio/laboratorio_equipo.png'">
+            <span class="badge-category badge-servicio">Laboratorio Clínico</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Hemograma & Bioquímica Sanguínea</h3>
+              <p class="card-desc">Análisis automatizado en minutos: conteo de glóbulos rojos, blancos, plaquetas, función renal (creatinina/urea) y perfil hepático.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-consult">Consultar precio</span>
+              <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20cotizar%20an%C3%A1lisis%20de%20laboratorio" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Consultar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/instalaciones/consultorio2_veterinaria.jpg" alt="Profilaxis Dental Ultrasónica" onerror="this.src='assets/images/instalaciones/consultorio2_veterinaria.jpg'">
+            <span class="badge-category badge-servicio">Odontología</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Profilaxis Dental con Ultrasonido</h3>
+              <p class="card-desc">Eliminación de sarro bacteriano y placa calcificada con cavitador ultrasónico bajo sedación monitoreada. Elimina el mal aliento.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-consult">Consultar precio</span>
+              <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20informaci%C3%B3n%20de%20Profilaxis%20Dental" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Consultar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/pelitos_movil/van_pelitos.jpg" alt="Pelitos Móvil Atención a Domicilio" onerror="this.src='assets/images/pelitos_movil/van_pelitos.jpg'">
+            <span class="badge-category badge-servicio">A Domicilio</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Pelitos Móvil: Consulta en Casa</h3>
+              <p class="card-desc">Nuestra van veterinaria llega a tu puerta en Huánuco con médico veterinario, vacunas y equipo clínico. Ideal para evitar el estrés del traslado.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-consult">Consultar precio</span>
+              <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20pedir%20Pelitos%20M%C3%B3vil%20a%20domicilio" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Pedir Móvil
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6 -->
+        <article class="catalog-card">
+          <div class="card-img-wrapper">
+            <img src="../pelitos_veterinaria/images/instalaciones/quirofano_veterinaria.jpg" alt="Cirugía y Esterilización Preventiva" onerror="this.src='assets/images/instalaciones/quirofano_veterinaria.jpg'">
+            <span class="badge-category badge-servicio">Cirugía Segura</span>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3 class="card-title">Esterilización & Cirugía Menor</h3>
+              <p class="card-desc">Procedimientos quirúrgicos preventivos con evaluación prequirúrgica, monitoreo de signos vitales y suturas intradérmicas de rápida recuperación.</p>
+            </div>
+            <div class="card-footer">
+              <span class="price-consult">Consultar precio</span>
+              <a href="https://wa.me/51939356376?text=Hola%20Dra.%20Julia%2C%20deseo%20informaci%C3%B3n%20sobre%20Esterilizaci%C3%B3n" target="_blank" class="card-cta-btn">
+                <i class="fa-brands fa-whatsapp"></i> Consultar
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECCIÓN FINAL DE LLAMADOS A LA ACCIÓN (3 ACCIONES CLAVE)
+         ========================================================================= -->
+    <section class="cta-banner-section">
+      <h2 class="cta-banner-title">¿Listo para consentir o cuidar a tu mascota?</h2>
+      <p class="cta-banner-subtitle">Elige cómo deseas comunicarte con nuestro equipo en Huánuco. ¡Estamos para servirte!</p>
+
+      <div class="cta-grid-3">
+        <!-- CTA 1 -->
+        <div class="cta-card-box cta-box-wa">
+          <div class="cta-box-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div>
+            <h3>Reserva tu cita por WhatsApp</h3>
+            <p>Agenda tu baño spa o consulta médica de forma rápida y directa con nuestros especialistas.</p>
+          </div>
+          <a href="https://wa.me/51948426656?text=Hola%2C%20deseo%20reservar%20una%20cita%20para%20mi%20mascota" target="_blank" class="btn-big-cta btn-cta-green">
+            <i class="fa-brands fa-whatsapp"></i> Agendar Cita Ahora
+          </a>
+        </div>
+
+        <!-- CTA 2 -->
+        <div class="cta-card-box cta-box-loc">
+          <div class="cta-box-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <h3>Visítanos en Huánuco</h3>
+            <p>Atendemos con ambiente climatizado, estacionamiento para desembarque y la mejor atención médica.</p>
+          </div>
+          <a href="https://maps.app.goo.gl/pelitosveterinaria" target="_blank" class="btn-big-cta btn-cta-blue">
+            <i class="fa-solid fa-map-location-dot"></i> Ver en Google Maps
+          </a>
+        </div>
+
+        <!-- CTA 3 -->
+        <div class="cta-card-box cta-box-prod">
+          <div class="cta-box-icon">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div>
+            <h3>Consulta disponibilidad de productos</h3>
+            <p>Pregunta por stock de alimentos, tallas de arneses y antipulgas con delivery en todo Huánuco.</p>
+          </div>
+          <a href="https://wa.me/51927301122?text=Hola%20Diego%2C%20deseo%20consultar%20disponibilidad%20de%20productos%20y%20delivery" target="_blank" class="btn-big-cta btn-cta-orange">
+            <i class="fa-solid fa-boxes-stacked"></i> Consultar Stock
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p><strong>Pelitos Veterinaria & Estética Canina</strong> &middot; Jirón Dos de Mayo N.° 1234, Huánuco, Perú</p>
+      <p style="margin-top: 4px;">Atención con amor y ciencia para quien más te ama &middot; © 2026 Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function switchCatalog(catalogId, btn) {
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.catalog-section').forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById('cat-' + catalogId);
+      if (target) {
+        target.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
