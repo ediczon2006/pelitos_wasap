@@ -22,7 +22,7 @@
 ```text
 ⏰ *Horarios de Atención en Pelitos Veterinaria*:
 
-• *Lunes a Sábado:* 8:30 a. m. – 7:30 p. m.
+• *Lunes a Sábado:* 8:30 a.m. – 8:00 p.m.
 • *Domingos y Feriados:* 9:00 a. m. – 2:00 p. m. (Previa cita / urgencias)
 
 📍 Nos encontramos en Huánuco, Perú. ¡Estaremos encantados de cuidar a tu engreído! 🐾💜
@@ -149,4 +149,56 @@ Si tu mascota presenta dificultad respiratoria severa, convulsiones, traumatismo
 ¡Hola! Te escribe el equipo de Pelitos para saber cómo amaneció y cómo se siente [Nombre de la mascota] tras su atención de ayer.
 
 ¿Ha comido bien y continuado con su tratamiento o descanso? Recuerda que estamos siempre atentos a cualquier consulta. «Expertos en cuidar a quien más te ama».
+```
+
+### 16. `/catalogo_petshop` — Envío del Catálogo Oficial de Pet Shop & Farmacia
+```text
+🐾 *Catálogo Oficial Pet Shop & Farmacia Pelitos 2026*:
+
+¡Hola! Te comparto nuestro catálogo comercial completo con más de 120 productos para tu engreído:
+• Alimentos Súper Premium (Canbo, Ricocan, Pro Plan).
+• Snacks y premios (Naturalistic en promo a S/ 19.00, Churu, galletas).
+• Farmacia y antipulgas autorizados (Simparica, Bravecto, Proteggo).
+• Camas, comederos, correas y accesorios de paseo.
+
+📄 *Catálogo en PDF interactivo listo para descargar*.
+📍 Jr. Leoncio Prado N.° 1336, Huánuco
+🛵 Delivery en Huánuco y recojo en tienda.
+💳 Pagos: Yape, Plin y efectivo.
+
+¿Deseas consultar por la disponibilidad de algún producto específico? 😊
+```
+
+### 17. `/catalogo_estetica` — Envío del Catálogo Oficial de Estética & Spa
+```text
+✨ *Catálogo Oficial Estética Canina & Spa Pelitos 2026* (¡Sin Límite de Peso!):
+
+¡Hola! Te adjunto nuestro catálogo de belleza y bienestar canino con método Fear-Free (sin estrés):
+• Las 4 Duchas de Amor: Baños Medicados (S/ 40), Desparasitante (S/ 25) y Spa Relajante (S/ 30).
+• Look Pelitos: Corte a máquina (S/ 25), Mixto (S/ 30) y Solo Tijera (S/ 45).
+• Galería con nuestras 10 mejores obras reales de transformación de raza.
+• ¡Atención con amor a todos los perritos sin importar su peso o tamaño!
+
+🚿 Incluye agua temperada, secado silencioso y toallas esterilizadas.
+✂️ A cargo de Antonella Aseijas Fores (Groomer Certificada).
+
+¿De qué raza es tu perrito para agendarle su turno de consentido? 🐶🛁
+```
+
+### 18. `/catalogo_medico` — Envío del Catálogo Oficial de Consultorio & Diagnóstico
+```text
+🩺 *Catálogo Oficial Consultorio Veterinario Pelitos 2026*:
+
+¡Hola! Te comparto los servicios médicos y clínicos disponibles para cuidar la salud de tu mascota:
+• Consulta Médica General canina y felina (S/ 30.00).
+• Medicina preventiva y esquemas de vacunación con carné oficial (Desde S/ 35.00).
+• Desparasitación interna y externa dosificada por peso exacto.
+• Laboratorio clínico propio: hemograma, bioquímica y pruebas rápidas (resultados el mismo día).
+• Pelitos Móvil: ¡Nuestra van equipada llega hasta la puerta de tu casa!
+
+👩‍⚕️ Atención a cargo de la Dra. Esther García y Julia Alegre.
+📍 Jr. Leoncio Prado N.° 1336, Huánuco
+⏰ Lunes a sábado: 8:30 a.m. – 8:00 p.m.
+
+¿Tu mascota presenta algún síntoma o deseas programar su control preventivo? 🐾
 ```
